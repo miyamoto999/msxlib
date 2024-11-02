@@ -1,0 +1,2 @@
+test004.o: test004.c ../../include/msxlib/msxlib.h \
+  ../../include/msxlib/rbuf.h

@@ -1,0 +1,2 @@
+test005.o: test005.c ../../include/msxlib/bfile.h \
+  ../../include/msxlib/msxlib.h ../../include/msxlib/msxdos.h

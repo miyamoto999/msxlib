@@ -1,0 +1,45 @@
+msxvdp.o: msxvdp.c ../../include/msxlib/msxlib.h \
+  ../../include/msxlib/vdp.h ../../include/msxlib/msxbios.h \
+  ../../include/msxlib/msxbiosaddr.h ../../include/msxlib/msxwork.h \
+  ../../include/msxlib/msxworkaddr.h
+msxvdp2.o: msxvdp2.c
+msxvdp_dct_draw_char.o: msxvdp_dct_draw_char.c ../../include/msxlib/vdp.h \
+  ../../include/msxlib/msxlib.h ../../include/msxlib/msxbios.h \
+  ../../include/msxlib/msxbiosaddr.h ../../include/msxlib/msxwork.h \
+  ../../include/msxlib/msxworkaddr.h
+msxvdp_dct_draw_char16.o: msxvdp_dct_draw_char16.c \
+  ../../include/msxlib/vdp.h ../../include/msxlib/msxlib.h \
+  ../../include/msxlib/msxbios.h ../../include/msxlib/msxbiosaddr.h \
+  ../../include/msxlib/msxwork.h ../../include/msxlib/msxworkaddr.h
+msxvdp_dct_draw_string.o: msxvdp_dct_draw_string.c \
+  ../../include/msxlib/vdp.h ../../include/msxlib/msxlib.h \
+  ../../include/msxlib/msxbios.h ../../include/msxlib/msxbiosaddr.h \
+  ../../include/msxlib/msxwork.h ../../include/msxlib/msxworkaddr.h
+msxvdp_dct_draw_string16.o: msxvdp_dct_draw_string16.c \
+  ../../include/msxlib/msxlib.h ../../include/msxlib/vdp.h \
+  ../../include/msxlib/msxbios.h ../../include/msxlib/msxbiosaddr.h \
+  ../../include/msxlib/msxwork.h ../../include/msxlib/msxworkaddr.h
+msxvdp_dct_init.o: msxvdp_dct_init.c ../../include/msxlib/slot.h \
+  ../../include/msxlib/msxlib.h ../../include/msxlib/vdp.h \
+  ../../include/msxlib/msxbios.h ../../include/msxlib/msxbiosaddr.h \
+  ../../include/msxlib/msxwork.h ../../include/msxlib/msxworkaddr.h
+msxvdp_dos_draw_char.o: msxvdp_dos_draw_char.c ../../include/msxlib/vdp.h \
+  ../../include/msxlib/msxlib.h ../../include/msxlib/msxbios.h \
+  ../../include/msxlib/msxbiosaddr.h ../../include/msxlib/msxwork.h \
+  ../../include/msxlib/msxworkaddr.h
+msxvdp_dos_draw_char16.o: msxvdp_dos_draw_char16.c \
+  ../../include/msxlib/vdp.h ../../include/msxlib/msxlib.h \
+  ../../include/msxlib/msxbios.h ../../include/msxlib/msxbiosaddr.h \
+  ../../include/msxlib/msxwork.h ../../include/msxlib/msxworkaddr.h
+msxvdp_dos_draw_string.o: msxvdp_dos_draw_string.c \
+  ../../include/msxlib/vdp.h ../../include/msxlib/msxlib.h \
+  ../../include/msxlib/msxbios.h ../../include/msxlib/msxbiosaddr.h \
+  ../../include/msxlib/msxwork.h ../../include/msxlib/msxworkaddr.h
+msxvdp_dos_draw_string16.o: msxvdp_dos_draw_string16.c \
+  ../../include/msxlib/msxlib.h ../../include/msxlib/vdp.h \
+  ../../include/msxlib/msxbios.h ../../include/msxlib/msxbiosaddr.h \
+  ../../include/msxlib/msxwork.h ../../include/msxlib/msxworkaddr.h
+msxvdp_dos_init.o: msxvdp_dos_init.c ../../include/msxlib/slot.h \
+  ../../include/msxlib/msxlib.h ../../include/msxlib/vdp.h \
+  ../../include/msxlib/msxbios.h ../../include/msxlib/msxbiosaddr.h \
+  ../../include/msxlib/msxwork.h ../../include/msxlib/msxworkaddr.h
