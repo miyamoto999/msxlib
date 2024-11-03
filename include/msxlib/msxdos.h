@@ -134,6 +134,9 @@ uint8_t __LIB__ dsk2_read(uint8_t handle, void *buf, uint16_t count, uint16_t *b
 /************/
 
 
+/* 自作Z80エミュレータ用に拡張した終了コードを設定するファンクションコール */
+void __LIB__ dos_scode(uint8_t exit_code) __smallc;
+
 /* ファイルオープンモード */
 #define FILE_MODE_READ_ONLY      0x01
 #define FILE_MODE_WRITE_ONLY     0x02

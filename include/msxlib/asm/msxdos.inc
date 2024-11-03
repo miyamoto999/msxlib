@@ -20,3 +20,6 @@ _PFILE:     equ     0x5c        ; ファイル名の解析
 _DEFAB:     equ     0x63
 _DEFER:     equ     0x64
 _DOSVER:    equ     0x6f
+
+; 自作Z80エミュレータ用に拡張した終了コードを設定するファンクションコール
+_SCODE:     equ     0x80
