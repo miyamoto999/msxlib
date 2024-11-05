@@ -30,19 +30,17 @@ int16_t __LIB__ bfile_write_dsk2(BFILE_DOS2 *fp, const void *buf, int16_t size) 
     }
 
     if(size >= fp->buf_size) {
-        if(fp->buf_offset != 0) {
-            err = dsk2_write(fp->handle, fp->buf, fp->buf_offset, &tmp_size);
-            if(err) {
-                fp->err = err;
+        if(fp->update) {
+            if(!bfile_flush_dsk2(fp)) {
                 return 0;
             }
-            fp->buf_offset = 0;
         }
         err = dsk2_write(fp->handle, buf, size, &tmp_size);
         if(err) {
             fp->err = err;
             return 0;
         }
+        fp->update = FALSE;
     } else {
         int copy_size, rest_size = size;
         int idx = 0;
@@ -57,13 +55,12 @@ int16_t __LIB__ bfile_write_dsk2(BFILE_DOS2 *fp, const void *buf, int16_t size) 
             memcpy(&fp->buf[fp->buf_offset], &buf[idx], copy_size);
             fp->buf_offset += copy_size;
             idx += copy_size;
+            fp->dirty = FALSE;
+            fp->update = TRUE;
             if(fp->buf_offset == fp->buf_size) {
-                err = dsk2_write(fp->handle, fp->buf, fp->buf_offset, &tmp_size);
-                if(err) {
-                    fp->err = err;
+                if(!bfile_flush_dsk2(fp)) {
                     return 0;
                 }
-                fp->buf_offset = 0;
             }
         }
     }

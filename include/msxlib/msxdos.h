@@ -89,6 +89,9 @@ uint8_t __LIB__ dos2_open(const char *filepath, uint8_t mode, uint8_t *handle) _
 /* ファイルハンドルからの読み出し */
 uint8_t __LIB__ dos2_read(uint8_t handle, void *buf, uint16_t count, uint16_t *bytes) __smallc;
 
+/* ファイルハンドルポインタの移動 */
+uint8_t __LIB__ dos2_seek(uint8_t handle, int32_t *pos, uint8_t whence) __smallc;
+
 /****** DISK BASIC用 ******/
 /* ディスク転送アドレスのセット */
 void __LIB__ dsk1_setdta(void *dta) __smallc;
@@ -131,6 +134,9 @@ void __LIB__ dsk2_pfile(const char *filenmae, char *buf, char **last_str, uint8_
 uint8_t __LIB__ dsk2_open(const char *filepath, uint8_t mode, uint8_t *handle) __smallc;
 /* ファイルハンドルからの読み出し */
 uint8_t __LIB__ dsk2_read(uint8_t handle, void *buf, uint16_t count, uint16_t *bytes) __smallc;
+
+/* ファイルハンドルポインタの移動 */
+uint8_t __LIB__ dsk2_seek(uint8_t handle, int32_t *pos, uint8_t whence) __smallc;
 /************/
 
 

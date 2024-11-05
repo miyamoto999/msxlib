@@ -20,6 +20,22 @@ bfile/bfile_create_dsk1.o: bfile/bfile_create_dsk1.c ../include/msxlib/msxdos.h 
   ../include/msxlib/msxlib.h ../include/msxlib/bfile.h
 bfile/bfile_create_dsk2.o: bfile/bfile_create_dsk2.c ../include/msxlib/bfile.h \
   ../include/msxlib/msxlib.h ../include/msxlib/msxdos.h
+bfile/bfile_flush_dos1.o: bfile/bfile_flush_dos1.c ../include/msxlib/bfile.h \
+  ../include/msxlib/msxlib.h ../include/msxlib/msxdos.h
+bfile/bfile_flush_dos2.o: bfile/bfile_flush_dos2.c ../include/msxlib/bfile.h \
+  ../include/msxlib/msxlib.h ../include/msxlib/msxdos.h
+bfile/bfile_flush_dsk1.o: bfile/bfile_flush_dsk1.c ../include/msxlib/bfile.h \
+  ../include/msxlib/msxlib.h ../include/msxlib/msxdos.h
+bfile/bfile_flush_dsk2.o: bfile/bfile_flush_dsk2.c ../include/msxlib/bfile.h \
+  ../include/msxlib/msxlib.h ../include/msxlib/msxdos.h
+bfile/bfile_fseek_dos1.o: bfile/bfile_fseek_dos1.c ../include/msxlib/msxdos.h \
+  ../include/msxlib/msxlib.h ../include/msxlib/bfile.h
+bfile/bfile_fseek_dos2.o: bfile/bfile_fseek_dos2.c ../include/msxlib/bfile.h \
+  ../include/msxlib/msxlib.h ../include/msxlib/msxdos.h
+bfile/bfile_fseek_dsk1.o: bfile/bfile_fseek_dsk1.c ../include/msxlib/msxdos.h \
+  ../include/msxlib/msxlib.h ../include/msxlib/bfile.h
+bfile/bfile_fseek_dsk2.o: bfile/bfile_fseek_dsk2.c ../include/msxlib/bfile.h \
+  ../include/msxlib/msxlib.h ../include/msxlib/msxdos.h
 bfile/bfile_malloc_dos1.o: bfile/bfile_malloc_dos1.c ../include/msxlib/msxlib.h \
   ../include/msxlib/bfile.h ../include/msxlib/msxdos.h
 bfile/bfile_malloc_dsk1.o: bfile/bfile_malloc_dsk1.c ../include/msxlib/msxlib.h \

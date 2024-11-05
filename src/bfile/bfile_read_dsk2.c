@@ -32,7 +32,7 @@ int16_t __LIB__ bfile_read_dsk2(BFILE_DOS2 *fp, void *buf, int16_t size) __small
     if(data_size >= size) {
         memcpy(buf, &fp->buf[fp->buf_offset], size);
         fp->buf_offset += size;
-        read_size = size;
+        data_size = size;
     } else {
         memcpy(buf, &fp->buf[fp->buf_offset], data_size);
         fp->buf_offset = 0;

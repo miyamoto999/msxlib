@@ -33,5 +33,9 @@ BFILE_DOS2 __LIB__ *bfile_create_dos2(const char *filename, int16_t buf_size) __
         free(fp);
         return NULL;
     }
+    fp->mode = BFILE_O_WRONLY;
+    fp->dirty = TRUE;
+    fp->update = FALSE;
+
     return fp;
 }

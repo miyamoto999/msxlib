@@ -15,6 +15,7 @@ _CREATE:    equ     0x44
 _CLOSE:     equ     0x45
 _READ:      equ     0x48
 _WRITE:     equ     0x49
+_SEEK:      equ     0x4a
 _PARSE:     equ     0x5b        ; パス名の解析
 _PFILE:     equ     0x5c        ; ファイル名の解析
 _DEFAB:     equ     0x63

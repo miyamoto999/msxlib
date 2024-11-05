@@ -32,6 +32,7 @@ BFILE_DOS1 __LIB__ *bfile_open_dsk1(const char *filename, uint8_t mode, int16_t 
     fp->fcb.v1.record_size = 1;
     fp->fcb.v1.random_record = 0;
     fp->mode = mode;
+    fp->update = FALSE;
 
     return fp;
 }

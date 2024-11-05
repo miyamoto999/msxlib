@@ -32,15 +32,10 @@ int16_t __LIB__ bfile_write_dsk1(BFILE_DOS1 *fp, const void *buf, int16_t size) 
     if(size >= fp->buf_size) {
         /* バッファサイズより大きいデータを書き込もうとした場合
            まず、バッファの内容を書き込む */
-        if(fp->buf_offset != 0) {
-            dsk1_setdta(fp->buf);
-            err = dsk1_wrblk(&fp->fcb, fp->buf_offset);
-            if(err) {
-                fp->err = err;
+        if(fp->update) {
+            if(!bfile_flush_dsk1(fp)) {
                 return 0;
             }
-            fp->buf_offset = 0;
-            fp->dirty = TRUE;
         }
         /* 渡されたデータを書き込む */
         dsk1_setdta(buf);
@@ -49,6 +44,7 @@ int16_t __LIB__ bfile_write_dsk1(BFILE_DOS1 *fp, const void *buf, int16_t size) 
             fp->err = err;
             return 0;
         }
+        fp->update = FALSE;
     } else {
         /* バッファより小さいデータを渡された場合
            まず、バッファに追加する */
@@ -67,16 +63,11 @@ int16_t __LIB__ bfile_write_dsk1(BFILE_DOS1 *fp, const void *buf, int16_t size) 
             fp->buf_offset += copy_size;
             idx += copy_size;
             fp->dirty = FALSE;
+            fp->update = TRUE;
             if(fp->buf_offset == fp->buf_size) {
-                /* バッファがいっぱいなら、書き込む */
-                dsk1_setdta(fp->buf);
-                err = dsk1_wrblk(&fp->fcb, fp->buf_offset);
-                if(err) {
-                    fp->err = err;
+                if(!bfile_flush_dsk1(fp)) {
                     return 0;
                 }
-                fp->buf_offset = 0;
-                fp->dirty = TRUE;
             }
         }
     }

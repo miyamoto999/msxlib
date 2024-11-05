@@ -4,7 +4,7 @@ AS=z88dk-z80asm
 CC=zcc
 OBJS=dsk2_create.o dsk2_write.o dsk2_close.o dsk1_fmake.o dsk1_setdta.o dsk1_wrblk.o dsk1_fclose.o dsk1_const.o dsk1_dirio.o \
 	dsk2_defab.o dsk2_dosver.o dsk2_defer.o dsk2_parse.o dsk2_pfile.o dsk1_fopen.o dsk1_rdblk.o dsk1_conout.o dsk2_open.o \
-	dsk2_read.o
+	dsk2_read.o dsk2_seek.o
 CFLAGS_INC=-I../../include
 CFLAGS=+msx $(CFLAGS_INC) -O
 ASCONFIGS=$(CFLAGS_INC)
@@ -104,6 +104,10 @@ dsk2_open.asm:../doscall/dos2_open.asm ../../include/msxlib/asm/msxdos.inc
 
 dsk2_read.o:dsk2_read.asm ../../include/msxlib/asm/msxdos.inc
 dsk2_read.asm:../doscall/dos2_read.asm ../../include/msxlib/asm/msxdos.inc
+	../mk_dskcallversion.sh $< $@
+
+dsk2_seek.o:dsk2_seek.asm ../../include/msxlib/asm/msxdos.inc
+dsk2_seek.asm:../doscall/dos2_seek.asm ../../include/msxlib/asm/msxdos.inc
 	../mk_dskcallversion.sh $< $@
 
 -include depends

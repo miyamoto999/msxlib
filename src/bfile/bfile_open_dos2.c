@@ -39,6 +39,7 @@ BFILE_DOS2 __LIB__ *bfile_open_dos2(const char *filename, uint8_t mode, int16_t 
     }
     fp->mode = mode;
     fp->dirty = TRUE;
+    fp->update = FALSE;
 
     return fp;
 }

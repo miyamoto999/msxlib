@@ -28,3 +28,6 @@
     暫定的に作った代替printfのテスト
 - test015
     bfile(DOS2)でファイルのシーケンシャルライトのテスト
+- test016
+    bfile_fseekのテスト
+

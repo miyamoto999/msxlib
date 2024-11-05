@@ -12,7 +12,11 @@ BFILE_OBJS=bfile/bfile_open_dos1.o bfile/bfile_open_dsk1.o \
 	bfile/bfile_create_dos2.o bfile/bfile_create_dsk2.o \
 	bfile/bfile_close_dos2.o bfile/bfile_close_dsk2.o \
 	bfile/bfile_open_dos2.o bfile/bfile_open_dsk2.o \
-	bfile/bfile_read_dos2.o bfile/bfile_read_dsk2.o
+	bfile/bfile_read_dos2.o bfile/bfile_read_dsk2.o \
+	bfile/bfile_fseek_dos1.o bfile/bfile_fseek_dsk1.o \
+	bfile/bfile_fseek_dos2.o bfile/bfile_fseek_dsk2.o \
+	bfile/bfile_flush_dos1.o bfile/bfile_flush_dsk1.o \
+	bfile/bfile_flush_dos2.o bfile/bfile_flush_dsk2.o
 RBUF_OBJS=rbuf/rbuf.o rbuf/rbuf_add_data.o rbuf/rbuf_get_data.o rbuf/rbuf_get_size.o \
 	rbuf/rbuf_read.o rbuf/cif_rbuf_add_data.o rbuf/cif_rbuf_get_data.o rbuf/cif_rbuf_get_size.o rbuf/cif_rbuf_read.o
 NET_OBJS=net/net_init.o net/net_setup.o net/net_connect.o net/net_readline.o 
@@ -96,6 +100,10 @@ bfile/bfile_write_dsk1.c: bfile/bfile_write_dos1.c
 	./mk_dskcallversion_c.sh $< $@
 bfile/bfile_close_dsk1.c: bfile/bfile_close_dos1.c
 	./mk_dskcallversion_c.sh $< $@
+bfile/bfile_fseek_dsk1.c: bfile/bfile_fseek_dos1.c
+	./mk_dskcallversion_c.sh $< $@
+bfile/bfile_flush_dsk1.c: bfile/bfile_flush_dos1.c
+	./mk_dskcallversion_c.sh $< $@
 
 bfile/bfile_write_dsk2.c: bfile/bfile_write_dos2.c
 	./mk_dskcallversion_c.sh $< $@
@@ -106,6 +114,10 @@ bfile/bfile_close_dsk2.c: bfile/bfile_close_dos2.c
 bfile/bfile_open_dsk2.c: bfile/bfile_open_dos2.c
 	./mk_dskcallversion_c.sh $< $@
 bfile/bfile_read_dsk2.c: bfile/bfile_read_dos2.c
+	./mk_dskcallversion_c.sh $< $@
+bfile/bfile_fseek_dsk2.c: bfile/bfile_fseek_dos2.c
+	./mk_dskcallversion_c.sh $< $@
+bfile/bfile_flush_dsk2.c: bfile/bfile_flush_dos2.c
 	./mk_dskcallversion_c.sh $< $@
 
 -include depends

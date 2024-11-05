@@ -15,6 +15,11 @@
 int16_t __LIB__ bfile_read_dsk1(BFILE_DOS1 *fp, void *buf, int16_t size) __smallc
 {
     uint16_t read_size = 0;
+
+    if(fp->mode == BFILE_O_WRONLY) {
+        fp->err = 0xff;
+        return 0;
+    }
     if(fp->dirty) {
         dsk1_setdta(fp->buf);
         int8_t ret = dsk1_rdblk(&fp->fcb, fp->buf_size, &read_size);
@@ -25,13 +30,14 @@ int16_t __LIB__ bfile_read_dsk1(BFILE_DOS1 *fp, void *buf, int16_t size) __small
             return 0;
         }
         fp->read_size = read_size;
+        fp->buf_offset = 0;
         fp->dirty = FALSE;
     }
     int16_t data_size = fp->read_size - fp->buf_offset;
     if(data_size >= size) {
         memcpy(buf, &fp->buf[fp->buf_offset], size);
         fp->buf_offset += size;
-        read_size = size;
+        data_size = size;
     } else {
         memcpy(buf, &fp->buf[fp->buf_offset], data_size);
         fp->buf_offset = 0;
