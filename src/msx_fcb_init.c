@@ -3,7 +3,8 @@
 #include <stdint.h>
 #include <string.h>
 #include <ctype.h>
-#include <msxlib/bfile.h>
+#include <msxlib/msxlib.h>
+#include <msxlib/fcb.h>
 
 /*
     FCBにファイル名を設定する。
@@ -25,6 +26,7 @@ BOOL __LIB__ msx_fcb_init(MSX_FCB *fcb, const char *filename) __smallc
     int idx_dot = len;
     char *p;
     int drv = 0;
+    BOOL wild_card = FALSE;
 
     /* 最初のスペースはとばす */
     while(filename[idx_start] == ' ') {
@@ -58,17 +60,32 @@ BOOL __LIB__ msx_fcb_init(MSX_FCB *fcb, const char *filename) __smallc
     }
     /* ファイル名をコピーする */
     for(int i = 0; i < FCB_NAME_SIZE; i++) {
-        if(idx_start + i >= idx_dot) {
+        if(filename[idx_start + i] == '*') {
+            wild_card = TRUE;
+        }
+        if(!wild_card && idx_start + i >= idx_dot) {
             break;
         }
-        fcb->v1.name[i] = toupper(filename[idx_start + i]);
+        if(wild_card) {
+            fcb->v1.name[i] = '?';
+        } else {
+            fcb->v1.name[i] = toupper(filename[idx_start + i]);
+        }
     }
+    wild_card = FALSE;
     /* 拡張子部分をコピーする */
     for(int i = 0; i < FCB_EXT_SIZE; i++) {
-        if(idx_dot + 1 + i >= len) {
+        if(filename[idx_dot + 1 + i] == '*') {
+            wild_card = TRUE;
+        }
+        if(!wild_card && idx_dot + 1 + i >= len) {
             break;
         }
-        fcb->v1.ext[i] = toupper(filename[idx_dot + 1 + i]);
+        if(wild_card) {
+            fcb->v1.ext[i] = '?';
+        } else {
+            fcb->v1.ext[i] = toupper(filename[idx_dot + 1 + i]);
+        }
     }
     return TRUE;
 }

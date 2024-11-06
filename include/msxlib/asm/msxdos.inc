@@ -6,10 +6,15 @@ _DIRIO:     equ     0x06
 _CONST:     equ     0x0b
 _FOPEN:     equ     0x0f
 _FCLOSE:    equ     0x10
+_SFIRST:    equ     0x11
+_SNEXT:     equ     0x12
 _FMAKE:     equ     0x16
 _SETDTA:    equ     0x1a
 _WRBLK:     equ     0x26
 _RDBLK:     equ     0x27
+
+_FFIRST:    equ     0x40
+_FNEXT:     equ     0x41
 _OPEN:      equ     0x43
 _CREATE:    equ     0x44
 _CLOSE:     equ     0x45

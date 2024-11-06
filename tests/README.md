@@ -30,4 +30,8 @@
     bfile(DOS2)でファイルのシーケンシャルライトのテスト
 - test016
     bfile_fseekのテスト
-
+- test017
+    dos1_sfirst()、dos1_snext()のテスト
+- test018
+    dos2_ffirst()、do2_fnext()のテスト
+    

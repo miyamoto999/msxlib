@@ -87,8 +87,14 @@ int main(void)
 
     srand((unsigned int)time(NULL));
 
+#ifndef __CPM__
+    dos_scode(1);
+#endif
     test1();
     test2();
 
+#ifndef __CPM__
+    dos_scode(0);
+#endif
     return 0;
 }

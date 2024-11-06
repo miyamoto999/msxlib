@@ -135,6 +135,34 @@ void test10(void)
     printf("OK\n");
 }
 
+void test11(void)
+{
+    MSX_FCB fcb;
+    BOOL ret;
+    const char *filename = "b:*.*";
+
+    printf("fcb init:\"%s\":", filename);
+    ret = msx_fcb_init(&fcb, filename);
+    assert(ret);
+    assert(fcb.v1.drive == 2);
+    assert(memcmp(fcb.v1.name, "???????????", FCB_NAME_SIZE + FCB_EXT_SIZE) == 0);
+    printf("OK\n");
+}
+
+void test12(void)
+{
+    MSX_FCB fcb;
+    BOOL ret;
+    const char *filename = "c:h?p*.t*";
+
+    printf("fcb init:\"%s\":", filename);
+    ret = msx_fcb_init(&fcb, filename);
+    assert(ret);
+    assert(fcb.v1.drive == 3);
+    assert(memcmp(fcb.v1.name, "H?P?????T??", FCB_NAME_SIZE + FCB_EXT_SIZE) == 0);
+    printf("OK\n");
+}
+
 int main(void)
 {
     test1();
@@ -147,6 +175,8 @@ int main(void)
     test8();
     test9();
     test10();
+    test11();
+    test12();
 
     return 0;
 }

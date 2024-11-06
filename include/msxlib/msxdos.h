@@ -4,48 +4,8 @@
 #include <stdint.h>
 #include <msxlib/msxlib.h>
 #include <msxlib/msxdos.h>
-
-#define FCB_NAME_SIZE   8
-#define FCB_EXT_SIZE    3
-
-typedef struct msx_fcb1 {
-    uint8_t     drive;      /* ドライブ番号 */
-    char        name[FCB_NAME_SIZE];    /* ファイル名 */
-    char        ext[FCB_EXT_SIZE];     /* ファイルタイプ */
-    uint8_t     cur_blk;    /* カレントブロック */
-    char        dmy1;
-    uint16_t    record_size;    /* レコードサイズ */
-    long        file_size;      /* ファイルサイズ */
-    uint8_t     date[2];        /* 日付 */
-    uint8_t     time[2];        /* 時刻 */
-    uint8_t     dev_id;         /* デバイスID */
-    uint8_t     dir_loc;        /* ディレクトリロケーション */
-    uint16_t    start_cluster;  /* 戦闘クラスタ */
-    uint16_t    end_cluster;    /* 最終クラスタ */
-    uint16_t    relative_pos;   /* 相対位置 */
-    uint8_t     cur_record;     /* カレントレコード */
-    long        random_record;  /* ランダムレコード */
-} MSX_FCB1;
-
-typedef struct msx_fcb2 {
-    uint8_t     drive;      /* ドライブ番号 */
-    char        name[FCB_NAME_SIZE];    /* ファイル名 */
-    char        ext[FCB_EXT_SIZE];     /* ファイルタイプ */
-    uint8_t     ext_num_low;    /* エクステント番号(下位) */
-    char        attr;           /* ファイル属性 */
-    uint8_t     ext_num_high;   /* エクステント番号(上位) */
-    uint8_t     rec_count;      /* レコードカウント */
-    long        file_size;      /* ファイルサイズ */
-    uint32_t    vol_id;         /* ボリュームID */
-    uint8_t     dmy1[8];
-    uint8_t     cur_record;     /* カレントレコード */
-    long        random_record;  /* ランダムレコード */
-} MSX_FCB2;
-
-typedef union msx_fcb {
-    MSX_FCB1 v1;
-    MSX_FCB2 v2;
-} MSX_FCB;
+#include <msxlib/fcb.h>
+#include <msxlib/fib.h>
 
 /* ディスク転送アドレスのセット */
 void __LIB__ dos1_setdta(void *dta) __smallc;
@@ -63,6 +23,12 @@ uint8_t __LIB__ dos1_const(void) __smallc;
 int8_t __LIB__ dos1_fopen(void *fcb) __smallc;
 /* ランダムブロック読み込み */
 uint8_t __LIB__ dos1_rdblk(void *fcb, uint16_t rec_num, uint16_t *read_size) __smallc;
+/* 最初のエントリの検索(FCB) */
+uint8_t __LIB__ dos1_sfirst(void *fcb) __smallc;
+/* 次のエントリの検索(FCB) */
+uint8_t __LIB__ dos1_snext(void) __smallc;
+
+
 
 /* アボート終了ルーチンの定義 */
 void __LIB__ dos2_defab(BOOL (*abort_routine)(uint8_t err1, uint8_t err2)) __smallc;
@@ -92,6 +58,11 @@ uint8_t __LIB__ dos2_read(uint8_t handle, void *buf, uint16_t count, uint16_t *b
 /* ファイルハンドルポインタの移動 */
 uint8_t __LIB__ dos2_seek(uint8_t handle, int32_t *pos, uint8_t whence) __smallc;
 
+/* 最初のエントリの検索 */
+uint8_t __LIB__ dos2_ffirst(void *fib_or_filepath, char *filename, uint8_t attr, MSX_FIB *new_fib) __smallc;
+/* 次のエントリの検索 */
+uint8_t __LIB__ dos2_fnext(MSX_FIB *fib) __smallc;
+
 /****** DISK BASIC用 ******/
 /* ディスク転送アドレスのセット */
 void __LIB__ dsk1_setdta(void *dta) __smallc;
@@ -109,6 +80,11 @@ uint8_t __LIB__ dsk1_const(void) __smallc;
 int8_t __LIB__ dsk1_fopen(void *fcb) __smallc;
 /* ランダムブロック読み込み */
 uint8_t __LIB__ dsk1_rdblk(void *fcb, uint16_t rec_num, uint16_t *read_size) __smallc;
+/* 最初のエントリの検索(FCB) */
+uint8_t __LIB__ dsk1_sfirst(void *fcb) __smallc;
+/* 次のエントリの検索(FCB) */
+uint8_t __LIB__ dsk1_snext(void) __smallc;
+
 
 /* アボート終了ルーチンの定義 */
 void __LIB__ dsk2_defab(BOOL (*abort_routine)(uint8_t err1, uint8_t err2)) __smallc;
@@ -137,6 +113,12 @@ uint8_t __LIB__ dsk2_read(uint8_t handle, void *buf, uint16_t count, uint16_t *b
 
 /* ファイルハンドルポインタの移動 */
 uint8_t __LIB__ dsk2_seek(uint8_t handle, int32_t *pos, uint8_t whence) __smallc;
+
+/* 最初のエントリの検索 */
+uint8_t __LIB__ dsk2_ffirst(void *fib_or_filepath, char *filename, uint8_t attr, MSX_FIB *new_fib) __smallc;
+/* 次のエントリの検索 */
+uint8_t __LIB__ dsk2_fnext(MSX_FIB *fib) __smallc;
+
 /************/
 
 
@@ -162,5 +144,6 @@ void __LIB__ dos_scode(uint8_t exit_code) __smallc;
 #define ERR_STOP        0x9f
 #define ERR_CTRLC       0x9e
 #define ERR_EOF         0xc7
+#define ERR_NOFIL       0xd7
 
 #endif

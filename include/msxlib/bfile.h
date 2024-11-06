@@ -40,8 +40,6 @@ typedef BFILE_DOS1 BFILE;
 typedef BFILE_DOS2 BFILE;
 #endif
 
-BOOL __LIB__ msx_fcb_init(MSX_FCB *fcb, const char *filename) __smallc;
-
 BFILE_DOS1 __LIB__ *bfile_malloc_dos1(const char *filename, int16_t buf_size) __smallc;
 BFILE_DOS1 __LIB__ *bfile_malloc_dsk1(const char *filename, int16_t buf_size) __smallc;
 

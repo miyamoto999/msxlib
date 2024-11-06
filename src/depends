@@ -1,80 +1,114 @@
-msx_fcb_init.o: msx_fcb_init.c ../include/msxlib/bfile.h \
-  ../include/msxlib/msxlib.h ../include/msxlib/msxdos.h
+msx_fcb_init.o: msx_fcb_init.c ../include/msxlib/msxlib.h \
+  ../include/msxlib/fcb.h
 pre_printf.o: pre_printf.c ../include/msxlib/msxlib.h \
-  ../include/msxlib/msxdos.h
+  ../include/msxlib/msxdos.h ../include/msxlib/fcb.h \
+  ../include/msxlib/fib.h
 pre_printf_sdcc.o: pre_printf_sdcc.c ../include/msxlib/msxlib.h \
-  ../include/msxlib/msxdos.h
+  ../include/msxlib/msxdos.h ../include/msxlib/fcb.h \
+  ../include/msxlib/fib.h
 bfile/bfile_close_dos1.o: bfile/bfile_close_dos1.c ../include/msxlib/bfile.h \
-  ../include/msxlib/msxlib.h ../include/msxlib/msxdos.h
+  ../include/msxlib/msxlib.h ../include/msxlib/msxdos.h \
+  ../include/msxlib/fcb.h ../include/msxlib/fib.h
 bfile/bfile_close_dos2.o: bfile/bfile_close_dos2.c ../include/msxlib/msxdos.h \
-  ../include/msxlib/msxlib.h ../include/msxlib/bfile.h
+  ../include/msxlib/msxlib.h ../include/msxlib/fcb.h \
+  ../include/msxlib/fib.h ../include/msxlib/bfile.h
 bfile/bfile_close_dsk1.o: bfile/bfile_close_dsk1.c ../include/msxlib/bfile.h \
-  ../include/msxlib/msxlib.h ../include/msxlib/msxdos.h
+  ../include/msxlib/msxlib.h ../include/msxlib/msxdos.h \
+  ../include/msxlib/fcb.h ../include/msxlib/fib.h
 bfile/bfile_close_dsk2.o: bfile/bfile_close_dsk2.c ../include/msxlib/msxdos.h \
-  ../include/msxlib/msxlib.h ../include/msxlib/bfile.h
+  ../include/msxlib/msxlib.h ../include/msxlib/fcb.h \
+  ../include/msxlib/fib.h ../include/msxlib/bfile.h
 bfile/bfile_create_dos1.o: bfile/bfile_create_dos1.c ../include/msxlib/msxdos.h \
-  ../include/msxlib/msxlib.h ../include/msxlib/bfile.h
+  ../include/msxlib/msxlib.h ../include/msxlib/fcb.h \
+  ../include/msxlib/fib.h ../include/msxlib/bfile.h
 bfile/bfile_create_dos2.o: bfile/bfile_create_dos2.c ../include/msxlib/bfile.h \
-  ../include/msxlib/msxlib.h ../include/msxlib/msxdos.h
+  ../include/msxlib/msxlib.h ../include/msxlib/msxdos.h \
+  ../include/msxlib/fcb.h ../include/msxlib/fib.h
 bfile/bfile_create_dsk1.o: bfile/bfile_create_dsk1.c ../include/msxlib/msxdos.h \
-  ../include/msxlib/msxlib.h ../include/msxlib/bfile.h
+  ../include/msxlib/msxlib.h ../include/msxlib/fcb.h \
+  ../include/msxlib/fib.h ../include/msxlib/bfile.h
 bfile/bfile_create_dsk2.o: bfile/bfile_create_dsk2.c ../include/msxlib/bfile.h \
-  ../include/msxlib/msxlib.h ../include/msxlib/msxdos.h
+  ../include/msxlib/msxlib.h ../include/msxlib/msxdos.h \
+  ../include/msxlib/fcb.h ../include/msxlib/fib.h
 bfile/bfile_flush_dos1.o: bfile/bfile_flush_dos1.c ../include/msxlib/bfile.h \
-  ../include/msxlib/msxlib.h ../include/msxlib/msxdos.h
+  ../include/msxlib/msxlib.h ../include/msxlib/msxdos.h \
+  ../include/msxlib/fcb.h ../include/msxlib/fib.h
 bfile/bfile_flush_dos2.o: bfile/bfile_flush_dos2.c ../include/msxlib/bfile.h \
-  ../include/msxlib/msxlib.h ../include/msxlib/msxdos.h
+  ../include/msxlib/msxlib.h ../include/msxlib/msxdos.h \
+  ../include/msxlib/fcb.h ../include/msxlib/fib.h
 bfile/bfile_flush_dsk1.o: bfile/bfile_flush_dsk1.c ../include/msxlib/bfile.h \
-  ../include/msxlib/msxlib.h ../include/msxlib/msxdos.h
+  ../include/msxlib/msxlib.h ../include/msxlib/msxdos.h \
+  ../include/msxlib/fcb.h ../include/msxlib/fib.h
 bfile/bfile_flush_dsk2.o: bfile/bfile_flush_dsk2.c ../include/msxlib/bfile.h \
-  ../include/msxlib/msxlib.h ../include/msxlib/msxdos.h
+  ../include/msxlib/msxlib.h ../include/msxlib/msxdos.h \
+  ../include/msxlib/fcb.h ../include/msxlib/fib.h
 bfile/bfile_fseek_dos1.o: bfile/bfile_fseek_dos1.c ../include/msxlib/msxdos.h \
-  ../include/msxlib/msxlib.h ../include/msxlib/bfile.h
+  ../include/msxlib/msxlib.h ../include/msxlib/fcb.h \
+  ../include/msxlib/fib.h ../include/msxlib/bfile.h
 bfile/bfile_fseek_dos2.o: bfile/bfile_fseek_dos2.c ../include/msxlib/bfile.h \
-  ../include/msxlib/msxlib.h ../include/msxlib/msxdos.h
+  ../include/msxlib/msxlib.h ../include/msxlib/msxdos.h \
+  ../include/msxlib/fcb.h ../include/msxlib/fib.h
 bfile/bfile_fseek_dsk1.o: bfile/bfile_fseek_dsk1.c ../include/msxlib/msxdos.h \
-  ../include/msxlib/msxlib.h ../include/msxlib/bfile.h
+  ../include/msxlib/msxlib.h ../include/msxlib/fcb.h \
+  ../include/msxlib/fib.h ../include/msxlib/bfile.h
 bfile/bfile_fseek_dsk2.o: bfile/bfile_fseek_dsk2.c ../include/msxlib/bfile.h \
-  ../include/msxlib/msxlib.h ../include/msxlib/msxdos.h
+  ../include/msxlib/msxlib.h ../include/msxlib/msxdos.h \
+  ../include/msxlib/fcb.h ../include/msxlib/fib.h
 bfile/bfile_malloc_dos1.o: bfile/bfile_malloc_dos1.c ../include/msxlib/msxlib.h \
-  ../include/msxlib/bfile.h ../include/msxlib/msxdos.h
+  ../include/msxlib/bfile.h ../include/msxlib/msxdos.h \
+  ../include/msxlib/fcb.h ../include/msxlib/fib.h
 bfile/bfile_malloc_dsk1.o: bfile/bfile_malloc_dsk1.c ../include/msxlib/msxlib.h \
-  ../include/msxlib/bfile.h ../include/msxlib/msxdos.h
+  ../include/msxlib/bfile.h ../include/msxlib/msxdos.h \
+  ../include/msxlib/fcb.h ../include/msxlib/fib.h
 bfile/bfile_open_dos1.o: bfile/bfile_open_dos1.c ../include/msxlib/msxlib.h \
-  ../include/msxlib/bfile.h ../include/msxlib/msxdos.h
+  ../include/msxlib/bfile.h ../include/msxlib/msxdos.h \
+  ../include/msxlib/fcb.h ../include/msxlib/fib.h
 bfile/bfile_open_dos2.o: bfile/bfile_open_dos2.c ../include/msxlib/bfile.h \
-  ../include/msxlib/msxlib.h ../include/msxlib/msxdos.h
+  ../include/msxlib/msxlib.h ../include/msxlib/msxdos.h \
+  ../include/msxlib/fcb.h ../include/msxlib/fib.h
 bfile/bfile_open_dsk1.o: bfile/bfile_open_dsk1.c ../include/msxlib/msxlib.h \
-  ../include/msxlib/bfile.h ../include/msxlib/msxdos.h
+  ../include/msxlib/bfile.h ../include/msxlib/msxdos.h \
+  ../include/msxlib/fcb.h ../include/msxlib/fib.h
 bfile/bfile_open_dsk2.o: bfile/bfile_open_dsk2.c ../include/msxlib/bfile.h \
-  ../include/msxlib/msxlib.h ../include/msxlib/msxdos.h
+  ../include/msxlib/msxlib.h ../include/msxlib/msxdos.h \
+  ../include/msxlib/fcb.h ../include/msxlib/fib.h
 bfile/bfile_read_dos1.o: bfile/bfile_read_dos1.c ../include/msxlib/msxlib.h \
-  ../include/msxlib/bfile.h ../include/msxlib/msxdos.h
+  ../include/msxlib/bfile.h ../include/msxlib/msxdos.h \
+  ../include/msxlib/fcb.h ../include/msxlib/fib.h
 bfile/bfile_read_dos2.o: bfile/bfile_read_dos2.c ../include/msxlib/bfile.h \
-  ../include/msxlib/msxlib.h ../include/msxlib/msxdos.h
+  ../include/msxlib/msxlib.h ../include/msxlib/msxdos.h \
+  ../include/msxlib/fcb.h ../include/msxlib/fib.h
 bfile/bfile_read_dsk1.o: bfile/bfile_read_dsk1.c ../include/msxlib/msxlib.h \
-  ../include/msxlib/bfile.h ../include/msxlib/msxdos.h
+  ../include/msxlib/bfile.h ../include/msxlib/msxdos.h \
+  ../include/msxlib/fcb.h ../include/msxlib/fib.h
 bfile/bfile_read_dsk2.o: bfile/bfile_read_dsk2.c ../include/msxlib/bfile.h \
-  ../include/msxlib/msxlib.h ../include/msxlib/msxdos.h
+  ../include/msxlib/msxlib.h ../include/msxlib/msxdos.h \
+  ../include/msxlib/fcb.h ../include/msxlib/fib.h
 bfile/bfile_write_dos1.o: bfile/bfile_write_dos1.c ../include/msxlib/msxlib.h \
-  ../include/msxlib/bfile.h ../include/msxlib/msxdos.h
+  ../include/msxlib/bfile.h ../include/msxlib/msxdos.h \
+  ../include/msxlib/fcb.h ../include/msxlib/fib.h
 bfile/bfile_write_dos2.o: bfile/bfile_write_dos2.c ../include/msxlib/bfile.h \
-  ../include/msxlib/msxlib.h ../include/msxlib/msxdos.h
+  ../include/msxlib/msxlib.h ../include/msxlib/msxdos.h \
+  ../include/msxlib/fcb.h ../include/msxlib/fib.h
 bfile/bfile_write_dsk1.o: bfile/bfile_write_dsk1.c ../include/msxlib/msxlib.h \
-  ../include/msxlib/bfile.h ../include/msxlib/msxdos.h
+  ../include/msxlib/bfile.h ../include/msxlib/msxdos.h \
+  ../include/msxlib/fcb.h ../include/msxlib/fib.h
 bfile/bfile_write_dsk2.o: bfile/bfile_write_dsk2.c ../include/msxlib/bfile.h \
-  ../include/msxlib/msxlib.h ../include/msxlib/msxdos.h
+  ../include/msxlib/msxlib.h ../include/msxlib/msxdos.h \
+  ../include/msxlib/fcb.h ../include/msxlib/fib.h
 rbuf/rbuf.o: rbuf/rbuf.c ../include/msxlib/msxlib.h ../include/msxlib/rbuf.h
 net/net_connect.o: net/net_connect.c ../include/msxlib/net.h \
   ../include/msxlib/msxlib.h ../include/msxlib/rbuf.h \
   ../include/msxlib/iot.h ../include/msxlib/msxbios.h \
   ../include/msxlib/msxbiosaddr.h ../include/msxlib/iotaddr.h \
-  ../include/msxlib/msxdos.h
+  ../include/msxlib/msxdos.h ../include/msxlib/fcb.h \
+  ../include/msxlib/fib.h
 net/net_init.o: net/net_init.c ../include/msxlib/msxlib.h \
   ../include/msxlib/iot.h ../include/msxlib/msxbios.h \
   ../include/msxlib/msxbiosaddr.h ../include/msxlib/rbuf.h \
   ../include/msxlib/iotaddr.h ../include/msxlib/net.h \
-  ../include/msxlib/msxdos.h
+  ../include/msxlib/msxdos.h ../include/msxlib/fcb.h \
+  ../include/msxlib/fib.h
 net/net_readline.o: net/net_readline.c ../include/msxlib/msxlib.h \
   ../include/msxlib/net.h ../include/msxlib/rbuf.h \
   ../include/msxlib/iot.h ../include/msxlib/msxbios.h \
