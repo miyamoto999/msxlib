@@ -34,4 +34,6 @@
     dos1_sfirst()、dos1_snext()のテスト
 - test018
     dos2_ffirst()、do2_fnext()のテスト
+- test019
+    dos1_fdel()のテスト
     
