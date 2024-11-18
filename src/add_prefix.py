@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import sys
 
 def process_lines(prefix):
@@ -17,7 +18,7 @@ def process_lines(prefix):
 if __name__ == "__main__":
     # コマンドライン引数から prefix を取得
     if len(sys.argv) != 2:
-        print("Usage: python script.py <prefix>", file=sys.stderr)
+        print("Usage: python script.py <prefix>")
         sys.exit(1)
 
     prefix = sys.argv[1]

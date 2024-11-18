@@ -29,6 +29,8 @@ uint8_t __LIB__ dos1_sfirst(void *fcb) __smallc;
 uint8_t __LIB__ dos1_snext(void) __smallc;
 /* ファイルの削除(FCB) */
 uint8_t __LIB__ dos1_fdel(MSX_FCB *fcb) __smallc;
+/* シーケンシャル読み込み(FCB) */
+uint8_t __LIB__ dos1_rdseq(void *fcb) __smallc;
 
 /* アボート終了ルーチンの定義 */
 void __LIB__ dos2_defab(BOOL (*abort_routine)(uint8_t err1, uint8_t err2)) __smallc;
@@ -84,6 +86,10 @@ uint8_t __LIB__ dsk1_rdblk(void *fcb, uint16_t rec_num, uint16_t *read_size) __s
 uint8_t __LIB__ dsk1_sfirst(void *fcb) __smallc;
 /* 次のエントリの検索(FCB) */
 uint8_t __LIB__ dsk1_snext(void) __smallc;
+/* ファイルの削除(FCB) */
+uint8_t __LIB__ dsk1_fdel(MSX_FCB *fcb) __smallc;
+/* シーケンシャル読み込み(FCB) */
+uint8_t __LIB__ dsk1_rdseq(void *fcb) __smallc;
 
 
 /* アボート終了ルーチンの定義 */

@@ -36,4 +36,8 @@
     dos2_ffirst()、do2_fnext()のテスト
 - test019
     dos1_fdel()のテスト
+- test020
+    dos1_fmake()、dos1_fopen()後のFCBのダンプ表示するプログラム
+- test021
+    dos1_rdseq()のテスト
     

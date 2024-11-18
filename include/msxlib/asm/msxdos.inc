@@ -9,6 +9,7 @@ _FCLOSE:    equ     0x10
 _SFIRST:    equ     0x11
 _SNEXT:     equ     0x12
 _FDEL:      equ     0x13
+_RDSEQ:     equ     0x14
 _FMAKE:     equ     0x16
 _SETDTA:    equ     0x1a
 _WRBLK:     equ     0x26
