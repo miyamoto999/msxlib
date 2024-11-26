@@ -9,4 +9,4 @@ echo >> $2
 echo " *********************************************************/" >> $2
 echo  >> $2
 
-sed -e 's/dos1_/dsk1_/g' -e 's/dos2_/dsk2_/g' -e 's/_dos1/_dsk1/g' -e 's/_dos2/_dsk2/g' $1 >> $2
+sed -e 's/dos1_/dsk1_/g' -e 's/dos2_/dsk2_/g' -e 's/_dos1/_dsk1/g' -e 's/_dos2/_dsk2/g' -e 's/dos_/dsk_/g' $1 >> $2

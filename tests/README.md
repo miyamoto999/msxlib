@@ -40,4 +40,5 @@
     dos1_fmake()、dos1_fopen()後のFCBのダンプ表示するプログラム
 - test021
     dos1_rdseq()のテスト
-    
+- test022
+    dos1_fren()のテスト

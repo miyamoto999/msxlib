@@ -4,7 +4,8 @@ AS=z88dk-z80asm
 CC=zcc
 OBJS=dsk2_create.o dsk2_write.o dsk2_close.o dsk1_fmake.o dsk1_setdta.o dsk1_wrblk.o dsk1_fclose.o dsk1_const.o dsk1_dirio.o \
 	dsk2_defab.o dsk2_dosver.o dsk2_defer.o dsk2_parse.o dsk2_pfile.o dsk1_fopen.o dsk1_rdblk.o dsk1_conout.o dsk2_open.o \
-	dsk2_read.o dsk2_seek.o dsk1_sfirst.o dsk1_snext.o dsk2_ffirst.o dsk2_fnext.o dsk1_fdel.o dsk1_rdseq.o
+	dsk2_read.o dsk2_seek.o dsk1_sfirst.o dsk1_snext.o dsk2_ffirst.o dsk2_fnext.o dsk1_fdel.o dsk1_rdseq.o dsk1_fren.o \
+	dsk1_rename.o
 CFLAGS_INC=-I../../include
 CFLAGS=+msx $(CFLAGS_INC) -O
 ASCONFIGS=$(CFLAGS_INC)
@@ -133,5 +134,13 @@ dsk1_fdel.asm:../doscall/dos1_fdel.asm ../../include/msxlib/asm/msxdos.inc
 dsk1_rdseq.o:dsk1_rdseq.asm ../../include/msxlib/asm/msxdos.inc
 dsk1_rdseq.asm:../doscall/dos1_rdseq.asm ../../include/msxlib/asm/msxdos.inc
 	../mk_dskcallversion.sh $< $@
+
+dsk1_fren.o:dsk1_fren.asm ../../include/msxlib/asm/msxdos.inc
+dsk1_fren.asm:../doscall/dos1_fren.asm ../../include/msxlib/asm/msxdos.inc
+	../mk_dskcallversion.sh $< $@
+
+dsk1_rename.o:dsk1_rename.c
+dsk1_rename.c:../doscall/dos1_rename.c
+	../mk_dskcallversion_c.sh $< $@
 
 -include depends

@@ -1,5 +1,10 @@
 msx_fcb_init.o: msx_fcb_init.c ../include/msxlib/msxlib.h \
   ../include/msxlib/fcb.h
+msx_fcb_init_filename.o: msx_fcb_init_filename.c \
+  ../include/msxlib/msxlib.h ../include/msxlib/fcb.h
+msx_fcb_init_ren.o: msx_fcb_init_ren.c ../include/msxlib/msxlib.h \
+  ../include/msxlib/msxdos.h ../include/msxlib/fcb.h \
+  ../include/msxlib/fib.h
 pre_printf.o: pre_printf.c ../include/msxlib/msxlib.h \
   ../include/msxlib/msxdos.h ../include/msxlib/fcb.h \
   ../include/msxlib/fib.h

@@ -31,6 +31,8 @@ uint8_t __LIB__ dos1_snext(void) __smallc;
 uint8_t __LIB__ dos1_fdel(MSX_FCB *fcb) __smallc;
 /* シーケンシャル読み込み(FCB) */
 uint8_t __LIB__ dos1_rdseq(void *fcb) __smallc;
+/* ファイル名の変更(FCB) */
+uint8_t __LIB__ dos1_fren(void *fcb) __smallc;
 
 /* アボート終了ルーチンの定義 */
 void __LIB__ dos2_defab(BOOL (*abort_routine)(uint8_t err1, uint8_t err2)) __smallc;
@@ -65,6 +67,9 @@ uint8_t __LIB__ dos2_ffirst(void *fib_or_filepath, char *filename, uint8_t attr,
 /* 次のエントリの検索 */
 uint8_t __LIB__ dos2_fnext(MSX_FIB *fib) __smallc;
 
+/* ファイル名の変更(FCB) */
+BOOL __LIB__ dos1_rename(const char *oldFilename, const char *newFilename) __smallc;
+
 /****** DISK BASIC用 ******/
 /* ディスク転送アドレスのセット */
 void __LIB__ dsk1_setdta(void *dta) __smallc;
@@ -90,7 +95,8 @@ uint8_t __LIB__ dsk1_snext(void) __smallc;
 uint8_t __LIB__ dsk1_fdel(MSX_FCB *fcb) __smallc;
 /* シーケンシャル読み込み(FCB) */
 uint8_t __LIB__ dsk1_rdseq(void *fcb) __smallc;
-
+/* ファイル名の変更(FCB) */
+uint8_t __LIB__ dsk1_fren(void *fcb) __smallc;
 
 /* アボート終了ルーチンの定義 */
 void __LIB__ dsk2_defab(BOOL (*abort_routine)(uint8_t err1, uint8_t err2)) __smallc;
@@ -124,6 +130,9 @@ uint8_t __LIB__ dsk2_seek(uint8_t handle, int32_t *pos, uint8_t whence) __smallc
 uint8_t __LIB__ dsk2_ffirst(void *fib_or_filepath, char *filename, uint8_t attr, MSX_FIB *new_fib) __smallc;
 /* 次のエントリの検索 */
 uint8_t __LIB__ dsk2_fnext(MSX_FIB *fib) __smallc;
+
+/* ファイル名の変更(FCB) */
+BOOL __LIB__ dsk1_rename(const char *oldFilename, const char *newFilename) __smallc;
 
 /************/
 

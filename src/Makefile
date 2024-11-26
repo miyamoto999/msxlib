@@ -21,7 +21,7 @@ RBUF_OBJS=rbuf/rbuf.o rbuf/rbuf_add_data.o rbuf/rbuf_get_data.o rbuf/rbuf_get_si
 	rbuf/rbuf_read.o rbuf/cif_rbuf_add_data.o rbuf/cif_rbuf_get_data.o rbuf/cif_rbuf_get_size.o rbuf/cif_rbuf_read.o
 NET_OBJS=net/net_init.o net/net_setup.o net/net_connect.o net/net_readline.o 
 OBJS=$(BFILE_OBJS) $(RBUF_OBJS) $(NET_OBJS) msx_dos_inpkey.o msx_dct_inpkey.o  msx_fcb_init.o strlen.o \
-	pre_printf.o pre_printf_sdcc.o
+	pre_printf.o pre_printf_sdcc.o msx_fcb_init_ren.o msx_fcb_init_filename.o
 	
 CFLAGS_INC=-I../include
 CFLAGS=+msx $(CFLAGS_INC) -O

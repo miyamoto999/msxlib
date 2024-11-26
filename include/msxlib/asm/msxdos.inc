@@ -3,14 +3,18 @@ BDOS_DSK:   equ     0xf37d
 
 _CONOUT:    equ     0x02
 _DIRIO:     equ     0x06
+_STROUT:    equ     0x09
 _CONST:     equ     0x0b
+_DSKRST:    equ     0x0d
 _FOPEN:     equ     0x0f
 _FCLOSE:    equ     0x10
 _SFIRST:    equ     0x11
 _SNEXT:     equ     0x12
 _FDEL:      equ     0x13
 _RDSEQ:     equ     0x14
+_WRSEQ:     equ     0x15
 _FMAKE:     equ     0x16
+_FREN:      equ     0x17
 _SETDTA:    equ     0x1a
 _WRBLK:     equ     0x26
 _RDBLK:     equ     0x27
