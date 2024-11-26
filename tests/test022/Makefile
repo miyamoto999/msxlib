@@ -27,7 +27,7 @@ $(TARGET2):$(OBJS2)
 	$(CC) $(CFLAGS) $(CFLAGS_INC) -O --no-crt -c $<
 
 clean:
-	rm -rf $(OBJS) $(TARGET) *.c.asm *.map *.img
+	rm -rf $(OBJS) $(TARGET) $(OBJS2) $(TARGET2) *.c.asm *.map *.img
 
 depend:
 	gcc $(CFLAGS_INC) -E -MM -w *.c > depends
