@@ -19,6 +19,7 @@ static void test022_3();
 static void test022_4();
 static void test022_5();
 static void test022_6();
+static void test022_7();
 
 int main()
 {
@@ -33,6 +34,7 @@ int main()
     test022_4();
     test022_5();
     test022_6();
+    test022_7();
 
     dos_scode(0);
 
@@ -202,6 +204,57 @@ static void test022_6()
     msx_fcb_init(&fcb, "aoge.bin");
     dos1_fdel(&fcb);
     msx_fcb_init(&fcb, "aoge2.bin");
+    dos1_fdel(&fcb);
+    
+    printf("OK\n");
+}
+
+static void test022_7()
+{
+    BFILE *file;
+    BOOL bret;
+    MSX_FCB fcb;
+    int ret;
+
+    printf("dos1_rename() test5:");
+
+    msx_fcb_init(&fcb, "hoge.txt");
+    dos1_fdel(&fcb);
+    msx_fcb_init(&fcb, "hoge2.txt");
+    dos1_fdel(&fcb);
+    msx_fcb_init(&fcb, "aaae.bin");
+    dos1_fdel(&fcb);
+    msx_fcb_init(&fcb, "aaae2.bin");
+    dos1_fdel(&fcb);
+
+    file = bfile_create("hoge.txt", BUF_SIZE);
+    assert(file);
+    bfile_write(file, "123", 3);
+    ret = bfile_close(file);
+    assert(ret == 0);
+    file = bfile_create("hoge2.txt", BUF_SIZE);
+    assert(file);
+    bfile_write(file, "123", 3);
+    ret = bfile_close(file);
+    assert(ret == 0);
+
+    bret = dos1_rename("h*.txt", "aaa*.bin");
+    assert(bret);
+
+    file = bfile_open("aaae.bin", BFILE_O_RDONLY, BUF_SIZE);
+    assert(file);
+    bfile_close(file);
+    file = bfile_open("aaae2.bin", BFILE_O_RDONLY, BUF_SIZE);
+    assert(file);
+    bfile_close(file);
+
+    msx_fcb_init(&fcb, "hoge.txt");
+    dos1_fdel(&fcb);
+    msx_fcb_init(&fcb, "hoge2.txt");
+    dos1_fdel(&fcb);
+    msx_fcb_init(&fcb, "aaae.bin");
+    dos1_fdel(&fcb);
+    msx_fcb_init(&fcb, "aaae2.bin");
     dos1_fdel(&fcb);
     
     printf("OK\n");
