@@ -33,6 +33,10 @@ uint8_t __LIB__ dos1_fdel(MSX_FCB *fcb) __smallc;
 uint8_t __LIB__ dos1_rdseq(void *fcb) __smallc;
 /* ファイル名の変更(FCB) */
 uint8_t __LIB__ dos1_fren(void *fcb) __smallc;
+/* ログインベクタの取得 */
+uint16_t dos1_login(void) __smallc;
+/* アロケーション情報の取得 */
+void dos1_alloc(uint8_t drv_num, uint8_t *sec, uint16_t *sec_size, uint16_t *cluster, uint16_t *unused_cluster, uint8_t **dpb_pointer, uint8_t **fat_pointer);
 
 /* アボート終了ルーチンの定義 */
 void __LIB__ dos2_defab(BOOL (*abort_routine)(uint8_t err1, uint8_t err2)) __smallc;
@@ -97,6 +101,10 @@ uint8_t __LIB__ dsk1_fdel(MSX_FCB *fcb) __smallc;
 uint8_t __LIB__ dsk1_rdseq(void *fcb) __smallc;
 /* ファイル名の変更(FCB) */
 uint8_t __LIB__ dsk1_fren(void *fcb) __smallc;
+/* ログインベクタの取得 */
+uint16_t dsk1_login(void) __smallc;
+/* アロケーション情報の取得 */
+void dsk1_alloc(uint8_t drv_num, uint8_t *sec, uint16_t *sec_size, uint16_t *cluster, uint16_t *unused_cluster, uint8_t **dpb_pointer, uint8_t **fat_pointer);
 
 /* アボート終了ルーチンの定義 */
 void __LIB__ dsk2_defab(BOOL (*abort_routine)(uint8_t err1, uint8_t err2)) __smallc;
