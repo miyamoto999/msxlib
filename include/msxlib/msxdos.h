@@ -10,33 +10,37 @@
 /* ディスク転送アドレスのセット */
 void __LIB__ dos1_setdta(void *dta) __smallc;
 /* ファイルのクローズ */
-int8_t __LIB__ dos1_fclose(void *fcb) __smallc;
+int8_t __LIB__ dos1_fclose(MSX_FCB *fcb) __smallc;
 /* ファイルの作成 */
-int8_t __LIB__ dos1_fmake(void *fcb) __smallc;
+int8_t __LIB__ dos1_fmake(MSX_FCB *fcb) __smallc;
 /* ランダムブロック書き込み */
-int8_t __LIB__ dos1_wrblk(void *fcb, uint16_t rec_num) __smallc;
+int8_t __LIB__ dos1_wrblk(MSX_FCB *fcb, uint16_t rec_num) __smallc;
 /* 直接コンソールI/O */
 char __LIB__ dos1_dirio(char code) __smallc;
 /* コンソールステータス */
 uint8_t __LIB__ dos1_const(void) __smallc;
 /* ファイルのオープン */
-int8_t __LIB__ dos1_fopen(void *fcb) __smallc;
+int8_t __LIB__ dos1_fopen(MSX_FCB *fcb) __smallc;
 /* ランダムブロック読み込み */
-uint8_t __LIB__ dos1_rdblk(void *fcb, uint16_t rec_num, uint16_t *read_size) __smallc;
+uint8_t __LIB__ dos1_rdblk(MSX_FCB *fcb, uint16_t rec_num, uint16_t *read_size) __smallc;
 /* 最初のエントリの検索(FCB) */
-uint8_t __LIB__ dos1_sfirst(void *fcb) __smallc;
+uint8_t __LIB__ dos1_sfirst(MSX_FCB *fcb) __smallc;
 /* 次のエントリの検索(FCB) */
 uint8_t __LIB__ dos1_snext(void) __smallc;
 /* ファイルの削除(FCB) */
 uint8_t __LIB__ dos1_fdel(MSX_FCB *fcb) __smallc;
 /* シーケンシャル読み込み(FCB) */
-uint8_t __LIB__ dos1_rdseq(void *fcb) __smallc;
+uint8_t __LIB__ dos1_rdseq(MSX_FCB *fcb) __smallc;
 /* ファイル名の変更(FCB) */
-uint8_t __LIB__ dos1_fren(void *fcb) __smallc;
+uint8_t __LIB__ dos1_fren(MSX_FCB *fcb) __smallc;
 /* ログインベクタの取得 */
-uint16_t dos1_login(void) __smallc;
+uint16_t __LIB__ dos1_login(void) __smallc;
 /* アロケーション情報の取得 */
-void dos1_alloc(uint8_t drv_num, uint8_t *sec, uint16_t *sec_size, uint16_t *cluster, uint16_t *unused_cluster, uint8_t **dpb_pointer, uint8_t **fat_pointer);
+void __LIB__ dos1_alloc(uint8_t drv_num, uint8_t *sec, uint16_t *sec_size, uint16_t *cluster, uint16_t *unused_cluster, uint8_t **dpb_pointer, uint8_t **fat_pointer) __smallc;
+/* ランダム読み出し(FCB) */
+uint8_t __LIB__ dos1_rdrnd(MSX_FCB *fcb) __smallc;
+/* シーケンシャルな書き込み(FCB) */
+uint8_t __LIB__ dos1_wrseq(MSX_FCB *fcb) __smallc;
 
 /* アボート終了ルーチンの定義 */
 void __LIB__ dos2_defab(BOOL (*abort_routine)(uint8_t err1, uint8_t err2)) __smallc;
@@ -74,37 +78,44 @@ uint8_t __LIB__ dos2_fnext(MSX_FIB *fib) __smallc;
 /* ファイル名の変更(FCB) */
 BOOL __LIB__ dos1_rename(const char *oldFilename, const char *newFilename) __smallc;
 
+/* ファイルの削除(FCB) */
+BOOL __LIB__ dos1_remove(const char *filename) __smallc;
+
 /****** DISK BASIC用 ******/
 /* ディスク転送アドレスのセット */
 void __LIB__ dsk1_setdta(void *dta) __smallc;
 /* ファイルのクローズ */
-int8_t __LIB__ dsk1_fclose(void *fcb) __smallc;
+int8_t __LIB__ dsk1_fclose(MSX_FCB *fcb) __smallc;
 /* ファイルの作成 */
-int8_t __LIB__ dsk1_fmake(void *fcb) __smallc;
+int8_t __LIB__ dsk1_fmake(MSX_FCB *fcb) __smallc;
 /* ランダムブロック書き込み */
-int8_t __LIB__ dsk1_wrblk(void *fcb, uint16_t rec_num) __smallc;
+int8_t __LIB__ dsk1_wrblk(MSX_FCB *fcb, uint16_t rec_num) __smallc;
 /* 直接コンソールI/O */
 char __LIB__ dsk1_dirio(char code) __smallc;
 /* コンソールステータス */
 uint8_t __LIB__ dsk1_const(void) __smallc;
 /* ファイルのオープン */
-int8_t __LIB__ dsk1_fopen(void *fcb) __smallc;
+int8_t __LIB__ dsk1_fopen(MSX_FCB *fcb) __smallc;
 /* ランダムブロック読み込み */
-uint8_t __LIB__ dsk1_rdblk(void *fcb, uint16_t rec_num, uint16_t *read_size) __smallc;
+uint8_t __LIB__ dsk1_rdblk(MSX_FCB *fcb, uint16_t rec_num, uint16_t *read_size) __smallc;
 /* 最初のエントリの検索(FCB) */
-uint8_t __LIB__ dsk1_sfirst(void *fcb) __smallc;
+uint8_t __LIB__ dsk1_sfirst(MSX_FCB *fcb) __smallc;
 /* 次のエントリの検索(FCB) */
 uint8_t __LIB__ dsk1_snext(void) __smallc;
 /* ファイルの削除(FCB) */
 uint8_t __LIB__ dsk1_fdel(MSX_FCB *fcb) __smallc;
 /* シーケンシャル読み込み(FCB) */
-uint8_t __LIB__ dsk1_rdseq(void *fcb) __smallc;
+uint8_t __LIB__ dsk1_rdseq(MSX_FCB *fcb) __smallc;
 /* ファイル名の変更(FCB) */
-uint8_t __LIB__ dsk1_fren(void *fcb) __smallc;
+uint8_t __LIB__ dsk1_fren(MSX_FCB *fcb) __smallc;
 /* ログインベクタの取得 */
-uint16_t dsk1_login(void) __smallc;
+uint16_t __LIB__ dsk1_login(void) __smallc;
 /* アロケーション情報の取得 */
-void dsk1_alloc(uint8_t drv_num, uint8_t *sec, uint16_t *sec_size, uint16_t *cluster, uint16_t *unused_cluster, uint8_t **dpb_pointer, uint8_t **fat_pointer);
+void __LIB__ dsk1_alloc(uint8_t drv_num, uint8_t *sec, uint16_t *sec_size, uint16_t *cluster, uint16_t *unused_cluster, uint8_t **dpb_pointer, uint8_t **fat_pointer) __smallc;
+/* ランダム読み出し(FCB) */
+uint8_t __LIB__ dsk1_rdrnd(MSX_FCB *fcb) __smallc;
+/* シーケンシャルな書き込み(FCB) */
+uint8_t __LIB__ dsk1_wrseq(MSX_FCB *fcb) __smallc;
 
 /* アボート終了ルーチンの定義 */
 void __LIB__ dsk2_defab(BOOL (*abort_routine)(uint8_t err1, uint8_t err2)) __smallc;
@@ -141,6 +152,9 @@ uint8_t __LIB__ dsk2_fnext(MSX_FIB *fib) __smallc;
 
 /* ファイル名の変更(FCB) */
 BOOL __LIB__ dsk1_rename(const char *oldFilename, const char *newFilename) __smallc;
+
+/* ファイルの削除(FCB) */
+BOOL __LIB__ dsk1_remove(const char *filename) __smallc;
 
 /************/
 

@@ -42,3 +42,7 @@
     dos1_rdseq()のテスト
 - test022
     dos1_fren()のテスト
+- test023
+    アロケーション情報を取得して表示(dos1_alloc)
+- test024
+    dos1_rdrnd()、dos1_wrseq()のテスト
