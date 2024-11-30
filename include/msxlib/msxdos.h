@@ -41,6 +41,8 @@ void __LIB__ dos1_alloc(uint8_t drv_num, uint8_t *sec, uint16_t *sec_size, uint1
 uint8_t __LIB__ dos1_rdrnd(MSX_FCB *fcb) __smallc;
 /* シーケンシャルな書き込み(FCB) */
 uint8_t __LIB__ dos1_wrseq(MSX_FCB *fcb) __smallc;
+/* ランダム書き込み(FCB) */
+uint8_t __LIB__ dos1_wrrnd(MSX_FCB *fcb) __smallc;
 
 /* アボート終了ルーチンの定義 */
 void __LIB__ dos2_defab(BOOL (*abort_routine)(uint8_t err1, uint8_t err2)) __smallc;
@@ -116,6 +118,8 @@ void __LIB__ dsk1_alloc(uint8_t drv_num, uint8_t *sec, uint16_t *sec_size, uint1
 uint8_t __LIB__ dsk1_rdrnd(MSX_FCB *fcb) __smallc;
 /* シーケンシャルな書き込み(FCB) */
 uint8_t __LIB__ dsk1_wrseq(MSX_FCB *fcb) __smallc;
+/* ランダム書き込み(FCB) */
+uint8_t __LIB__ dsk1_wrrnd(MSX_FCB *fcb) __smallc;
 
 /* アボート終了ルーチンの定義 */
 void __LIB__ dsk2_defab(BOOL (*abort_routine)(uint8_t err1, uint8_t err2)) __smallc;
