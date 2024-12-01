@@ -1,0 +1,3 @@
+test027.o: test027.c ../../include/msxlib/msxlib.h \
+  ../../include/msxlib/msxdos.h ../../include/msxlib/fcb.h \
+  ../../include/msxlib/fib.h ../../include/msxlib/bfile.h
