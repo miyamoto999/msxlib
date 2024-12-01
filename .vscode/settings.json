@@ -19,6 +19,7 @@
         "unordered_map": "c",
         "vector": "c",
         "format": "c",
-        "random": "cpp"
+        "random": "cpp",
+        "chrono": "cpp"
     }
 }

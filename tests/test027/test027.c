@@ -37,7 +37,6 @@ static void test1(void)
 
     printf("dos1_setrnd() test1:");
 
-    /* ファイルサイズチェック */
     msx_fcb_init(&fcb, TEST_FILE);
 
     fcb_set(&fcb, ext_num, cur_rec);
