@@ -43,6 +43,8 @@ uint8_t __LIB__ dos1_rdrnd(MSX_FCB *fcb) __smallc;
 uint8_t __LIB__ dos1_wrseq(MSX_FCB *fcb) __smallc;
 /* ランダム書き込み(FCB) */
 uint8_t __LIB__ dos1_wrrnd(MSX_FCB *fcb) __smallc;
+/* ファイルサイズの取得(FCB) */
+uint8_t __LIB__ dos1_fsize(MSX_FCB *fcb) __smallc;
 
 /* アボート終了ルーチンの定義 */
 void __LIB__ dos2_defab(BOOL (*abort_routine)(uint8_t err1, uint8_t err2)) __smallc;
@@ -120,6 +122,8 @@ uint8_t __LIB__ dsk1_rdrnd(MSX_FCB *fcb) __smallc;
 uint8_t __LIB__ dsk1_wrseq(MSX_FCB *fcb) __smallc;
 /* ランダム書き込み(FCB) */
 uint8_t __LIB__ dsk1_wrrnd(MSX_FCB *fcb) __smallc;
+/* ファイルサイズの取得(FCB) */
+uint8_t __LIB__ dsk1_fsize(MSX_FCB *fcb) __smallc;
 
 /* アボート終了ルーチンの定義 */
 void __LIB__ dsk2_defab(BOOL (*abort_routine)(uint8_t err1, uint8_t err2)) __smallc;
