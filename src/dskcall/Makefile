@@ -6,7 +6,7 @@ OBJS=dsk2_create.o dsk2_write.o dsk2_close.o dsk1_fmake.o dsk1_setdta.o dsk1_wrb
 	dsk2_defab.o dsk2_dosver.o dsk2_defer.o dsk2_parse.o dsk2_pfile.o dsk1_fopen.o dsk1_rdblk.o dsk1_conout.o dsk2_open.o \
 	dsk2_read.o dsk2_seek.o dsk1_sfirst.o dsk1_snext.o dsk2_ffirst.o dsk2_fnext.o dsk1_fdel.o dsk1_rdseq.o dsk1_fren.o \
 	dsk1_rename.o dsk1_login.o dsk1_alloc.o dsk1_rdrnd.o dsk1_remove.o dsk1_wrseq.o dsk1_wrrnd.o dsk1_fsize.o dsk1_setrnd.o \
-	dsk1_wrzer.o
+	dsk1_wrzer.o dsk1_gdate.o dsk1_sdate.o dsk1_gtime.o dsk1_stime.o
 CFLAGS_INC=-I../../include
 CFLAGS=+msx $(CFLAGS_INC) -O
 ASCONFIGS=$(CFLAGS_INC)
@@ -170,6 +170,22 @@ dsk1_setrnd.asm:../doscall/dos1_setrnd.asm ../../include/msxlib/asm/msxdos.inc
 
 dsk1_wrzer.o:dsk1_wrzer.asm ../../include/msxlib/asm/msxdos.inc
 dsk1_wrzer.asm:../doscall/dos1_wrzer.asm ../../include/msxlib/asm/msxdos.inc
+	../mk_dskcallversion.sh $< $@
+
+dsk1_gdate.o:dsk1_gdate.asm ../../include/msxlib/asm/msxdos.inc
+dsk1_gdate.asm:../doscall/dos1_gdate.asm ../../include/msxlib/asm/msxdos.inc
+	../mk_dskcallversion.sh $< $@
+
+dsk1_sdate.o:dsk1_sdate.asm ../../include/msxlib/asm/msxdos.inc
+dsk1_sdate.asm:../doscall/dos1_sdate.asm ../../include/msxlib/asm/msxdos.inc
+	../mk_dskcallversion.sh $< $@
+
+dsk1_gtime.o:dsk1_gtime.asm ../../include/msxlib/asm/msxdos.inc
+dsk1_gtime.asm:../doscall/dos1_gtime.asm ../../include/msxlib/asm/msxdos.inc
+	../mk_dskcallversion.sh $< $@
+
+dsk1_stime.o:dsk1_stime.asm ../../include/msxlib/asm/msxdos.inc
+dsk1_stime.asm:../doscall/dos1_stime.asm ../../include/msxlib/asm/msxdos.inc
 	../mk_dskcallversion.sh $< $@
 
 ### Clang

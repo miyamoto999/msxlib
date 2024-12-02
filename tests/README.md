@@ -46,3 +46,17 @@
     アロケーション情報を取得して表示(dos1_alloc)
 - test024
     dos1_rdrnd()、dos1_wrseq()のテスト
+- test025
+    dos1_wrrnd()のテスト
+- test026
+    dos1_fsize()のテスト
+- test027
+    dos1_setrnd()のテスト
+- test028
+    dos1_wrzer()のテスト
+- test029
+    dos1_gdate()で現在日時を表示する。
+- test030
+    dos1_sdate()のテスト
+- test031
+    dos1_gtime()で現在時間を表示する。

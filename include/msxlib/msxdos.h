@@ -49,6 +49,14 @@ uint8_t __LIB__ dos1_fsize(MSX_FCB *fcb) __smallc;
 void __LIB__ dos1_setrnd(MSX_FCB *fcb) __smallc;
 /* ゼロフィルを行うランダム書き込み(FCB) */
 uint8_t __LIB__ dos1_wrzer(MSX_FCB *fcb) __smallc;
+/* 日付の取得 */
+void __LIB__ dos1_gdate(uint16_t *year, uint8_t *month, uint8_t *mday, uint8_t *wday) __smallc;
+/* 日付の設定 */
+uint8_t __LIB__ dos1_sdate(uint16_t year, uint8_t month, uint8_t mday) __smallc;
+/* 時間の取得 */
+void __LIB__ dos1_gtime(uint8_t *hour, uint8_t *min, uint8_t *sec) __smallc;
+/* 時間の設定 */
+uint8_t __LIB__ dos1_stime(uint8_t hour, uint8_t min, uint8_t sec) __smallc;
 
 /* アボート終了ルーチンの定義 */
 void __LIB__ dos2_defab(BOOL (*abort_routine)(uint8_t err1, uint8_t err2)) __smallc;
@@ -132,6 +140,14 @@ uint8_t __LIB__ dsk1_fsize(MSX_FCB *fcb) __smallc;
 void __LIB__ dsk1_setrnd(MSX_FCB *fcb) __smallc;
 /* ゼロフィルを行うランダム書き込み(FCB) */
 uint8_t __LIB__ dsk1_wrzer(MSX_FCB *fcb) __smallc;
+/* 日付の取得 */
+void __LIB__ dsk1_gdate(uint16_t *year, uint8_t *month, uint8_t *mday, uint8_t *wday) __smallc;
+/* 日付の設定 */
+uint8_t __LIB__ dsk1_sdate(uint16_t year, uint8_t month, uint8_t mday) __smallc;
+/* 時間の取得 */
+void __LIB__ dsk1_gtime(uint8_t *hour, uint8_t *min, uint8_t *sec) __smallc;
+/* 時間の設定 */
+uint8_t __LIB__ dsk1_stime(uint8_t hour, uint8_t min, uint8_t sec) __smallc;
 
 /* アボート終了ルーチンの定義 */
 void __LIB__ dsk2_defab(BOOL (*abort_routine)(uint8_t err1, uint8_t err2)) __smallc;

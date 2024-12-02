@@ -8,7 +8,7 @@ OBJS=$(EMU_EXP_OBJS) dos2_create.o dos2_write.o dos2_close.o dos1_fmake.o dos1_s
 	dos2_defab.o dos2_dosver.o dos2_defer.o dos2_parse.o dos2_pfile.o dos1_fopen.o dos1_rdblk.o dos1_conout.o dos2_open.o \
 	dos2_read.o dos2_seek.o dos1_sfirst.o dos1_snext.o dos2_ffirst.o dos2_fnext.o dos1_fdel.o dos1_rdseq.o dos1_fren.o \
 	dos1_rename.o dos1_login.o dos1_alloc.o dos1_rdrnd.o dos1_remove.o dos1_wrseq.o dos1_wrrnd.o dos1_fsize.o dos1_setrnd.o \
-	dos1_wrzer.o
+	dos1_wrzer.o dos1_gdate.o dos1_sdate.o dos1_gtime.o dos1_stime.o
 CFLAGS_INC=-I../../include
 CFLAGS=+msx $(CFLAGS_INC) -O
 ASCONFIGS=$(CFLAGS_INC)
@@ -69,6 +69,10 @@ dos1_wrrnd.o:dos1_wrrnd.asm ../../include/msxlib/asm/msxdos.inc
 dos1_fsize.o:dos1_fsize.asm ../../include/msxlib/asm/msxdos.inc
 dos1_setrnd.o:dos1_setrnd.asm ../../include/msxlib/asm/msxdos.inc
 dos1_wrzer.o:dos1_wrzer.asm ../../include/msxlib/asm/msxdos.inc
+dos1_gdate.o:dos1_gdate.asm ../../include/msxlib/asm/msxdos.inc
+dos1_sdate.o:dos1_sdate.asm ../../include/msxlib/asm/msxdos.inc
+dos1_gtime.o:dos1_gtime.asm ../../include/msxlib/asm/msxdos.inc
+dos1_stime.o:dos1_stime.asm ../../include/msxlib/asm/msxdos.inc
 
 dos_scode.o:dos_scode.asm ../../include/msxlib/asm/msxdos.inc
 
