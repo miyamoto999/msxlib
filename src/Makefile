@@ -26,7 +26,7 @@ OBJS=$(BFILE_OBJS) $(RBUF_OBJS) $(NET_OBJS) msx_dos_inpkey.o msx_dct_inpkey.o  m
 CFLAGS_INC=-I../include
 CFLAGS=+msx $(CFLAGS_INC) -O
 ASCONFIGS=$(CFLAGS_INC)
-DIRS=iot bios vdp slot doscall dskcall
+DIRS=iot bios vdp slot doscall dskcall asmroutine
 
 all:$(TARGET)
 	@for i in $(DIRS); \

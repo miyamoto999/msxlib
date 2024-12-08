@@ -2,11 +2,18 @@ TARGET=dskcall.lib
 LD=z88dk-z80asm
 AS=z88dk-z80asm
 CC=zcc
-OBJS=dsk2_create.o dsk2_write.o dsk2_close.o dsk1_fmake.o dsk1_setdta.o dsk1_wrblk.o dsk1_fclose.o dsk1_const.o dsk1_dirio.o \
-	dsk2_defab.o dsk2_dosver.o dsk2_defer.o dsk2_parse.o dsk2_pfile.o dsk1_fopen.o dsk1_rdblk.o dsk1_conout.o dsk2_open.o \
-	dsk2_read.o dsk2_seek.o dsk1_sfirst.o dsk1_snext.o dsk2_ffirst.o dsk2_fnext.o dsk1_fdel.o dsk1_rdseq.o dsk1_fren.o \
+OBJS_DOS1=dsk1_fmake.o dsk1_setdta.o dsk1_wrblk.o dsk1_fclose.o \
+	dsk1_const.o dsk1_dirio.o \
+	dsk1_fopen.o dsk1_rdblk.o dsk1_conout.o \
+	dsk1_sfirst.o dsk1_snext.o dsk1_fdel.o dsk1_rdseq.o dsk1_fren.o \
 	dsk1_rename.o dsk1_login.o dsk1_alloc.o dsk1_rdrnd.o dsk1_remove.o dsk1_wrseq.o dsk1_wrrnd.o dsk1_fsize.o dsk1_setrnd.o \
-	dsk1_wrzer.o dsk1_gdate.o dsk1_sdate.o dsk1_gtime.o dsk1_stime.o
+	dsk1_wrzer.o dsk1_gdate.o dsk1_sdate.o dsk1_gtime.o dsk1_stime.o dsk1_term0.o dsk1_auxin.o dsk1_auxout.o dsk1_lstout.o \
+	dsk1_dirin.o dsk1_innoe.o dsk1_bufin.o dsk1_cpmver.o dsk1_dskrst.o dsk1_seldsk.o dsk1_curdrv.o dsk1_verify.o dsk1_rdabs.o \
+	dsk1_wrabs.o
+OBJS_DOS2=dsk2_create.o dsk2_write.o dsk2_open.o dsk2_close.o \
+	dsk2_defab.o dsk2_dosver.o dsk2_defer.o dsk2_parse.o dsk2_pfile.o \
+	dsk2_read.o dsk2_seek.o dsk2_ffirst.o dsk2_fnext.o
+OBJS=$(OBJS_DOS1) $(OBJS_DOS2)
 CFLAGS_INC=-I../../include
 CFLAGS=+msx $(CFLAGS_INC) -O
 ASCONFIGS=$(CFLAGS_INC)
@@ -186,6 +193,62 @@ dsk1_gtime.asm:../doscall/dos1_gtime.asm ../../include/msxlib/asm/msxdos.inc
 
 dsk1_stime.o:dsk1_stime.asm ../../include/msxlib/asm/msxdos.inc
 dsk1_stime.asm:../doscall/dos1_stime.asm ../../include/msxlib/asm/msxdos.inc
+	../mk_dskcallversion.sh $< $@
+
+dsk1_term0.o:dsk1_term0.asm ../../include/msxlib/asm/msxdos.inc
+dsk1_term0.asm:../doscall/dos1_term0.asm ../../include/msxlib/asm/msxdos.inc
+	../mk_dskcallversion.sh $< $@
+
+dsk1_auxin.o:dsk1_auxin.asm ../../include/msxlib/asm/msxdos.inc
+dsk1_auxin.asm:../doscall/dos1_auxin.asm ../../include/msxlib/asm/msxdos.inc
+	../mk_dskcallversion.sh $< $@
+
+dsk1_auxout.o:dsk1_auxout.asm ../../include/msxlib/asm/msxdos.inc
+dsk1_auxout.asm:../doscall/dos1_auxout.asm ../../include/msxlib/asm/msxdos.inc
+	../mk_dskcallversion.sh $< $@
+
+dsk1_lstout.o:dsk1_lstout.asm ../../include/msxlib/asm/msxdos.inc
+dsk1_lstout.asm:../doscall/dos1_lstout.asm ../../include/msxlib/asm/msxdos.inc
+	../mk_dskcallversion.sh $< $@
+
+dsk1_dirin.o:dsk1_dirin.asm ../../include/msxlib/asm/msxdos.inc
+dsk1_dirin.asm:../doscall/dos1_dirin.asm ../../include/msxlib/asm/msxdos.inc
+	../mk_dskcallversion.sh $< $@
+
+dsk1_innoe.o:dsk1_innoe.asm ../../include/msxlib/asm/msxdos.inc
+dsk1_innoe.asm:../doscall/dos1_innoe.asm ../../include/msxlib/asm/msxdos.inc
+	../mk_dskcallversion.sh $< $@
+
+dsk1_bufin.o:dsk1_bufin.asm ../../include/msxlib/asm/msxdos.inc
+dsk1_bufin.asm:../doscall/dos1_bufin.asm ../../include/msxlib/asm/msxdos.inc
+	../mk_dskcallversion.sh $< $@
+
+dsk1_cpmver.o:dsk1_cpmver.asm ../../include/msxlib/asm/msxdos.inc
+dsk1_cpmver.asm:../doscall/dos1_cpmver.asm ../../include/msxlib/asm/msxdos.inc
+	../mk_dskcallversion.sh $< $@
+
+dsk1_dskrst.o:dsk1_dskrst.asm ../../include/msxlib/asm/msxdos.inc
+dsk1_dskrst.asm:../doscall/dos1_dskrst.asm ../../include/msxlib/asm/msxdos.inc
+	../mk_dskcallversion.sh $< $@
+
+dsk1_seldsk.o:dsk1_seldsk.asm ../../include/msxlib/asm/msxdos.inc
+dsk1_seldsk.asm:../doscall/dos1_seldsk.asm ../../include/msxlib/asm/msxdos.inc
+	../mk_dskcallversion.sh $< $@
+
+dsk1_curdrv.o:dsk1_curdrv.asm ../../include/msxlib/asm/msxdos.inc
+dsk1_curdrv.asm:../doscall/dos1_curdrv.asm ../../include/msxlib/asm/msxdos.inc
+	../mk_dskcallversion.sh $< $@
+
+dsk1_verify.o:dsk1_verify.asm ../../include/msxlib/asm/msxdos.inc
+dsk1_verify.asm:../doscall/dos1_verify.asm ../../include/msxlib/asm/msxdos.inc
+	../mk_dskcallversion.sh $< $@
+
+dsk1_rdabs.o:dsk1_rdabs.asm ../../include/msxlib/asm/msxdos.inc
+dsk1_rdabs.asm:../doscall/dos1_rdabs.asm ../../include/msxlib/asm/msxdos.inc
+	../mk_dskcallversion.sh $< $@
+
+dsk1_wrabs.o:dsk1_wrabs.asm ../../include/msxlib/asm/msxdos.inc
+dsk1_wrabs.asm:../doscall/dos1_wrabs.asm ../../include/msxlib/asm/msxdos.inc
 	../mk_dskcallversion.sh $< $@
 
 ### Clang

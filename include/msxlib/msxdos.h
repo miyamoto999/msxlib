@@ -57,6 +57,34 @@ uint8_t __LIB__ dos1_sdate(uint16_t year, uint8_t month, uint8_t mday) __smallc;
 void __LIB__ dos1_gtime(uint8_t *hour, uint8_t *min, uint8_t *sec) __smallc;
 /* 時間の設定 */
 uint8_t __LIB__ dos1_stime(uint8_t hour, uint8_t min, uint8_t sec) __smallc;
+/* プログラムの終了 */
+void __LIB__ dos1_term0(void) __smallc;
+/* 補助入力 */
+uint8_t __LIB__ dos1_auxin(void) __smallc;
+/* 補助出力 */
+void __LIB__ dos1_auxout(char ch) __smallc;
+/* プリンタ出力 */
+void __LIB__ dos1_lstout(char ch) __smallc;
+/* 直接コンソール入力 */
+uint8_t __LIB__ dos1_dirin(void) __smallc;
+/* エコーなしコンソール入力 */
+uint8_t __LIB__ dos1_innoe(void) __smallc;
+/* バッファ行入力 */
+void __LIB__ dos1_bufin(char *buf) __smallc;
+/* バージョン番号の取得 */
+uint16_t __LIB__ dos1_cpmver(void) __smallc;
+/* ディスクリセット */
+void __LIB__ dos1_dskrst(void) __smallc;
+/* ディスクの選択 */
+uint8_t __LIB__ dos1_seldsk(uint8_t drv) __smallc;
+/* カレントドライブの取得 */
+uint8_t __LIB__ dos1_curdrv(void) __smallc;
+/* ベリファイフラグのセット・リセット */
+void __LIB__ dos1_verify(BOOL onoff);
+/* アブソリュートなセクタ読み込み */
+uint8_t __LIB__ dos1_rdabs(uint8_t drv, uint16_t sec, uint8_t num);
+/* アブソリュートなセクタ書き込み */
+uint8_t __LIB__ dos1_wrabs(uint8_t drv, uint16_t sec, uint8_t num);
 
 /* アボート終了ルーチンの定義 */
 void __LIB__ dos2_defab(BOOL (*abort_routine)(uint8_t err1, uint8_t err2)) __smallc;
@@ -148,6 +176,34 @@ uint8_t __LIB__ dsk1_sdate(uint16_t year, uint8_t month, uint8_t mday) __smallc;
 void __LIB__ dsk1_gtime(uint8_t *hour, uint8_t *min, uint8_t *sec) __smallc;
 /* 時間の設定 */
 uint8_t __LIB__ dsk1_stime(uint8_t hour, uint8_t min, uint8_t sec) __smallc;
+/* プログラムの終了 */
+void __LIB__ dsk1_term0(void) __smallc;
+/* 補助入力 */
+uint8_t __LIB__ dsk1_auxin(void) __smallc;
+/* 補助出力 */
+void __LIB__ dsk1_auxout(char ch) __smallc;
+/* プリンタ出力 */
+void __LIB__ dsk1_lstout(char ch) __smallc;
+/* 直接コンソール入力 */
+uint8_t __LIB__ dsk1_dirin(void) __smallc;
+/* エコーなしコンソール入力 */
+uint8_t __LIB__ dsk1_innoe(void) __smallc;
+/* バッファ行入力 */
+void __LIB__ dsk1_bufin(char *buf) __smallc;
+/* バージョン番号の取得 */
+uint16_t __LIB__ dsk1_cpmver(void) __smallc;
+/* ディスクリセット */
+void __LIB__ dsk1_dskrst(void) __smallc;
+/* ディスクの選択 */
+uint8_t __LIB__ dsk1_seldsk(uint8_t drv) __smallc;
+/* カレントドライブの取得 */
+uint8_t __LIB__ dsk1_curdrv(void) __smallc;
+/* ベリファイフラグのセット・リセット */
+void __LIB__ dsk1_verify(BOOL onoff);
+/* アブソリュートなセクタ読み込み */
+uint8_t __LIB__ dsk1_rdabs(uint8_t drv, uint16_t sec, uint8_t num);
+/* アブソリュートなセクタ書き込み */
+uint8_t __LIB__ dsk1_wrabs(uint8_t drv, uint16_t sec, uint8_t num);
 
 /* アボート終了ルーチンの定義 */
 void __LIB__ dsk2_defab(BOOL (*abort_routine)(uint8_t err1, uint8_t err2)) __smallc;

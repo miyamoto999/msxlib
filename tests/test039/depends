@@ -1,0 +1,3 @@
+test039.o: test039.c ../../include/msxlib/msxlib.h \
+  ../../include/msxlib/msxdos.h ../../include/msxlib/fcb.h \
+  ../../include/msxlib/fib.h

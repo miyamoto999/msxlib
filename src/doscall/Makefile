@@ -3,12 +3,18 @@ LD=z88dk-z80asm
 AS=z88dk-z80asm
 CC=zcc
 EMU_EXP_OBJS=dos_scode.o
-OBJS=$(EMU_EXP_OBJS) dos2_create.o dos2_write.o dos2_close.o dos1_fmake.o dos1_setdta.o dos1_wrblk.o dos1_fclose.o \
+OBJS_DOS1=dos1_fmake.o dos1_setdta.o dos1_wrblk.o dos1_fclose.o \
 	dos1_const.o dos1_dirio.o \
-	dos2_defab.o dos2_dosver.o dos2_defer.o dos2_parse.o dos2_pfile.o dos1_fopen.o dos1_rdblk.o dos1_conout.o dos2_open.o \
-	dos2_read.o dos2_seek.o dos1_sfirst.o dos1_snext.o dos2_ffirst.o dos2_fnext.o dos1_fdel.o dos1_rdseq.o dos1_fren.o \
+	dos1_fopen.o dos1_rdblk.o dos1_conout.o \
+	dos1_sfirst.o dos1_snext.o dos1_fdel.o dos1_rdseq.o dos1_fren.o \
 	dos1_rename.o dos1_login.o dos1_alloc.o dos1_rdrnd.o dos1_remove.o dos1_wrseq.o dos1_wrrnd.o dos1_fsize.o dos1_setrnd.o \
-	dos1_wrzer.o dos1_gdate.o dos1_sdate.o dos1_gtime.o dos1_stime.o
+	dos1_wrzer.o dos1_gdate.o dos1_sdate.o dos1_gtime.o dos1_stime.o dos1_term0.o dos1_auxin.o dos1_auxout.o dos1_lstout.o \
+	dos1_dirin.o dos1_innoe.o dos1_bufin.o dos1_cpmver.o dos1_dskrst.o dos1_seldsk.o dos1_curdrv.o dos1_verify.o dos1_rdabs.o \
+	dos1_wrabs.o
+OBJS_DOS2=dos2_create.o dos2_write.o dos2_open.o dos2_close.o \
+	dos2_defab.o dos2_dosver.o dos2_defer.o dos2_parse.o dos2_pfile.o \
+	dos2_read.o dos2_seek.o dos2_ffirst.o dos2_fnext.o
+OBJS=$(EMU_EXP_OBJS) $(OBJS_DOS1) $(OBJS_DOS2)
 CFLAGS_INC=-I../../include
 CFLAGS=+msx $(CFLAGS_INC) -O
 ASCONFIGS=$(CFLAGS_INC)
@@ -73,6 +79,20 @@ dos1_gdate.o:dos1_gdate.asm ../../include/msxlib/asm/msxdos.inc
 dos1_sdate.o:dos1_sdate.asm ../../include/msxlib/asm/msxdos.inc
 dos1_gtime.o:dos1_gtime.asm ../../include/msxlib/asm/msxdos.inc
 dos1_stime.o:dos1_stime.asm ../../include/msxlib/asm/msxdos.inc
+dos1_term0.o:dos1_term0.asm ../../include/msxlib/asm/msxdos.inc
+dos1_auxin.o:dos1_auxin.asm ../../include/msxlib/asm/msxdos.inc
+dos1_auxout.o:dos1_auxout.asm ../../include/msxlib/asm/msxdos.inc
+dos1_lstout.o:dos1_lstout.asm ../../include/msxlib/asm/msxdos.inc
+dos1_dirin.o:dos1_dirin.asm ../../include/msxlib/asm/msxdos.inc
+dos1_innoe.o:dos1_innoe.asm ../../include/msxlib/asm/msxdos.inc
+dos1_bufin.o:dos1_bufin.asm ../../include/msxlib/asm/msxdos.inc
+dos1_cpmver.o:dos1_cpmver.asm ../../include/msxlib/asm/msxdos.inc
+dos1_dskrst.o:dos1_dskrst.asm ../../include/msxlib/asm/msxdos.inc
+dos1_seldsk.o:dos1_seldsk.asm ../../include/msxlib/asm/msxdos.inc
+dos1_curdrv.o:dos1_curdrv.asm ../../include/msxlib/asm/msxdos.inc
+dos1_verify.o:dos1_verify.asm ../../include/msxlib/asm/msxdos.inc
+dos1_rdabs.o:dos1_rdabs.asm ../../include/msxlib/asm/msxdos.inc
+dos1_wrabs.o:dos1_wrabs.asm ../../include/msxlib/asm/msxdos.inc
 
 dos_scode.o:dos_scode.asm ../../include/msxlib/asm/msxdos.inc
 
