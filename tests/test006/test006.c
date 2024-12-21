@@ -34,11 +34,11 @@ int test1(void)
     }
 
     fclose(fp);
-    printf("End\nCompare:");
     bfile_close_dos2(fp2);
-    printf("OK\n");
 
+    printf("End\nCompare:");
     assert(fcomp(FILE1, FILE2) == 0);
+    printf("OK\n");
 
     return 0;
 }
@@ -71,11 +71,11 @@ int test2(void)
     }
 
     fclose(fp);
-    printf("End\nCompare:");
     bfile_close_dos2(fp2);
-    printf("OK\n");
 
+    printf("End\nCompare:");
     assert(fcomp(FILE1, FILE2) == 0);
+    printf("OK\n");
 
     return 0;
 }

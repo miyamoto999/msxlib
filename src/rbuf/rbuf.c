@@ -51,7 +51,15 @@ int __LIB__ rbuf_peek_data(RBUF *rbuf)
     return ret & 0xff;
 }
 
-int __LIB__ rbuf_unget(RBUF *rbuf)
+BOOL __LIB__ rbuf_unget(RBUF *rbuf, char ch) __smallc
 {
-    rbuf->read_idx = (rbuf->read_idx - 1) & rbuf->buf_mask;
+    int idx;
+
+    idx = (rbuf->read_idx - 1) & rbuf->buf_mask;
+    if(rbuf->write_idx == idx) {
+        return FALSE;
+    }
+    rbuf->buf[idx] = ch;
+    rbuf->read_idx = idx;
+    return TRUE;
 }

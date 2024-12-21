@@ -10,7 +10,6 @@ CFLAGS_INC=-I../../include -I../common -D__MSXDOS__=1
 CFLAGS=+msx -subtype=msxdos
 CFLAGS_INC_CPM=-I../../include -I../common -D__MSXDOS__=1
 CFLAGS_CPM=+cpm
-# CFLAGS=+msx -subtype=msxdos -compiler=sdcc
 ASCONFIGS=$(CFLAGS_INC)
 
 all:$(TARGET) $(TARGET_CPM)

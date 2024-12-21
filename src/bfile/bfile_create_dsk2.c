@@ -11,15 +11,15 @@
 #include <string.h>
 #include <msxlib/bfile.h>
 
-/*
-  ファイルを生成する。
-
-    filename:ファイル名
-    buf_size:バッファサイズ
-
-  戻り値
-    BFILE_DOS2構造体のポインタ
-    NULL:エラー
+/**
+ * @brief ファイルの生成
+ * @details
+ *      ファイルを生成する。
+ * 
+ * @param filename ファイル名
+ * @param buf_size バッファサイズ
+ * @retval TB_BFILE* ファイルポインタ
+ * @retval NULL エラー
  */
 BFILE_DOS2 __LIB__ *bfile_create_dsk2(const char *filename, int16_t buf_size) __smallc
 {

@@ -1,16 +1,14 @@
 #include <string.h>
 #include <msxlib/bfile.h>
 
-/*
-  ファイル書き込み
-
-    fp:BFILE_DOS2構造体のポインタ
-    buf:書き込むデータへのポインタ
-    size:データサイズ
-
-  戻り値
-      書き込んだサイズ
-*/
+/**
+ * @brief ファイルへデータの書き込み
+ * 
+ * @param fp ファイルポインタ
+ * @param buf 書き込むデータへのポインタ
+ * @param size 書き込むサイズ
+ * @retval int16_t 書き込んだサイズ
+ */
 int16_t __LIB__ bfile_write_dos2(BFILE_DOS2 *fp, const void *buf, int16_t size) __smallc
 {
     uint16_t tmp_size;
@@ -31,6 +29,8 @@ int16_t __LIB__ bfile_write_dos2(BFILE_DOS2 *fp, const void *buf, int16_t size) 
             fp->err = err;
             return 0;
         }
+        fp->buf_offset = 0;
+        fp->dirty = TRUE;
         fp->update = FALSE;
     } else {
         int copy_size, rest_size = size;

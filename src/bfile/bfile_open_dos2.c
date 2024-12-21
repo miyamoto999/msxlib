@@ -3,6 +3,15 @@
 #include <msxlib/bfile.h>
 #include <msxlib/msxdos.h>
 
+/**
+ * @brief ファイルのオープン
+ * 
+ * @param filename ファイル名
+ * @param mode オープンモード
+ * @param buf_size バッファサイズ
+ * @retval BFILE_DOS2* ファイルポインタ
+ * @retval NULL エラー 
+ */
 BFILE_DOS2 __LIB__ *bfile_open_dos2(const char *filename, uint8_t mode, int16_t buf_size) __smallc
 {
     uint8_t dos2_open_mode = 0;

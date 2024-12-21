@@ -3,6 +3,15 @@
 #include <msxlib/bfile.h>
 #include <msxlib/msxdos.h>
 
+/**
+ * @brief ファイルからデータを読み込む
+ * 
+ * @param fp ファイルポインタ
+ * @param buf 読み込みバッファ
+ * @param size サイズ
+ * @retval 読み込んだデータのサイズ
+ * @retval 0 ファイルの最後に到達した 
+ */
 int16_t __LIB__ bfile_read_dos2(BFILE_DOS2 *fp, void *buf, int16_t size) __smallc
 {
     uint16_t read_size = 0;

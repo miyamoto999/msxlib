@@ -14,23 +14,22 @@
 #include <msxlib/msxdos.h>
 #include <msxlib/bfile.h>
 
-
-/*
-  ファイルのクローズ
-
-      fp:BFILE_DOS2構造体のポインタ
-
-  戻り値
-    0:成功
-    0以外:失敗
-*/
+/**
+ * @brief ファイルのクローズ
+ * 
+ * @param fp ファイルポインタ
+ * @retval 0    成功
+ * @retval 0以外    エラー 
+ */
 int __LIB__ bfile_close_dsk2(BFILE_DOS2 *fp) __smallc
 {
     uint8_t err = 0, err2;
     uint16_t tmp_size;
 
-    if(fp->buf_offset != 0 && fp->err == 0) {
-        err = dsk2_write(fp->handle, fp->buf, fp->buf_offset, &tmp_size);
+    if(fp->mode == BFILE_O_WRONLY || fp->mode == BFILE_O_RDWR) {
+        if(fp->buf_offset != 0 && fp->err == 0) {
+            err = dsk2_write(fp->handle, fp->buf, fp->buf_offset, &tmp_size);
+        }
     }
 
     err2 = dsk2_close(fp->handle);

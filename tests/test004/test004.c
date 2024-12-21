@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <msxlib/msxlib.h>
+#include <msxlib/msxdos.h>
 #include <msxlib/rbuf.h>
 
 long heap;
@@ -74,10 +75,11 @@ void test3(void)
     RBUF *rbuf;
     BOOL bret;
     const int BUF_SIZE = 2048;
+    int i;
 
-    printf("test3:");
+    printf("rbuf test3:");
     rbuf = rbuf_create(BUF_SIZE);
-    for(int i = 0; i < BUF_SIZE; i++) {
+    for(i = 0; i < BUF_SIZE; i++) {
         bret = rbuf_add_data(rbuf, (char)i);
         if(i == BUF_SIZE - 1) {
             assert(!bret);
@@ -90,7 +92,7 @@ void test3(void)
         }
     }
 
-    for(int i = 0; i < BUF_SIZE / 2; i++) {
+    for(i = 0; i < BUF_SIZE / 2; i++) {
         int data = rbuf_get_data(rbuf);
         assert((char)i == (char)data);
         int size = rbuf_get_size(rbuf);
@@ -98,7 +100,7 @@ void test3(void)
     }
     while(rbuf_get_data(rbuf) != -1);
 
-    for(int i = 0; i < BUF_SIZE-1; i++) {
+    for(i = 0; i < BUF_SIZE-1; i++) {
         bret = rbuf_add_data(rbuf, (char)i);
         assert(bret);
         int size = rbuf_get_size(rbuf);
@@ -106,21 +108,64 @@ void test3(void)
     }
     int size = rbuf_read(rbuf, buf, 1024);
     assert(size == 1024);
-    for(int i = 0; i < 1024; i++) {
+    for(i = 0; i < 1024; i++) {
         assert(buf[i] == (char)i);
     }
     size = rbuf_read(rbuf, buf, 64);
     assert(size == 64);
-    for(int i = 1024; i < 1024 + 64; i++) {
+    for(i = 1024; i < 1024 + 64; i++) {
         assert(buf[i-1024] == (char)i);
     }
     size = rbuf_read(rbuf, buf, 2048);
     assert(size == 1023 - 64);
-    for(int i = 1024 + 64; i < BUF_SIZE - 1; i++) {
+    for(i = 1024 + 64; i < BUF_SIZE - 1; i++) {
         assert(buf[i - (1024+64)] == (char)i);
     }
 
     rbuf_delete(rbuf);
+    printf("OK\n");
+}
+
+void test4(void)
+{
+    const int BUF_SIZE = 15;
+    RBUF *rbuf;
+    BOOL bret;
+    int i;
+    int ch;
+
+    printf("rbuf test4:");
+    rbuf = rbuf_create(BUF_SIZE);
+    assert(rbuf);
+    assert(rbuf->buf_mask == 0x0f);
+    bret = rbuf_unget(rbuf, 'A');
+    assert(bret);
+    assert(rbuf_get_size(rbuf) == 1);
+    ch = rbuf_peek_data(rbuf);
+    assert(ch == 'A');
+    assert(rbuf_get_size(rbuf) == 1);
+    ch = rbuf_get_data(rbuf);
+    assert(ch == 'A');
+    assert(rbuf_get_size(rbuf) == 0);
+    for(i = 0; i < BUF_SIZE; i++) {
+        bret = rbuf_add_data(rbuf, 'A' + i);
+        assert(bret);
+        assert(rbuf_get_size(rbuf) == i + 1);
+    }
+    bret = rbuf_unget(rbuf, 'Z');
+    assert(!bret);
+    assert(rbuf_get_size(rbuf) == BUF_SIZE);
+
+    for(i = 0; i < BUF_SIZE; i++) {
+        ch = rbuf_get_data(rbuf);
+        assert(ch == 'A' + i);
+        assert(rbuf_get_size(rbuf) == BUF_SIZE - i - 1);
+    }
+    ch = rbuf_get_data(rbuf);
+    assert(ch == -1);
+
+    rbuf_delete(rbuf);
+
     printf("OK\n");
 }
 
@@ -129,9 +174,14 @@ int main(void)
     mallinit();
     sbrk((void*)0x8000, 16 * 1024); 
 
+    dos_scode(1);
+
     test1();
     test2();
     test3();
+    test4();
+
+    dos_scode(0);
 
     return 0;
 }

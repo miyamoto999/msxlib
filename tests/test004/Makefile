@@ -10,8 +10,8 @@ ASCONFIGS=$(CFLAGS_INC)
 
 all:$(TARGET)
 
-$(TARGET):$(OBJS) ../../libs/msxlib.lib ../../libs/iot.lib
-	$(CC) $(CFLAGS) -create-app -m -o $(TARGET) $(OBJS) -L../../libs -lmsxlib -liot
+$(TARGET):$(OBJS) ../../libs/msxlib.lib ../../libs/iot.lib ../../libs/doscall.lib
+	$(CC) $(CFLAGS) -create-app -m -o $(TARGET) $(OBJS) -L../../libs -lmsxlib -liot -ldoscall
 
 .SUFFIXES: .asm .o
 .asm.o:

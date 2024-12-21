@@ -21,7 +21,7 @@ static int test1(void)
     bret = msx_fcb_init(&fcb, "t*.*");
     assert(bret);
 
-    dos1_setdta(&buf);
+    dos1_setdta(buf);
 
     uint8_t ret = dos1_sfirst(&fcb);
     assert(ret == 0);

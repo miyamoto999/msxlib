@@ -44,6 +44,8 @@ int16_t __LIB__ bfile_write_dsk1(BFILE_DOS1 *fp, const void *buf, int16_t size) 
             fp->err = err;
             return 0;
         }
+        fp->buf_offset = 0;
+        fp->dirty = TRUE;
         fp->update = FALSE;
     } else {
         /* バッファより小さいデータを渡された場合
