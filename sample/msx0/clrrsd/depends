@@ -1,0 +1,4 @@
+clrrsd.o: clrrsd.c ../../../include/msxlib/iot.h \
+  ../../../include/msxlib/msxlib.h ../../../include/msxlib/msxbios.h \
+  ../../../include/msxlib/msxbiosaddr.h ../../../include/msxlib/rbuf.h \
+  ../../../include/msxlib/iotaddr.h

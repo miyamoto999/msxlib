@@ -1,4 +1,4 @@
-DIRS=msx0/tree msx0/wifislct msx0/iotget msx0/iotput
+DIRS=msx0/tree msx0/wifislct msx0/iotget msx0/iotput msx0/clrrsd
 MAKEFILE=Makefile
 
 all:
