@@ -5,6 +5,7 @@
 #include <msxlib/msxbios.h>
 #include <msxlib/rbuf.h>
 #include <msxlib/iotaddr.h>
+#include <msxlib/bcdf.h>
 
 BOOL __LIB__ iot_puts(const char *node, const char *val) __smallc;
 BOOL __LIB__ iot_puti(const char *node, const int val) __smallc;
@@ -14,6 +15,8 @@ int8_t __LIB__ iot_node_write(const char *node) __smallc;
 
 int __LIB__ iot_read(RBUF *rbuf, const char *node, char *buf, int size) __smallc;
 void __LIB__ iot_write(const char *node, char *buf, uint8_t size) __smallc;
+
+BOOL __LIB__ iot_getbcdf(const char *note, char *bcdf) __smallc;
 
 // int iot_read_1(RBUF *rbuf, const char *node, char *buf, int size);
 

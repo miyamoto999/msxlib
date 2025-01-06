@@ -1,11 +1,16 @@
 iot.o: iot.c ../../include/msxlib/msxlib.h ../../include/msxlib/iot.h \
   ../../include/msxlib/msxbios.h ../../include/msxlib/msxbiosaddr.h \
-  ../../include/msxlib/rbuf.h ../../include/msxlib/iotaddr.h
+  ../../include/msxlib/rbuf.h ../../include/msxlib/iotaddr.h \
+  ../../include/msxlib/bcdf.h
 iot_find1.o: iot_find1.c ../../include/msxlib/iot.h \
   ../../include/msxlib/msxlib.h ../../include/msxlib/msxbios.h \
   ../../include/msxlib/msxbiosaddr.h ../../include/msxlib/rbuf.h \
-  ../../include/msxlib/iotaddr.h
+  ../../include/msxlib/iotaddr.h ../../include/msxlib/bcdf.h
 iot_find2.o: iot_find2.c ../../include/msxlib/iot.h \
   ../../include/msxlib/msxlib.h ../../include/msxlib/msxbios.h \
   ../../include/msxlib/msxbiosaddr.h ../../include/msxlib/rbuf.h \
-  ../../include/msxlib/iotaddr.h
+  ../../include/msxlib/iotaddr.h ../../include/msxlib/bcdf.h
+iot_getbcdf.o: iot_getbcdf.c ../../include/msxlib/msxlib.h \
+  ../../include/msxlib/iot.h ../../include/msxlib/msxbios.h \
+  ../../include/msxlib/msxbiosaddr.h ../../include/msxlib/rbuf.h \
+  ../../include/msxlib/iotaddr.h ../../include/msxlib/bcdf.h

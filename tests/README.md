@@ -78,3 +78,9 @@
     dos1_curdrv()関数でカレントドライブを表示、dos1_seldsk()関数を実行しB:ドライブにして戻り値のドライブ数を表示する。
 - test040
     指定ドライブのファイル一覧を表示する。
+- test041〜test046
+    MSXのBCD実数と文字列の相互変換のテスト
+- test047
+    MSXのBCD実数をdoubleへ変換するテスト    
+- test048
+    IOTノードから実数値の取得(iot_getbcdf())のテスト

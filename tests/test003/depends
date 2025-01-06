@@ -1,4 +1,4 @@
 test003.o: test003.c ../../include/msxlib/msxlib.h \
   ../../include/msxlib/iot.h ../../include/msxlib/msxbios.h \
   ../../include/msxlib/msxbiosaddr.h ../../include/msxlib/rbuf.h \
-  ../../include/msxlib/iotaddr.h
+  ../../include/msxlib/iotaddr.h ../../include/msxlib/bcdf.h

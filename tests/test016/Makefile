@@ -94,4 +94,6 @@ clean:
 depend:
 	gcc $(CFLAGS_INC_DOS1) -E -MM -w *.c > depends
 
+tests:
+
 -include depends

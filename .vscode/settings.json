@@ -20,6 +20,7 @@
         "vector": "c",
         "format": "c",
         "random": "cpp",
-        "chrono": "cpp"
+        "chrono": "cpp",
+        "stdio.h": "c"
     }
 }

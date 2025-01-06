@@ -106,19 +106,27 @@ net/net_connect.o: net/net_connect.c ../include/msxlib/net.h \
   ../include/msxlib/msxlib.h ../include/msxlib/rbuf.h \
   ../include/msxlib/iot.h ../include/msxlib/msxbios.h \
   ../include/msxlib/msxbiosaddr.h ../include/msxlib/iotaddr.h \
-  ../include/msxlib/msxdos.h ../include/msxlib/fcb.h \
-  ../include/msxlib/fib.h
+  ../include/msxlib/bcdf.h ../include/msxlib/msxdos.h \
+  ../include/msxlib/fcb.h ../include/msxlib/fib.h
 net/net_init.o: net/net_init.c ../include/msxlib/msxlib.h \
   ../include/msxlib/iot.h ../include/msxlib/msxbios.h \
   ../include/msxlib/msxbiosaddr.h ../include/msxlib/rbuf.h \
-  ../include/msxlib/iotaddr.h ../include/msxlib/net.h \
-  ../include/msxlib/msxdos.h ../include/msxlib/fcb.h \
-  ../include/msxlib/fib.h
+  ../include/msxlib/iotaddr.h ../include/msxlib/bcdf.h \
+  ../include/msxlib/net.h ../include/msxlib/msxdos.h \
+  ../include/msxlib/fcb.h ../include/msxlib/fib.h
 net/net_readline.o: net/net_readline.c ../include/msxlib/msxlib.h \
   ../include/msxlib/net.h ../include/msxlib/rbuf.h \
   ../include/msxlib/iot.h ../include/msxlib/msxbios.h \
-  ../include/msxlib/msxbiosaddr.h ../include/msxlib/iotaddr.h
+  ../include/msxlib/msxbiosaddr.h ../include/msxlib/iotaddr.h \
+  ../include/msxlib/bcdf.h
 net/net_setup.o: net/net_setup.c ../include/msxlib/msxlib.h \
   ../include/msxlib/iot.h ../include/msxlib/msxbios.h \
   ../include/msxlib/msxbiosaddr.h ../include/msxlib/rbuf.h \
-  ../include/msxlib/iotaddr.h ../include/msxlib/net.h
+  ../include/msxlib/iotaddr.h ../include/msxlib/bcdf.h \
+  ../include/msxlib/net.h
+net/bcdf2dbl.o: bcdf/bcdf2dbl.c ../include/msxlib/msxlib.h \
+  ../include/msxlib/bcdf.h
+net/bcdf2str.o: bcdf/bcdf2str.c ../include/msxlib/msxlib.h \
+  ../include/msxlib/bcdf.h
+net/str2bcdf.o: bcdf/str2bcdf.c ../include/msxlib/msxlib.h \
+  ../include/msxlib/bcdf.h

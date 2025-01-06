@@ -3,4 +3,4 @@ test011.o: test011.c ../../include/msxlib/msxdos.h \
   ../../include/msxlib/fib.h ../../include/msxlib/net.h \
   ../../include/msxlib/rbuf.h ../../include/msxlib/iot.h \
   ../../include/msxlib/msxbios.h ../../include/msxlib/msxbiosaddr.h \
-  ../../include/msxlib/iotaddr.h
+  ../../include/msxlib/iotaddr.h ../../include/msxlib/bcdf.h

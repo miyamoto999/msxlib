@@ -1,0 +1,4 @@
+test046.o: test046.c ../../include/msxlib/msxbios.h \
+  ../../include/msxlib/msxlib.h ../../include/msxlib/msxbiosaddr.h \
+  ../../include/msxlib/bcdf.h ../../include/msxlib/msxdos.h \
+  ../../include/msxlib/fcb.h ../../include/msxlib/fib.h

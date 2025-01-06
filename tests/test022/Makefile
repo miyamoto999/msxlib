@@ -34,4 +34,6 @@ depend:
 
 test022x.o:test022x.asm ../../include/msxlib/asm/msxdos.inc
 
+tests:
+
 -include depends

@@ -28,4 +28,6 @@ clean:
 depend:
 	gcc $(CFLAGS_INC) -E -MM -w *.c > depends
 
+tests:
+
 -include depends

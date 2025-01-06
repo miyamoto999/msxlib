@@ -19,8 +19,9 @@ BFILE_OBJS=bfile/bfile_open_dos1.o bfile/bfile_open_dsk1.o \
 	bfile/bfile_flush_dos2.o bfile/bfile_flush_dsk2.o
 RBUF_OBJS=rbuf/rbuf.o rbuf/rbuf_add_data.o rbuf/rbuf_get_data.o rbuf/rbuf_get_size.o \
 	rbuf/rbuf_read.o rbuf/cif_rbuf_add_data.o rbuf/cif_rbuf_get_data.o rbuf/cif_rbuf_get_size.o rbuf/cif_rbuf_read.o
-NET_OBJS=net/net_init.o net/net_setup.o net/net_connect.o net/net_readline.o 
-OBJS=$(BFILE_OBJS) $(RBUF_OBJS) $(NET_OBJS) msx_dos_inpkey.o msx_dct_inpkey.o  msx_fcb_init.o strlen.o \
+NET_OBJS=net/net_init.o net/net_setup.o net/net_connect.o net/net_readline.o
+BCDF_OBJS=bcdf/bcdf2dbl.o  bcdf/bcdf2str.o  bcdf/str2bcdf.o 
+OBJS=$(BFILE_OBJS) $(RBUF_OBJS) $(NET_OBJS) $(BCDF_OBJS) msx_dos_inpkey.o msx_dct_inpkey.o  msx_fcb_init.o strlen.o \
 	pre_printf.o pre_printf_sdcc.o msx_fcb_init_ren.o msx_fcb_init_filename.o
 	
 CFLAGS_INC=-I../include
@@ -49,7 +50,7 @@ $(TARGET):$(OBJS)
 
 .SUFFIXES: .c .o
 .c.o:
-	$(CC) $(CFLAGS) --no-crt -c $<
+	$(CC) $(CFLAGS) -vn -c $<
 #	$(CC) $(CFLAGS) --no-crt -S $<
 
 clean:
@@ -69,6 +70,7 @@ depend:
 	gcc $(CFLAGS_INC) -E -MM -w bfile/*.c | python add_prefix.py bfile/ >> depends
 	gcc $(CFLAGS_INC) -E -MM -w rbuf/*.c | python add_prefix.py rbuf/ >> depends
 	gcc $(CFLAGS_INC) -E -MM -w net/*.c | python add_prefix.py net/ >> depends
+	gcc $(CFLAGS_INC) -E -MM -w bcdf/*.c | python add_prefix.py net/ >> depends
 	@for i in $(DIRS); \
 	do \
 		make -C $$i depend; \

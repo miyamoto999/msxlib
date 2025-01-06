@@ -11,3 +11,7 @@ popd
 pushd sample
 make "$@"
 popd
+
+#pushd tests
+#make tests
+#popd
