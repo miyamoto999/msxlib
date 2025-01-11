@@ -4,8 +4,8 @@ AS=z88dk-z80asm
 CC=zcc
 OBJS=test048.o
 CFLAGS_INC=-I../../include -I../common -D__MSXDOS__=1
-CFLAGS=+cpm
-# CFLAGS=+msx -subtype=msxdos
+# CFLAGS=+cpm
+CFLAGS=+msx -subtype=msxdos
 # CFLAGS=+msx -subtype=msxdos -compiler=sdcc
 ASCONFIGS=$(CFLAGS_INC)
 
