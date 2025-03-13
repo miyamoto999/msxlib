@@ -19,7 +19,7 @@ $(TARGET):$(OBJS) ../../libs/msxlib.lib ../../libs/doscall.lib
 	$(AS) $(ASCONFIGS) $<
 
 %.o:%.c
-	$(CC) $(CFLAGS) $(CFLAGS_INC) -O --no-crt -c $<
+	$(CC) $(CFLAGS) $(CFLAGS_INC) -O -vn -c $<
 
 clean:
 	rm -rf $(OBJS) $(TARGET) *.c.asm *.map *.img

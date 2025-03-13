@@ -1,11 +1,17 @@
     include "msxlib/asm/msxbios.inc"
     include "msxlib/asm/msxwork.inc"
+    include "msxlib/asm/vdp.inc"
 
     SECTION code_user
     PUBLIC msxvdp_set_reg
     PUBLIC _msxvdp_set_reg
     PUBLIC ___msxvdp_set_reg
-    GLOBAL _g_msxvdp_write_port_1, _g_msxvdp_write_port_2, _g_vdp_reg_saves
+
+    PUBLIC msxvdp_set_reg_ndi
+    PUBLIC _msxvdp_set_reg_ndi
+    PUBLIC ___msxvdp_set_reg_ndi
+
+    GLOBAL _g_msxvdp_write_port_1, _g_msxvdp_write_port_2, _g_msxvdp_reg_saves
 
 
 ; void vdp_set_reg(uint8_t reg, uint8_t val);
@@ -24,33 +30,28 @@ ___msxvdp_set_reg:
     ; regを取り出す。
     ld hl,4
     add hl,sp
-    ld e,(hl)   ; regをeにバックアップ
+    ld b,(hl)   ; regをbにバックアップ
 
     ; IOポートを取得
     ld a,(_g_msxvdp_write_port_1)
     ld c,a
 
     di
-
-    ; valをIOポートに書き出す
-    ld a,d      ; valをaに戻す
-    out (c),a
-
-    ; reg | 0x80を書き出す
-    ld a,0x80
-    or e
-    out (c),a
-
+    ; VDPレジスタに値を設定
+    MAC_VDP_SET_REG b,d
+    ei
+    
+FUNC_EXIT:
     ; 28以上のレジスタは保存しない
-    ld a,e
+    ld a,b
     cp 27
     jp P,L_SKIP
 
     ; 値保存用のアドレスを計算する。
-    sla e
-    ld c,e
+    sla b
+    ld c,b
     ld b,0
-    ld hl,_g_vdp_reg_saves
+    ld hl,_g_msxvdp_reg_saves
     add hl,bc
 
     ld c,(hl)
@@ -61,9 +62,34 @@ ___msxvdp_set_reg:
     ld (bc),a
 
 L_SKIP:
-    ei
 
     ret
 
 
+; void vdp_set_reg_ndi(uint8_t reg, uint8_t val);
+;
+;   SP+2 val
+;   SP+4 reg
+
+msxvdp_set_reg_ndi:
+_msxvdp_set_reg_ndi:
+___msxvdp_set_reg_ndi:
+    ; val を取り出す。
+    ld hl,2
+    add hl,sp
+    ld d,(hl)   ; valをdにバックアップ
+
+    ; regを取り出す。
+    ld hl,4
+    add hl,sp
+    ld b,(hl)   ; regをbにバックアップ
+
+    ; IOポートを取得
+    ld a,(_g_msxvdp_write_port_1)
+    ld c,a
+
+    ; VDPレジスタに値を設定
+    MAC_VDP_SET_REG b,d
+
+    jp FUNC_EXIT
 

@@ -1,4 +1,5 @@
     include "msxlib/asm/msxwork.inc"
+    include "msxlib/asm/vdp.inc"
 
     SECTION code_user
     PUBLIC msxvdp_set_palette2
@@ -19,14 +20,14 @@ ___msxvdp_set_palette2:
     ld c,a
     ld hl, 8
     add hl, sp
-    ld a,(hl)
+
     di
-    ld (MSXWORK_RG16SAV),a  ; レジスタ16に設定する値を保存
-    out (c),a
-    ld a, 16 | 0x80
-    out (c),a
+    MAC_VDP_SET_REG 16, (hl)    ; VDPレジスタ16に値をセット
     ei
 
+    ld a,(hl)
+    ld (MSXWORK_RG16SAV),a  ; レジスタ16に設定する値を保存
+    
     ; rgb値を書き込むポートをcに準備
     ld a,(_g_msxvdp_write_port_2)
     ld c,a

@@ -1,7 +1,8 @@
-#ifndef __VDP_H__
-#define __VDP_H__
+#ifndef __MSXLIB_VDP_H__
+#define __MSXLIB_VDP_H__
 
 #include <stdint.h>
+#include <stdlib.h>
 #include <msxlib/msxlib.h>
 #include <msxlib/msxbios.h>
 #include <msxlib/msxwork.h>
@@ -15,6 +16,8 @@ extern uint8_t g_msxvdp_write_port_3;
 
 extern const uint16_t g_msxvdp_ascii2knjcode[];
 
+#define g_msxvdp_read_port_0   (g_msxvdp_port_m)
+#define g_msxvdp_write_port_0   (g_msxvdp_port_n)
 #define MSXVDP_READ_PORT_0     (g_msxvdp_port_m)
 #define MSXVDP_WRITE_PORT_0     (g_msxvdp_port_n)
 #define MSXVDP_READ_PORT_1     (g_msxvdp_read_port_1)
@@ -31,8 +34,23 @@ void __LIB__ msxvdp_dos_init(void) __smallc;
 #define msxvdp_set_color(fg, bg, bd)   msxmain_chgclr(fg, bg, bd)
 /* 画面クリア */
 #define msxvdp_cls()   msxsub_cls()
-/* VDPレジスタに値を設定 */
+/** 
+ * @brief VDPレジスタに値を設定
+ * 
+ *      VDPレジスタに値を設定する。
+ * 
+ * @param reg VDPレジスタ番号
+ * @param val 設定する値
+ */
 void __LIB__ msxvdp_set_reg(uint8_t reg, uint8_t val) __smallc;
+/* msxvdp_set_reg()の割り込み禁止を行わないバージョン */
+void __LIB__ msxvdp_set_reg_ndi(uint8_t reg, uint8_t val) __smallc;
+
+/* 間接指定のVDPレジスタ番号を設定する。　*/
+void __LIB__ msxvdp_set_reg_indirect(uint8_t reg) __smallc;
+/* 間接指定でレジスタへの値の設定 */
+#define msxvdp_set_reg_indirect_val(val)    outp(MSXVDP_WRITE_PORT_3, val)
+
 /* パレットの設定 */
 void __LIB__ msxvdp_set_palette2(uint8_t pal, uint8_t r, uint8_t g, uint8_t b) __smallc;
 /* グラフィック画面へ文字を描画 */
@@ -55,6 +73,20 @@ void __LIB__ msxvdp_dos_draw_char16(int16_t x, int16_t y, char ch, uint8_t mode,
    半角文字を全角文字に変換して描画します。 */
 void __LIB__ msxvdp_dct_draw_string16(int16_t x, int16_t y, char *str, uint8_t mode, uint8_t logi_op) __smallc;
 void __LIB__ msxvdp_dos_draw_string16(int16_t x, int16_t y, char *str, uint8_t mode, uint8_t logi_op) __smallc;
+
+/* VRAMにデータを書き込む */
+void __LIB__ msxvdp_poke(uint32_t addr, uint8_t data) __smallc;
+/* 次のデータをVRAMに書き込む */
+#define msxvdp_poke_next(data)  outp(MSXVDP_WRITE_PORT_0, data)
+/* VRAMからデータを読み込む */
+uint8_t __LIB__ msxvdp_peek(uint32_t addr) __smallc;
+/* 次のデータをVRAMから読み込む */
+#define msxvdp_peek_next()  inp(MSXVDP_READ_PORT_0)
+
+/* ステータスレジスタの読み込み */
+uint8_t __LIB__ msxvdp_get_status(uint8_t st_reg) __smallc;
+/* ステータスレジスタの読み込み(割り込み禁止を行わない) */
+uint8_t __LIB__ msxvdp_get_status_ndi(uint8_t st_reg) __smallc;
 
 #if defined(__MSXDOS__)
 #define msxvdp_init()  msxvdp_dos_init()
@@ -89,14 +121,46 @@ void __LIB__ msxvdp_dos_draw_string16(int16_t x, int16_t y, char *str, uint8_t m
 #define MSXVDP_LOGIOP_AND          1
 #define MSXVDP_LOGIOP_OR           2
 #define MSXVDP_LOGIOP_EOR          3
-#define MSXVDP_LOGIOP_XOR          VDP_LOGIOP_EOR
+#define MSXVDP_LOGIOP_XOR          MSXVDP_LOGIOP_EOR
 #define MSXVDP_LOGIOP_NOT          4
 
 #define MSXVDP_LOGIOP_TIMP         8
 #define MSXVDP_LOGIOP_TAND         9
 #define MSXVDP_LOGIOP_TOR          10
 #define MSXVDP_LOGIOP_TEOR         11
-#define MSXVDP_LOGIOP_TXOR         VDP_LOGIOP_TEOR
+#define MSXVDP_LOGIOP_TXOR         MSXVDP_LOGIOP_TEOR
 #define MSXVDP_LOGIOP_TNOT         12
+
+#define MSXVDP_STATUS2_CE          0x01
+#define MSXVDP_STATUS2_EO          0x02
+#define MSXVDP_STATUS2_BD          0x10
+#define MSXVDP_STATUS2_HR          0x20
+#define MSXVDP_STATUS2_VR          0x40
+#define MSXVDP_STATUS2_TR          0x80
+
+/* VDPのコマンドが終了するのを待つ*/
+void __LIB__ msxvdp_cmd_wait(void) __smallc;
+
+/* HMMC */
+typedef struct _reg_data_hmmc {
+    uint16_t dx;            /* 転送先基準点 X座標(0-511) */
+    uint16_t dy;            /* 転送先基準点 Y座標(0-1023)*/
+    uint16_t nx;            /* X方向転送ドット数(1-512) 512の時は0を入れる */
+    uint16_t ny;            /* Y方向転送ドット数(1-1024) 1024の時は0を入れる　*/
+    uint8_t first_data;     /* 最初に書き込むデータ */
+    uint8_t arg;            /* bit2:転送先基準点からのNXの方向(0:右、1:左) */
+                            /* bit3:転送先基準点からのNYの方向(0:下、1:上) */
+} MSXVDP_REG_DATA_HMMC;
+
+#define MSXVDP_CMD_DATA_ARG_DIX     0x04
+#define MSXVDP_CMD_DATA_ARG_DIY     0x08
+#define MSXVDP_CMD_HMMC             0xf0
+
+/* HMMCのコマンド送信 */
+void __LIB__ msxvdp_hmmc_start(MSXVDP_REG_DATA_HMMC *reg_data) __smallc;
+/* HMMCの次のデータを送信 */
+BOOL __LIB__ msxvdp_hmmc_next(uint8_t data) __smallc;
+/* HMMCコマンドの実行 */
+void __LIB__ msxvdp_hmmc(MSXVDP_REG_DATA_HMMC *reg_data, char *datas, uint16_t size) __smallc;
 
 #endif

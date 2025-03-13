@@ -21,6 +21,8 @@
         "format": "c",
         "random": "cpp",
         "chrono": "cpp",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "errno.h": "c",
+        "msxdos.h": "c"
     }
 }

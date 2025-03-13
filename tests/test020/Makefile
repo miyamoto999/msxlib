@@ -29,11 +29,11 @@ $(CPM_DIR):
 	$(AS) $(ASCONFIGS) $<
 
 %.o:%.c
-	$(CC) $(CFLAGS) $(CFLAGS_INC) -O --no-crt -c $<
+	$(CC) $(CFLAGS) $(CFLAGS_INC) -O -vn -c $<
 
 $(CPM_DIR)/%.o:%.c
-	$(CC) $(CFLAGS_CPM) $(CFLAGS_INC_CPM) -O --no-crt -o $@ -c $<
-#	$(CC) $(CFLAGS_CPM) $(CFLAGS_INC_CPM) -O --no-crt -o $(@:.o=.c.asm) -S $<
+	$(CC) $(CFLAGS_CPM) $(CFLAGS_INC_CPM) -O -vn -o $@ -c $<
+#	$(CC) $(CFLAGS_CPM) $(CFLAGS_INC_CPM) -O -vn -o $(@:.o=.c.asm) -S $<
 
 clean:
 	rm -rf $(OBJS) $(TARGET) *.c.asm *.map *.img $(CPM_DIR)

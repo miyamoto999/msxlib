@@ -84,3 +84,12 @@
     MSXのBCD実数をdoubleへ変換するテスト    
 - test048
     IOTノードから実数値の取得(iot_getbcdf())のテスト
+- test049
+    パレット番号1の色をランダムに変更するだけのプログラム
+- test050
+    ANKモード、screen 0にして0-9をVRAMにアクセスして表示するだけのプログラム
+- test051
+    VDPのHMMCのテスト
+
+- testXX
+    いろいろた試してるプログラム

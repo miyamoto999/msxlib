@@ -3,6 +3,18 @@ msxvdp.o: msxvdp.c ../../include/msxlib/msxlib.h \
   ../../include/msxlib/msxbiosaddr.h ../../include/msxlib/msxwork.h \
   ../../include/msxlib/msxworkaddr.h
 msxvdp2.o: msxvdp2.c
+msxvdp_cmd_hmmc1.o: msxvdp_cmd_hmmc1.c ../../include/msxlib/vdp.h \
+  ../../include/msxlib/msxlib.h ../../include/msxlib/msxbios.h \
+  ../../include/msxlib/msxbiosaddr.h ../../include/msxlib/msxwork.h \
+  ../../include/msxlib/msxworkaddr.h
+msxvdp_cmd_hmmc2.o: msxvdp_cmd_hmmc2.c ../../include/msxlib/vdp.h \
+  ../../include/msxlib/msxlib.h ../../include/msxlib/msxbios.h \
+  ../../include/msxlib/msxbiosaddr.h ../../include/msxlib/msxwork.h \
+  ../../include/msxlib/msxworkaddr.h
+msxvdp_cmd_wait.o: msxvdp_cmd_wait.c ../../include/msxlib/vdp.h \
+  ../../include/msxlib/msxlib.h ../../include/msxlib/msxbios.h \
+  ../../include/msxlib/msxbiosaddr.h ../../include/msxlib/msxwork.h \
+  ../../include/msxlib/msxworkaddr.h
 msxvdp_dct_draw_char.o: msxvdp_dct_draw_char.c ../../include/msxlib/vdp.h \
   ../../include/msxlib/msxlib.h ../../include/msxlib/msxbios.h \
   ../../include/msxlib/msxbiosaddr.h ../../include/msxlib/msxwork.h \
@@ -43,3 +55,11 @@ msxvdp_dos_init.o: msxvdp_dos_init.c ../../include/msxlib/slot.h \
   ../../include/msxlib/msxlib.h ../../include/msxlib/vdp.h \
   ../../include/msxlib/msxbios.h ../../include/msxlib/msxbiosaddr.h \
   ../../include/msxlib/msxwork.h ../../include/msxlib/msxworkaddr.h
+msxvdp_peek.o: msxvdp_peek.c ../../include/msxlib/vdp.h \
+  ../../include/msxlib/msxlib.h ../../include/msxlib/msxbios.h \
+  ../../include/msxlib/msxbiosaddr.h ../../include/msxlib/msxwork.h \
+  ../../include/msxlib/msxworkaddr.h
+msxvdp_poke.o: msxvdp_poke.c ../../include/msxlib/vdp.h \
+  ../../include/msxlib/msxlib.h ../../include/msxlib/msxbios.h \
+  ../../include/msxlib/msxbiosaddr.h ../../include/msxlib/msxwork.h \
+  ../../include/msxlib/msxworkaddr.h

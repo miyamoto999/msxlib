@@ -69,24 +69,24 @@ $(DSK2_DIR):
 	$(AS) $(ASCONFIGS_DOS1) $<
 
 $(DOS1_DIR)/%.o:%.c
-	$(CC) $(CFLAGS_DOS1) $(CFLAGS_INC_DOS1) -O --no-crt -o $@ -c $<
-#	$(CC) $(CFLAGS_DOS1) $(CFLAGS_INC_DOS1) -O --no-crt -o $(@:.o=.c.asm) -S $<
+	$(CC) $(CFLAGS_DOS1) $(CFLAGS_INC_DOS1) -O -vn -o $@ -c $<
+#	$(CC) $(CFLAGS_DOS1) $(CFLAGS_INC_DOS1) -O -vn -o $(@:.o=.c.asm) -S $<
 
 $(DOS2_DIR)/%.o:%.c
-	$(CC) $(CFLAGS_DOS2) $(CFLAGS_INC_DOS2) -O --no-crt -o $@ -c $<
-#	$(CC) $(CFLAGS_DOS2) $(CFLAGS_INC_DOS2) -O --no-crt -o $(@:.o=.c.asm) -S $<
+	$(CC) $(CFLAGS_DOS2) $(CFLAGS_INC_DOS2) -O -vn -o $@ -c $<
+#	$(CC) $(CFLAGS_DOS2) $(CFLAGS_INC_DOS2) -O -vn -o $(@:.o=.c.asm) -S $<
 
 $(CPM_DIR)/%.o:%.c
-	$(CC) $(CFLAGS_CPM) $(CFLAGS_INC_CPM) -O --no-crt -o $@ -c $<
-#	$(CC) $(CFLAGS_CPM) $(CFLAGS_INC_CPM) -O --no-crt -o $(@:.o=.c.asm) -S $<
+	$(CC) $(CFLAGS_CPM) $(CFLAGS_INC_CPM) -O -vn -o $@ -c $<
+#	$(CC) $(CFLAGS_CPM) $(CFLAGS_INC_CPM) -O -vn -o $(@:.o=.c.asm) -S $<
 
 $(DSK1_DIR)/%.o:%.c
-	$(CC) $(CFLAGS_DSK1) $(CFLAGS_INC_DSK1) -O --no-crt -o $@ -c $<
-#	$(CC) $(CFLAGS_DSK1) $(CFLAGS_INC_DSK1) -O --no-crt -o $(@:.o=.c.asm) -S $<
+	$(CC) $(CFLAGS_DSK1) $(CFLAGS_INC_DSK1) -O -vn -o $@ -c $<
+#	$(CC) $(CFLAGS_DSK1) $(CFLAGS_INC_DSK1) -O -vn -o $(@:.o=.c.asm) -S $<
 
 $(DSK2_DIR)/%.o:%.c
-	$(CC) $(CFLAGS_DSK2) $(CFLAGS_INC_DSK2) -O --no-crt -o $@ -c $<
-#	$(CC) $(CFLAGS_DSK1) $(CFLAGS_INC_DSK1) -O --no-crt -o $(@:.o=.c.asm) -S $<
+	$(CC) $(CFLAGS_DSK2) $(CFLAGS_INC_DSK2) -O -vn -o $@ -c $<
+#	$(CC) $(CFLAGS_DSK1) $(CFLAGS_INC_DSK1) -O -vn -o $(@:.o=.c.asm) -S $<
 
 clean:
 	rm -rf *.c.asm *.map *.img *.msx $(DOS1_DIR) $(DOS2_DIR) $(CPM_DIR) $(DSK1_DIR) $(DSK2_DIR)

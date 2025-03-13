@@ -1,5 +1,5 @@
-#ifndef __MSXWORK_H__
-#define __MSXWORK_H__
+#ifndef __MSXLIB_MSXWORK_H__
+#define __MSXLIB_MSXWORK_H__
 
 #include <stdint.h>
 #include "msxworkaddr.h"
@@ -33,5 +33,8 @@
 #define MSXWORK_SCRMOD_VAL  *((uint8_t *)(MSXWORK_SCRMOD))
 /* OLDSCR スクリーンモードの保存場所 */
 #define MSXWORK_OLDSCR_VAL  *((uint8_t *)(MSXWORK_OLDSCR))
+
+/* JIFFY システムカウンタ(PLAY文が内部で使用する) */
+#define MSXWORK_JIFFY_VAL   *((uint16_t *)(MSXWORK_JIFFY))
 
 #endif

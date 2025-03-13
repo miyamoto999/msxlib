@@ -24,7 +24,7 @@ $(TARGET2):$(OBJS2)
 	$(AS) $(ASCONFIGS) $<
 
 %.o:%.c
-	$(CC) $(CFLAGS) $(CFLAGS_INC) -O --no-crt -c $<
+	$(CC) $(CFLAGS) $(CFLAGS_INC) -O -vn -c $<
 
 clean:
 	rm -rf $(OBJS) $(TARGET) $(OBJS2) $(TARGET2) *.c.asm *.map *.img

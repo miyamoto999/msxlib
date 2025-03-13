@@ -1,5 +1,5 @@
-#ifndef __SLOT_H__
-#define __SLOT_H__
+#ifndef __MSXLIB_SLOT_H__
+#define __MSXLIB_SLOT_H__
 
 #include <stdint.h>
 #include <msxlib/msxlib.h>

@@ -22,7 +22,7 @@ RBUF_OBJS=rbuf/rbuf.o rbuf/rbuf_add_data.o rbuf/rbuf_get_data.o rbuf/rbuf_get_si
 NET_OBJS=net/net_init.o net/net_setup.o net/net_connect.o net/net_readline.o
 BCDF_OBJS=bcdf/bcdf2dbl.o  bcdf/bcdf2str.o  bcdf/str2bcdf.o 
 OBJS=$(BFILE_OBJS) $(RBUF_OBJS) $(NET_OBJS) $(BCDF_OBJS) msx_dos_inpkey.o msx_dct_inpkey.o  msx_fcb_init.o strlen.o \
-	pre_printf.o pre_printf_sdcc.o msx_fcb_init_ren.o msx_fcb_init_filename.o
+	pre_printf.o pre_printf_sdcc.o msx_fcb_init_ren.o msx_fcb_init_filename.o msx_knj.o
 	
 CFLAGS_INC=-I../include
 CFLAGS=+msx $(CFLAGS_INC) -O
@@ -78,6 +78,15 @@ depend:
 
 z80_int.o: z80_int.asm
 
+../include/msxlib/msxbiosaddr.h:../include/msxlib/asm/msxbios.inc
+	python ../tools/convdef.py $< $@
+
+../include/msxlib/msxworkaddr.h:../include/msxlib/asm/msxwork.inc
+	python ../tools/convdef.py $< $@
+
+../include/msxlib/iotaddr.h:../include/msxlib/asm/iot.inc
+	python ../tools/convdef.py $< $@
+
 msx_dos_inpkey.o: msx_dos_inpkey.asm ../include/msxlib/asm/msxbios.inc ../include/msxlib/asm/msxwork.inc
 msx_dct_inpkey.o: msx_dct_inpkey.asm ../include/msxlib/asm/msxbios.inc
 rbuf/rbuf_add_data.o: rbuf/rbuf_add_data.asm ../include/msxlib/asm/rbuf.inc
@@ -86,7 +95,7 @@ rbuf/rbuf_get_size.o: rbuf/rbuf_get_size.asm ../include/msxlib/asm/rbuf.inc
 rbuf/rbuf_read.o: rbuf/rbuf_read.asm ../include/msxlib/asm/rbuf.inc
 
 pre_printf_sdcc.o: pre_printf_sdcc.c
-	$(CC) -compiler=sdcc $(CFLAGS) -O --no-crt -c $<
+	$(CC) -compiler=sdcc $(CFLAGS) -vn -c $<
 
 strlen.o:strlen.asm
 
@@ -121,5 +130,7 @@ bfile/bfile_fseek_dsk2.c: bfile/bfile_fseek_dos2.c
 	./mk_dskcallversion_c.sh $< $@
 bfile/bfile_flush_dsk2.c: bfile/bfile_flush_dos2.c
 	./mk_dskcallversion_c.sh $< $@
+
+msx_knj.o: msx_knj.asm ../include/msxlib/asm/msxwork.inc
 
 -include depends

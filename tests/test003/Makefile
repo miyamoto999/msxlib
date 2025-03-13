@@ -19,7 +19,7 @@ $(TARGET):$(OBJS) ../../libs/msxlib.lib ../../libs/iot.lib
 
 .SUFFIXES: .c .o
 .c.o:
-	$(CC) $(CFLAGS) $(CFLAGS_INC) -O --no-crt -c $<
+	$(CC) $(CFLAGS) $(CFLAGS_INC) -O -vn -c $<
 
 clean:
 	rm -f $(OBJS) $(TARGET) *.c.asm *.map *.img

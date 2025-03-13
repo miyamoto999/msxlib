@@ -1,0 +1,4 @@
+test049.o: test049.c ../../include/msxlib/msxlib.h \
+  ../../include/msxlib/msxwork.h ../../include/msxlib/msxworkaddr.h \
+  ../../include/msxlib/msxbios.h ../../include/msxlib/msxbiosaddr.h \
+  ../../include/msxlib/vdp.h

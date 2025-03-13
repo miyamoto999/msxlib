@@ -40,3 +40,6 @@
 #define	MSXWORK_GRPHED	0xfca6
 #define	MSXWORK_SCRMOD	0xfcaf
 #define	MSXWORK_OLDSCR	0xfcb0
+#define	MSXWORK_JIFFY	0xfc9e
+#define	MSXWORK_EXTBIO	0xffca
+#define	MSXWORK_FCALL	MSXWORK_EXTBIO

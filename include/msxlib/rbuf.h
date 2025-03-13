@@ -1,5 +1,5 @@
-#ifndef __RBUF_H__
-#define __RBUF_H__
+#ifndef __MSXLIB_RBUF_H__
+#define __MSXLIB_RBUF_H__
 
 #include <msxlib/msxlib.h>
 

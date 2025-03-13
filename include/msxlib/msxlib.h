@@ -1,5 +1,5 @@
-#ifndef __MSXLIB_H__
-#define __MSXLIB_H__
+#ifndef __MSXLIB_MSXLIB_H__
+#define __MSXLIB_MSXLIB_H__
 
 #include <stdint.h>
 
@@ -38,21 +38,9 @@ void z80_di(void);
 #define __smallc
 #define __stdc
 #define __z88dk_sdccdecl
-
-/*
 #else
-#define z80_ei()    \
-    #asm            \
-        ei          \
-    #endasm
-
-#define z80_di()    \
-    #asm            \
-        di          \
-    #endasm
-#endif
-#if defined(__GNUC__) || defined(__VSCODE__)
-*/
+#define z80_ei()    __asm__("ei")
+#define z80_di()    __asm__("di")
 #endif
 
 /**

@@ -1,5 +1,5 @@
-#ifndef __FIB_H__
-#define __FIB_H__
+#ifndef __MSXLIB_FIB_H__
+#define __MSXLIB_FIB_H__
 
 #include <stdint.h>
 

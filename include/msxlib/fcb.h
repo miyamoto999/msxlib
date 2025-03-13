@@ -1,5 +1,5 @@
-#ifndef __FCB_H__
-#define __FCB_H__
+#ifndef __MSXLIB_FCB_H__
+#define __MSXLIB_FCB_H__
 
 #include <stdint.h>
 

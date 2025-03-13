@@ -21,7 +21,7 @@ $(TARGET):$(OBJS)
 .SUFFIXES: .c .o
 .c.o:
 	$(CC) $(CFLAGS) -vn -c $<
-#	$(CC) $(CFLAGS) --no-crt -S $<
+#	$(CC) $(CFLAGS) -vn -S $<
 
 clean:
 	rm -f $(OBJS) $(TARGET) *.c.asm

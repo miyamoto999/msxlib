@@ -1,0 +1,7 @@
+gra_data.o: gra_data.c
+test051.o: test051.c ../../include/msxlib/msxlib.h \
+  ../../include/msxlib/msxwork.h ../../include/msxlib/msxworkaddr.h \
+  ../../include/msxlib/msxbios.h ../../include/msxlib/msxbiosaddr.h \
+  ../../include/msxlib/msxdos.h ../../include/msxlib/fcb.h \
+  ../../include/msxlib/fib.h ../../include/msxlib/bfile.h \
+  ../../include/msxlib/vdp.h

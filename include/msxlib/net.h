@@ -1,5 +1,5 @@
-#ifndef __NET_H__
-#define __NET_H__
+#ifndef __MSXLIB_NET_H__
+#define __MSXLIB_NET_H__
 
 #include <msxlib/msxlib.h>
 #include <msxlib/rbuf.h>

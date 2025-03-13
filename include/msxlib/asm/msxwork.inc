@@ -87,3 +87,10 @@ MSXWORK_GRPHED      equ     0xfca6
 MSXWORK_SCRMOD      equ     0xfcaf
 ; OLDSCR スクリーンモードの保存場所
 MSXWORK_OLDSCR      equ     0xfcb0
+
+; JIFFY システムカウンタ(PLAY文が内部で使用する)
+MSXWORK_JIFFY       equ     0xfc9e
+
+; 拡張BIOS呼び出し
+MSXWORK_EXTBIO      equ     0xffca
+MSXWORK_FCALL       equ     MSXWORK_EXTBIO

@@ -1,5 +1,5 @@
-#ifndef __MSXDOS_H__
-#define __MSXDOS_H__
+#ifndef __MSXLIB_MSXDOS_H__
+#define __MSXLIB_MSXDOS_H__
 
 #include <stdint.h>
 #include <msxlib/msxlib.h>
@@ -125,6 +125,10 @@ BOOL __LIB__ dos1_rename(const char *oldFilename, const char *newFilename) __sma
 /* ファイルの削除(FCB) */
 BOOL __LIB__ dos1_remove(const char *filename) __smallc;
 
+/* コンソールに1文字出力する */
+void __LIB__ dos1_conout(char ch) __smallc;
+
+
 /****** DISK BASIC用 ******/
 /* ディスク転送アドレスのセット */
 void __LIB__ dsk1_setdta(void *dta) __smallc;
@@ -243,6 +247,9 @@ BOOL __LIB__ dsk1_rename(const char *oldFilename, const char *newFilename) __sma
 
 /* ファイルの削除(FCB) */
 BOOL __LIB__ dsk1_remove(const char *filename) __smallc;
+
+/* コンソールに1文字出力する */
+void __LIB__ dsk1_conout(char ch) __smallc;
 
 /************/
 

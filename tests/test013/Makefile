@@ -20,8 +20,8 @@ $(TARGET):$(OBJS) ../../libs/msxlib.lib ../../libs/doscall.lib
 
 .SUFFIXES: .c .o
 .c.o:
-	$(CC) $(CFLAGS) $(CFLAGS_INC) -O --no-crt -c $<
-#	$(CC) $(CFLAGS) $(CFLAGS_INC) -O --no-crt -S $<
+	$(CC) $(CFLAGS) $(CFLAGS_INC) -O -vn -c $<
+#	$(CC) $(CFLAGS) $(CFLAGS_INC) -O -vn -S $<
 
 clean:
 	rm -f $(OBJS) $(TARGET) *.c.asm *.map *.img *.msx

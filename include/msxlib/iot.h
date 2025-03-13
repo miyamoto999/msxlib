@@ -1,5 +1,5 @@
-#ifndef __IOT_H__
-#define __IOT_H__
+#ifndef __MSXLIB_IOT_H__
+#define __MSXLIB_IOT_H__
 
 #include <msxlib/msxlib.h>
 #include <msxlib/msxbios.h>

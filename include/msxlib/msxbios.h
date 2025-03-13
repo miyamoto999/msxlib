@@ -1,5 +1,5 @@
-#ifndef __MSXBIOS_H__
-#define __MSXBIOS_H__
+#ifndef __MSXLIB_MSXBIOS_H__
+#define __MSXLIB_MSXBIOS_H__
 
 #include <stdint.h>
 #include <msxlib/msxlib.h>

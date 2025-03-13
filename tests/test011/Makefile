@@ -19,8 +19,8 @@ $(TARGET):$(OBJS) ../../libs/msxlib.lib ../../libs/iot.lib ../../libs/doscall.li
 
 .SUFFIXES: .c .o
 .c.o:
-	$(CC) $(CFLAGS) $(CFLAGS_INC) -O --no-crt -c $<
-#	$(CC) $(CFLAGS) $(CFLAGS_INC) -O --no-crt -S -c $<
+	$(CC) $(CFLAGS) $(CFLAGS_INC) -O -vn -c $<
+#	$(CC) $(CFLAGS) $(CFLAGS_INC) -O -vn -S -c $<
 
 clean:
 	rm -f $(OBJS) $(TARGET) *.c.asm *.map *.img

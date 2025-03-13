@@ -1,5 +1,5 @@
-#ifndef __BCDF_H__
-#define __BCDF_H__
+#ifndef __MSXLIB_BCDF_H__
+#define __MSXLIB_BCDF_H__
 
 #include <msxlib/msxlib.h>
 

@@ -1,0 +1,6 @@
+test050.o: test050.c ../../include/msxlib/msxlib.h \
+  ../../include/msxlib/msxwork.h ../../include/msxlib/msxworkaddr.h \
+  ../../include/msxlib/msxbios.h ../../include/msxlib/msxbiosaddr.h \
+  ../../include/msxlib/msxdos.h ../../include/msxlib/fcb.h \
+  ../../include/msxlib/fib.h ../../include/msxlib/vdp.h \
+  ../../include/msxlib/kanji.h

@@ -1,5 +1,5 @@
-#ifndef __BFILE_H__
-#define __BFILE_H__
+#ifndef __MSXLIB_BFILE_H__
+#define __MSXLIB_BFILE_H__
 
 #include <stdio.h>
 #include <stdint.h>
