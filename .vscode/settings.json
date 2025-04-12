@@ -23,6 +23,8 @@
         "chrono": "cpp",
         "stdio.h": "c",
         "errno.h": "c",
-        "msxdos.h": "c"
+        "msxdos.h": "c",
+        "vdp.h": "c",
+        "bfile.h": "c"
     }
 }

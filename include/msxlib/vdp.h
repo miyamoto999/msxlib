@@ -158,6 +158,7 @@ typedef struct _reg_data_hmmc {
 
 /* HMMCのコマンド送信 */
 void __LIB__ msxvdp_hmmc_start(MSXVDP_REG_DATA_HMMC *reg_data) __smallc;
+
 /* HMMCの次のデータを送信 */
 BOOL __LIB__ msxvdp_hmmc_next(uint8_t data) __smallc;
 /* HMMCコマンドの実行 */

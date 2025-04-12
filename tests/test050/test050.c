@@ -45,18 +45,47 @@ static void test1()
 
 static void test2()
 {
+    BOOL errflag = FALSE;
+    int x,y;
+
     msxvdp_set_screen(7);
     msxvdp_set_color(15, 1, 1);
     msxvdp_cls();
 
-    for(int y = 0; y < 212; y++) {
-        for(int x = 0; x < 512; x+=2) {
+    for(y = 0; y < 212; y++) {
+        for(x = 0; x < 512; x+=2) {
             if(x == 0 && y == 0) {
-                msxvdp_poke(0, x);
+                msxvdp_poke(0, x+y);
             } else {
-                msxvdp_poke_next(x);
+                msxvdp_poke_next(x+y);
             }
         }
+    }    
+
+    for(y = 0; y < 212; y++) {
+        for(x = 0; x < 512; x+=2) {
+            if(x == 0 && y == 0) {
+                uint8_t data = msxvdp_peek(0);
+                if(data != 0) {
+                    errflag = TRUE;
+                    break;
+                }
+            } else {
+                uint8_t data = msxvdp_peek_next();
+                if(data != ((x+y) & 0xff)) {
+                    errflag = TRUE;
+                    break;
+                }
+            }
+        }
+        if(errflag) {
+            break;
+        }
+    }
+    if(errflag) {
+        msxvdp_set_screen(0);
+        printf("msxvdp_peek error(x:%d, y:%d)\n", x, y);
+        abort();
     }    
 }
 
