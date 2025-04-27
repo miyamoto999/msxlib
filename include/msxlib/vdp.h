@@ -83,10 +83,23 @@ uint8_t __LIB__ msxvdp_peek(uint32_t addr) __smallc;
 /* 次のデータをVRAMから読み込む */
 #define msxvdp_peek_next()  inp(MSXVDP_READ_PORT_0)
 
+/* VRAMにブロックデータを書き込む */
+void __LIB__ msxvdp_write(uint32_t addr, uint8_t *data, uint16_t size) __smallc;
+/* VRAMにブロックデータを書き込む(つづき) */
+void __LIB__ msxvdp_write_next(uint8_t *data, uint16_t size) __smallc;
+/* VRAMからブロックデータを読み込む */
+void __LIB__ msxvdp_read(uint32_t addr, uint8_t *data, uint16_t size) __smallc;
+/* VRAMからブロックデータを読み込む(つづき) */
+void __LIB__ msxvdp_read_next(uint8_t *data, uint16_t size) __smallc;
+
 /* ステータスレジスタの読み込み */
 uint8_t __LIB__ msxvdp_get_status(uint8_t st_reg) __smallc;
 /* ステータスレジスタの読み込み(割り込み禁止を行わない) */
 uint8_t __LIB__ msxvdp_get_status_ndi(uint8_t st_reg) __smallc;
+
+/* SCREEN 7の表示ページを変更する。 */
+void __LIB__ msxvdp_setpage_sc7(uint8_t page) __smallc;
+
 
 #if defined(__MSXDOS__)
 #define msxvdp_init()  msxvdp_dos_init()

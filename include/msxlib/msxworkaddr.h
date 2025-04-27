@@ -43,3 +43,5 @@
 #define	MSXWORK_JIFFY	0xfc9e
 #define	MSXWORK_EXTBIO	0xffca
 #define	MSXWORK_FCALL	MSXWORK_EXTBIO
+#define	MSXWORK_DPPAGE	0xfaf5
+#define	MSXWORK_ACPAGE	0xfaf6

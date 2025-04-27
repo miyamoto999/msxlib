@@ -12,8 +12,13 @@ with open(input_file, "r") as f_in, open(output_file, "w") as f_out:
     for line in f_in:
         line = line.strip()
         tokens = line.split()
-        if len(tokens) >= 3 and tokens[1].lower() == "equ":
+        symbol = ""
+        if len(tokens) >= 3 and tokens[1].strip().lower() == "equ":
             symbol = tokens[0].strip().rstrip(":")
             value = tokens[2].strip()
+        elif len(tokens) >= 4 and tokens[0].strip() == "defc" and tokens[2].strip() == "=":
+            symbol = tokens[1].strip()
+            value = tokens[3].strip()
+        if symbol != "":
             line = "#define\t" + symbol + "\t" + value
             f_out.write(line + "\n")

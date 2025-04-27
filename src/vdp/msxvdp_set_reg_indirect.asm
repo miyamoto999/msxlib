@@ -3,7 +3,7 @@
 
     SECTION code_user
     PUBLIC msxvdp_set_reg_indirect, _msxvdp_set_reg_indirect, ___msxvdp_set_reg_indirect
-    GLOBAL _g_msxvdp_write_port_1, _g_msxvdp_write_port_2, _g_msxvdp_reg_saves
+    GLOBAL _g_msxvdp_write_port_1, _g_msxvdp_write_port_2
 
 ; /* 間接指定のVDPレジスタ番号を設定する。　*/
 ; void __LIB__ msxvdp_set_reg_indirect(uint8_t reg) __smallc;

@@ -11,10 +11,12 @@
     PUBLIC _msxvdp_set_reg_ndi
     PUBLIC ___msxvdp_set_reg_ndi
 
-    GLOBAL _g_msxvdp_write_port_1, _g_msxvdp_write_port_2, _g_msxvdp_reg_saves
+    GLOBAL _g_msxvdp_write_port_1, _g_msxvdp_write_port_2
 
 
 ; void vdp_set_reg(uint8_t reg, uint8_t val);
+; VDPレジスタとワークエリアに値を設定する
+; ※ 内部で割り込み禁止、解除を行っている
 ;
 ;   SP+2 val
 ;   SP+4 reg
@@ -42,31 +44,59 @@ ___msxvdp_set_reg:
     ei
     
 FUNC_EXIT:
-    ; 28以上のレジスタは保存しない
+    ; jp set_reg_workarea
+    ; ret
+
+; VDPレジスタ値のワークエリアに値を設定する
+;
+; 入力
+;    b <- VDPレジスタ番号
+;    d <- VDPレジスタの値
+; 破壊レジスタ
+;   a,f,b,c,e,h,l
+set_reg_workarea:
     ld a,b
-    cp 27
-    jp P,L_SKIP
-
-    ; 値保存用のアドレスを計算する。
-    sla b
-    ld c,b
     ld b,0
-    ld hl,_g_msxvdp_reg_saves
+    ; 8以上なら次
+    cp 8
+    jp P, NEXT1
+    ld hl,MSXWORK_RG0SAV
+    jr SET_WORKAREA
+NEXT1:
+    ; 24以上なら次
+    cp 24
+    jp P, NEXT2
+    ld hl,MSXWORK_RG8SAV
+    ld e,-8
+    add a,e
+    jr SET_WORKAREA
+NEXT2:
+    ; 28以上なら終了
+    cp 28
+    jp P, NOT_SET_RET
+    ; 24でも終了
+    cp 24
+    jp z, NOT_SET_RET
+    ld hl,MSXWORK_RG25SAV
+    ld e,-25
+    add a,e
+SET_WORKAREA:
+    ld c,a
     add hl,bc
+    ld (hl),d
 
-    ld c,(hl)
-    inc hl
-    ld b,(hl)
+    xor a
+    inc a
+    ret
 
-    ld a,d
-    ld (bc),a
-
-L_SKIP:
-
+NOT_SET_RET:
+    xor a
     ret
 
 
 ; void vdp_set_reg_ndi(uint8_t reg, uint8_t val);
+; VDPレジスタとワークエリアに値を設定する。
+; ※ 割り込み禁止を行わないバージョン
 ;
 ;   SP+2 val
 ;   SP+4 reg

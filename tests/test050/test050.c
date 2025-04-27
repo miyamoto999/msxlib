@@ -7,6 +7,8 @@
 #include <stdio.h>
 #include <assert.h>
 
+static uint8_t buf[256];
+
 static void test1()
 {
     uint8_t data;
@@ -84,7 +86,120 @@ static void test2()
     }
     if(errflag) {
         msxvdp_set_screen(0);
-        printf("msxvdp_peek error(x:%d, y:%d)\n", x, y);
+        printf("test2:msxvdp_peek error(x:%d, y:%d)\n", x, y);
+        abort();
+    }    
+}
+
+static void test3()
+{
+    int x,y;
+    BOOL errflag = FALSE;
+
+    msxvdp_set_screen(7);
+    msxvdp_set_color(15, 1, 1);
+    msxvdp_cls();
+
+    for(y = 0; y < 212; y++) {
+        for(x = 0; x < 512; x+=2) {
+            buf[x/2] = x - y;
+        }
+        if(y == 0) {
+            msxvdp_write(0, buf, 256);
+        } else {
+            msxvdp_write_next(buf, 256);
+        }
+    }
+    for(y = 0; y < 212; y++) {
+        if(y == 0) {
+            msxvdp_read(0, buf, 256);
+        } else {
+            msxvdp_read_next(buf, 256);
+        }
+        for(x = 0; x < 512; x+=2) {
+            if(buf[x/2] != ((x - y) & 0xff)) {
+                errflag = TRUE;
+                break;
+            }
+        }
+        if(errflag) {
+            break;
+        }
+    }
+    if(errflag) {
+        msxvdp_set_screen(0);
+        printf("test3:msxvdp_read error(x:%d, y:%d)\n", x, y);
+        abort();
+    }    
+}
+
+static void test4()
+{
+    int x,y;
+    BOOL errflag = FALSE;
+
+    msxvdp_set_screen(7);
+    msxvdp_set_color(15, 1, 1);
+    msxvdp_cls();
+
+    for(x = 0; x < 512; x+=2) {
+        buf[x/2] = x;
+    }
+    for(y = 0; y < 212; y++) {
+        msxvdp_write((long)y * 256, buf, 256);
+    }
+    for(y = 0; y < 212; y++) {
+        msxvdp_read((long)y * 256, buf, 256);
+        for(x = 0; x < 512; x+=2) {
+            if(buf[x/2] != (x & 0xff)) {
+                errflag = TRUE;
+                break;
+            }
+        }
+        if(errflag) {
+            break;
+        }
+    }
+    if(errflag) {
+        msxvdp_set_screen(0);
+        printf("test4:msxvdp_read error(x:%d, y:%d)\n", x, y);
+        abort();
+    }    
+}
+
+static void test5()
+{
+    int x,y;
+    BOOL errflag = FALSE;
+
+    msxvdp_set_screen(7);
+    msxvdp_setpage_sc7(0);
+    msxvdp_cls();
+    msxvdp_setpage_sc7(1);
+    msxvdp_set_color(15, 1, 1);
+    msxvdp_cls();
+
+    for(x = 0; x < 512; x+=2) {
+        buf[x/2] = x;
+    }
+    for(y = 0; y < 212; y++) {
+        msxvdp_write((long)y * 256 + 0x10000, buf, 256);
+    }
+    for(y = 0; y < 212; y++) {
+        msxvdp_read((long)y * 256 + 0x10000, buf, 256);
+        for(x = 0; x < 512; x+=2) {
+            if(buf[x/2] != (x & 0xff)) {
+                errflag = TRUE;
+                break;
+            }
+        }
+        if(errflag) {
+            break;
+        }
+    }
+    if(errflag) {
+        msxvdp_set_screen(0);
+        printf("test5:msxvdp_read error(x:%d, y:%d)\n", x, y);
         abort();
     }    
 }
@@ -92,7 +207,7 @@ static void test2()
 int main(void) 
 {
     msxvdp_init();
-    uint8_t test1_jiffy, test2_jiffy;
+    uint16_t test1_jiffy, test2_jiffy, test3_jiffy, test4_jiffy, test5_jiffy;
 
     if(msx_chk_knjdrv()) {
         msx_set_knjmode(0);
@@ -110,10 +225,31 @@ int main(void)
     msxvdp_draw_string(0, 212-8, "Hit any key", 0);
     while(!dos1_dirio(0xff)){}
 
+    test3_jiffy = MSXWORK_JIFFY_VAL;
+    test3();
+    test3_jiffy = MSXWORK_JIFFY_VAL - test3_jiffy;
+    msxvdp_draw_string(0, 212-8, "Hit any key", 0);
+    while(!dos1_dirio(0xff)){}
+
+    test4_jiffy = MSXWORK_JIFFY_VAL;
+    test4();
+    test4_jiffy = MSXWORK_JIFFY_VAL - test4_jiffy;
+    msxvdp_draw_string(0, 212-8, "Hit any key", 0);
+    while(!dos1_dirio(0xff)){}
+
+    test5_jiffy = MSXWORK_JIFFY_VAL;
+    test5();
+    test5_jiffy = MSXWORK_JIFFY_VAL - test5_jiffy;
+    msxvdp_draw_string(0, 212-8, "Hit any key", 0);
+    while(!dos1_dirio(0xff)){}
+
     msxvdp_set_screen(0);
 
-    printf("test1: %d jiffies\n", test1_jiffy);
-    printf("test2: %d jiffies\n", test2_jiffy);
+    printf("test1: %u jiffies\n", test1_jiffy);
+    printf("test2: %u jiffies\n", test2_jiffy);
+    printf("test3: %u jiffies\n", test3_jiffy);
+    printf("test4: %u jiffies\n", test4_jiffy);
+    printf("test5: %u jiffies\n", test5_jiffy);
 
     return 0;
 }
