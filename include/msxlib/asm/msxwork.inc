@@ -103,3 +103,8 @@ MSXWORK_JIFFY       equ     0xfc9e
 ; 拡張BIOS呼び出し
 MSXWORK_EXTBIO      equ     0xffca
 MSXWORK_FCALL       equ     MSXWORK_EXTBIO
+
+; ディスプレイページ番号
+MSXWORK_DPPAGE      equ     0xfaf5
+; アクティブページ番号
+MSXWORK_ACPAGE      equ     0xfaf6

@@ -37,6 +37,11 @@
 /* JIFFY システムカウンタ(PLAY文が内部で使用する) */
 #define MSXWORK_JIFFY_VAL   *((uint16_t *)(MSXWORK_JIFFY))
 
+/* DPPAGE ディスプレイページ番号 */
+#define MSXWORK_DPPAGE_VAL  *((uint8_t *)(MSXWORK_DPPAGE))
+/* ACPAGE アクティブページ番号 */
+#define MSXWORK_ACPAGE_VAL  *((uint8_t *)(MSXWORK_ACPAGE))
+
 /* マシン語領域 */
 #define MSXWORK_HIMEM_VAL   *((uint16_t *)(MSXWORK_HIMEM))
 /* ファイルコントロールブロック */

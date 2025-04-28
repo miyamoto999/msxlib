@@ -4,6 +4,9 @@
 #define	MSXWORK_FORCLR	0xf3e9
 #define	MSXWORK_BAKCLR	0xf3ea
 #define	MSXWORK_BDRCLR	0xf3eb
+#define	MSXWORK_HIMEM	0xfc4a
+#define	MSXWORK_MEMSIZ	0xf672
+#define	MSXWORK_STKTOP	0xf674
 #define	MSXWORK_H_NMI	0xfdd6
 #define	MSXWORK_RG0SAV	0xf3df
 #define	MSXWORK_RG1SAV	0xf3e0
@@ -44,7 +47,5 @@
 #define	MSXWORK_JIFFY	0xfc9e
 #define	MSXWORK_EXTBIO	0xffca
 #define	MSXWORK_FCALL	MSXWORK_EXTBIO
-
-#define MSXWORK_HIMEM   0xfc4a
-#define MSXWORK_MEMSIZ  0xf672
-#define MSXWORK_STKTOP  0xf674
+#define	MSXWORK_DPPAGE	0xfaf5
+#define	MSXWORK_ACPAGE	0xfaf6

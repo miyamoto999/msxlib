@@ -1,5 +1,6 @@
 #include <stdint.h>
 
+/* ASCIIコード => 漢字コード変換テーブル */
 const uint16_t g_msxvdp_ascii2knjcode[] = {
 /*                 月　　　　火      水　　　　木　　　　金      土      日      年       円      時       分      秒      百       千      万   */
 /* 0 */    0x2121, 0x376E, 0x3250, 0x3F65, 0x4C5A, 0x3662, 0x455A, 0x467C, 0x472F, 0x315F, 0x3B7E, 0x4A2C, 0x4943, 0x4934, 0x4069, 0x4B7C ,
