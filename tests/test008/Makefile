@@ -1,32 +1,21 @@
+include ../inc/Makefile1.inc
+
 TARGET=test008.com
-LD=z88dk-z80asm
-AS=z88dk-z80asm
-CC=zcc
-OBJS=test008.o
-CFLAGS_INC=-I../../include -D__MSXDOS__=2
-# CFLAGS=+msx -subtype=msxdos2
-CFLAGS=+msx -subtype=msxdos2 -compiler=sdcc
-ASCONFIGS=$(CFLAGS_INC)
+C_SRCS=$(wildcard *.c)
+ASM_SRCS=$(wildcard *.asm)
 
-all:$(TARGET)
+all:$(TARGET_DOS1)
 
-$(TARGET):$(OBJS) ../../libs/msxlib.lib ../../libs/iot.lib
-	$(CC) $(CFLAGS) -create-app -m -o $(TARGET) $(OBJS) -L../../libs -lmsxlib -liot
-
-.SUFFIXES: .asm .o
-.asm.o:
-	$(AS) $(ASCONFIGS) $<
-
-.SUFFIXES: .c .o
-.c.o:
-	$(CC) $(CFLAGS) $(CFLAGS_INC) -O -vn -c $<
+$(TARGET_DOS1):$(DOS1_DIR) $(OBJS_DOS1) ../../libs/msxlib.lib ../../libs/iot.lib
+	$(CC) $(CFLAGS_DOS1) -create-app -m -o $(TARGET_DOS1) $(OBJS_DOS1) $(LDCONFIG) -lmsxlib -liot
 
 clean:
-	rm -f $(OBJS) $(TARGET) *.c.asm *.map *.img
+	rm -rf *.c.asm *.map *.img $(DOS1_DIR) $(DOS2_DIR) $(DISK1_DIR) $(DISK2_DIR)
 
 depend:
-	gcc $(CFLAGS_INC) -E -MM -w *.c > depends
+	gcc $(CFLAGS_INC_DOS1) -E -MM -w *.c > depends
 
 tests:
 
+include ../inc/Makefile2.inc
 -include depends

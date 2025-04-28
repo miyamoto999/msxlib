@@ -10,7 +10,9 @@
 
 static char buf[128];
 
+/*
 long heap;
+*/
 
 static int test1(void)
 {
@@ -32,12 +34,14 @@ static int test1(void)
 
 int main(void)
 {
+/*
     mallinit();
 #ifdef __DSKBAS__
     sbrk((void*)0xc000, 1024); 
 #else
     sbrk((void*)0x8000, 8 * 1024); 
 #endif
+*/
 #ifndef __DSKBAS__
     dos_scode(1);
 #endif

@@ -5,6 +5,7 @@
     PUBLIC dos1_fopen
     PUBLIC _dos1_fopen
     PUBLIC ___dos1_fopen
+    EXTERN msxlib_doscall
 
 
 ; /* ファイルオープン */
@@ -20,4 +21,4 @@ ___dos1_fopen:
     ld d,(hl)
 
     ld c,_FOPEN
-    jp BDOS
+    jp msxlib_doscall

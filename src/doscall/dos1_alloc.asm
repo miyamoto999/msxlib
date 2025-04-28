@@ -5,6 +5,7 @@
     PUBLIC dos1_alloc
     PUBLIC _dos1_alloc
     PUBLIC ___dos1_alloc
+    EXTERN msxlib_doscall
 
 ; /* アロケーション情報の取得 */
 ; void dos1_alloc(uint8_t drv_num, uint8_t *sec, uint16_t *sec_size, uint16_t *cluster, uint16_t *unused_cluster, uint16_t *dpb_pointer, uint16_t *fat_pointer);
@@ -27,7 +28,7 @@ ___dos1_alloc:
 
     ld e,(hl)
     ld c,_ALLOC
-    call BDOS
+    call msxlib_doscall
 
     ; 各レジスタをバックアップ
     ld (REG_IX),ix

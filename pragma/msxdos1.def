@@ -1,0 +1,2 @@
+#pragma redirect fputc_cons = fputc_cons_dos
+#pragma redirect fgetc_cons = fgetc_cons_dos

@@ -75,7 +75,7 @@ int16_t __LIB__ bfile_read_dsk2(BFILE_DOS2 *fp, void *buf, int16_t size) __small
 int32_t __LIB__ bfile_fseek_dsk2(BFILE_DOS2 *fp, int32_t offset, int whence) __smallc;
 BOOL __LIB__ bfile_flush_dsk2(BFILE_DOS2 *fp) __smallc;
 
-#if __MSXDOS__ == 1
+#if __MSXDOS__ == 1 || __DSKBAS__ == 1
 #define bfile_create(fname, size)      bfile_create_dos1(fname,size)
 #define bfile_write(fp, buf, size)   bfile_write_dos1(fp, buf, size)
 #define bfile_close(fp)         bfile_close_dos1(fp)
@@ -83,7 +83,7 @@ BOOL __LIB__ bfile_flush_dsk2(BFILE_DOS2 *fp) __smallc;
 #define bfile_read(fp, buf, size)              bfile_read_dos1(fp, buf, size)
 #define bfile_fseek(fp, offset, whence)         bfile_fseek_dos1(fp, offset, whence)
 #define bfile_flush(fp)                         bfile_flush_dos1(fp)
-#elif __MSXDOS__ == 2
+#elif __MSXDOS__ == 2 || __DSKBAS__ == 2
 #define bfile_create(fname, size)      bfile_create_dos2(fname,size)
 #define bfile_write(fp, buf, size)   bfile_write_dos2(fp, buf, size)
 #define bfile_close(fp)         bfile_close_dos2(fp)
@@ -91,22 +91,6 @@ BOOL __LIB__ bfile_flush_dsk2(BFILE_DOS2 *fp) __smallc;
 #define bfile_read(fp, buf, size)              bfile_read_dos2(fp, buf, size)
 #define bfile_fseek(fp, offset, whence)         bfile_fseek_dos2(fp, offset, whence)
 #define bfile_flush(fp)                         bfile_flush_dos2(fp)
-#elif __DSKBAS__ == 1
-#define bfile_create(fname, size)      bfile_create_dsk1(fname,size)
-#define bfile_write(fp, buf, size)   bfile_write_dsk1(fp, buf, size)
-#define bfile_close(fp)         bfile_close_dsk1(fp)
-#define bfile_open(filename, mode, buf_size)   bfile_open_dsk1(filename, mode, buf_size)
-#define bfile_read(fp, buf, size)              bfile_read_dsk1(fp, buf, size)
-#define bfile_fseek(fp, offset, whence)         bfile_fseek_dsk1(fp, offset, whence)
-#define bfile_flush(fp)                         bfile_flush_dsk1(fp)
-#elif __DSKBAS__ == 2
-#define bfile_create(fname, size)      bfile_create_dsk2(fname,size)
-#define bfile_write(fp, buf, size)   bfile_write_dsk2(fp, buf, size)
-#define bfile_close(fp)         bfile_close_dsk2(fp)
-#define bfile_open(filename, mode, buf_size)   bfile_open_dsk2(filename, mode, buf_size)
-#define bfile_read(fp, buf, size)              bfile_read_dsk2(fp, buf, size)
-#define bfile_fseek(fp, offset, whence)         bfile_fseek_dsk2(fp, offset, whence)
-#define bfile_flush(fp)                         bfile_flush_dsk2(fp)
 #endif
 
 #define bfile_error(fp)         (fp)->err

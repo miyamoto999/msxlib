@@ -5,6 +5,7 @@
     PUBLIC dos_scode
     PUBLIC _dos_scode
     PUBLIC ___dos_scode
+    EXTERN msxlib_doscall
 
 
 ; /* 自作Z80エミュレータ用に拡張した終了コードを設定するファンクションコール */
@@ -18,4 +19,4 @@ ___dos_scode:
 
     ld e,(hl)
     ld c,_SCODE
-    jp BDOS
+    jp msxlib_doscall

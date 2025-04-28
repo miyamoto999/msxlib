@@ -5,7 +5,7 @@
     PUBLIC dos2_write
     PUBLIC _dos2_write
     PUBLIC ___dos2_write
-
+    EXTERN msxlib_doscall
 
 ; /* ファイルハンドルへの書き込み */
 ; uint8_t dos2_write(uint8_t handle, void *buf, uint16_t count, uint16_t *bytes);
@@ -40,7 +40,7 @@ ___dos2_write:
     ld b,a
 
     ld c,_WRITE
-    call BDOS
+    call msxlib_doscall
 
     ex hl,de
 

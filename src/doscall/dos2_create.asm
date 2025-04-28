@@ -6,6 +6,7 @@
     PUBLIC dos2_create
     PUBLIC _dos2_create
     PUBLIC ___dos2_create
+    EXTERN msxlib_doscall
 
 
 ; /* ファイルハンドルの作成 */
@@ -33,7 +34,7 @@ ___dos2_create:
     ld d,(hl)
 
     ld c,_CREATE
-    call BDOS
+    call msxlib_doscall
 
     ld hl,2
     add hl,sp

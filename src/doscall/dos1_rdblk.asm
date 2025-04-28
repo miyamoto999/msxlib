@@ -5,6 +5,7 @@
     PUBLIC dos1_rdblk
     PUBLIC _dos1_rdblk
     PUBLIC ___dos1_rdblk
+    EXTERN msxlib_doscall
 
 
 ; /* ランダムブロック読み込み */
@@ -33,7 +34,7 @@ ___dos1_rdblk:
     ex hl,de
 
     ld c,_RDBLK
-    call BDOS
+    call msxlib_doscall
 
     ex hl,de
     ld b,a

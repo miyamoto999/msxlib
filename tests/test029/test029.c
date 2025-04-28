@@ -6,7 +6,6 @@
 #include <msxlib/msxdos.h>
 #include <msxlib/bfile.h>
 
-long heap;
 static void test1(void);
 
 const char *str_wday[] = {
@@ -21,9 +20,6 @@ const char *str_wday[] = {
 
 int main()
 {
-    mallinit();
-    sbrk((void*)0x8000, 8 * 1024);
-    
     dos_scode(1);
 
     test1();

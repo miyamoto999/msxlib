@@ -8,7 +8,9 @@
 
 static char buf[BUF_SIZE];
 
+/*
 long heap;
+*/
 
 static int test1(void)
 {
@@ -157,15 +159,15 @@ static int test3(void)
 
 int main(void)
 {
+/*
     mallinit();
 #ifdef __DSKBAS__
     sbrk((void*)0xc000, 1024); 
 #else
     sbrk((void*)0x8000, 8 * 1024); 
 #endif
-#ifndef __DSKBAS__
+*/
     dos_scode(1);
-#endif
 
 #if __DSKBAS__ == 1
     puts("DSKBAS1 Version");
@@ -183,9 +185,11 @@ int main(void)
     test2();
     test3();
 
-#ifndef __DSKBAS__
     dos_scode(0);
-#endif
+
+    MSX_FCB fcb;
+    msx_fcb_init(&fcb, TEST_FILENAME);
+    dos1_fdel(&fcb);
 
     return 0;
 }

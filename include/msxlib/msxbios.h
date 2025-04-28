@@ -33,6 +33,10 @@ void __LIB__ msxmain_dos_grpprt(char ch) __smallc;
 void __LIB__ msxmain_dct_chput(char ch) __smallc;
 void __LIB__ msxmain_dos_chput(char ch) __smallc;
 
+/* 文字を1文字入力する */
+char __LIB__ msxmain_dct_chget(void) __smallc;
+char __LIB__ msxmain_dos_chget(void) __smallc;
+
 /* パレットを初期化 */
 void __LIB__ msxsub_dct_iniplt(void) __smallc;
 void __LIB__ msxsub_dos_iniplt(void) __smallc;
@@ -71,6 +75,7 @@ void __LIB__ msxsub_dos_setplt(uint8_t pal, uint8_t r, uint8_t g, uint8_t b) __s
 #define msxsub_knjprt(mode,code)        msxsub_dos_knjprt(mode,code)
 #define msxsub_setplt(pal,r,g,b)        msxsub_dos_setplt(pal,r,g,b)
 #define msxmain_chput(ch)               msxmain_dos_chput(ch)
+#define msxmain_chget()                 msxmain_dos_chget()
 #else
 #define msxmain_snsmat(m)               msxmain_dct_snsmat(m)
 #define msxmain_kilbuf()                msxmain_dct_kilbuf()
@@ -85,6 +90,7 @@ void __LIB__ msxsub_dos_setplt(uint8_t pal, uint8_t r, uint8_t g, uint8_t b) __s
 #define msxsub_knjprt(mode, code)       msxsub_dct_knjprt(mode, code)
 #define msxsub_setplt(pal,r,g,b)        msxsub_dct_setplt(pal,r,g,b)
 #define msxmain_chput(ch)               msxmain_dct_chput(ch)
+#define msxmain_chget()                 msxmain_dct_chget()
 #endif
 
 #endif

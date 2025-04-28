@@ -1,4 +1,5 @@
-hello.o: hello.c
+hello.o: hello.c ../../include/msxlib/msxlib.h \
+  ../../include/msxlib/msxbios.h ../../include/msxlib/msxbiosaddr.h
 testXX.o: testXX.c ../../include/msxlib/msxdos.h \
   ../../include/msxlib/msxlib.h ../../include/msxlib/fcb.h \
   ../../include/msxlib/fib.h

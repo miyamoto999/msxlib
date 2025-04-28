@@ -5,6 +5,7 @@
     PUBLIC dos1_fmake
     PUBLIC _dos1_fmake
     PUBLIC ___dos1_fmake
+    EXTERN msxlib_doscall
 
 
 ; /* ファイルの作成 */
@@ -20,4 +21,4 @@ ___dos1_fmake:
     ld d,(hl)
 
     ld c,_FMAKE
-    jp BDOS
+    jp msxlib_doscall

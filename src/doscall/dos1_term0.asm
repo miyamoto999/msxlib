@@ -5,6 +5,7 @@
     PUBLIC dos1_term0
     PUBLIC _dos1_term0
     PUBLIC ___dos1_term0
+    EXTERN msxlib_doscall
 
 
 ; /* プログラムの終了 */
@@ -13,4 +14,4 @@ dos1_term0:
 _dos1_term0:
 ___dos1_term0:
     ld c,_TERM0
-    jp BDOS
+    jp msxlib_doscall

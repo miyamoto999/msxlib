@@ -5,6 +5,7 @@
     PUBLIC dos2_defer
     PUBLIC _dos2_defer
     PUBLIC ___dos2_defer
+    EXTERN msxlib_doscall
 
 
 ; /* ディスクエラー処理ルーチンの定義 */
@@ -30,7 +31,7 @@ ___dos2_defer:
     ld de,dsker_routine
 cancel:
     ld c,_DEFER
-    call BDOS
+    call msxlib_doscall
 
     ret
 ;;

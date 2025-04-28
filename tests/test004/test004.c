@@ -6,7 +6,9 @@
 #include <msxlib/msxdos.h>
 #include <msxlib/rbuf.h>
 
+/*
 long heap;
+*/
 
 char buf[2048];
 
@@ -171,9 +173,10 @@ void test4(void)
 
 int main(void)
 {
+/*    
     mallinit();
-    sbrk((void*)0x8000, 16 * 1024); 
-
+    sbrk((void*)0xa000, 3 * 1024); 
+*/
     dos_scode(1);
 
     test1();

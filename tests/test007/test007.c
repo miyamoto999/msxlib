@@ -5,7 +5,9 @@
 #include <msxlib/bfile.h>
 #include "fcomp.h"
 
+/*
 long heap;
+*/
 
 #define BUF_SIZE    1024
 #define FILE_BUF_SIZE   2048
@@ -144,9 +146,10 @@ int main(void)
 {
     MSX_FCB fcb;
 
+/*
     mallinit();
     sbrk((void*)0x8000,16 * 1024); 
-
+*/
     srand((unsigned int)time(NULL));
 
     dos_scode(1);

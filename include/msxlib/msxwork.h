@@ -37,4 +37,11 @@
 /* JIFFY システムカウンタ(PLAY文が内部で使用する) */
 #define MSXWORK_JIFFY_VAL   *((uint16_t *)(MSXWORK_JIFFY))
 
+/* マシン語領域 */
+#define MSXWORK_HIMEM_VAL   *((uint16_t *)(MSXWORK_HIMEM))
+/* ファイルコントロールブロック */
+#define MSXWORK_MEMSIZ_VAL  *((uint16_t *)(MSXWORK_MEMSIZ))
+/* 文字列領域 */
+#define MSXWORK_STKTOP_VAL  *((uint16_t *)(MSXWORK_STKTOP))
+
 #endif

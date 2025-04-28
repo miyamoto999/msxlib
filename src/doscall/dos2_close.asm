@@ -5,6 +5,7 @@
     PUBLIC dos2_close
     PUBLIC _dos2_close
     PUBLIC __dos2_close
+    EXTERN msxlib_doscall
 
 
 ; /* ファイルハンドルのクローズ */
@@ -18,7 +19,7 @@ __dos2_close:
     ld b,(hl)
 
     ld c,_CLOSE
-    call BDOS
+    call msxlib_doscall
 
     ld l,a
     

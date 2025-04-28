@@ -5,6 +5,7 @@
     PUBLIC dos1_snext
     PUBLIC _dos1_snext
     PUBLIC ___dos1_snext
+    EXTERN msxlib_doscall
 
 ; /* 次のエントリの検索(FCB) */
 ; uint8_t __LIB__ dos1_snext(void) __smallc;
@@ -14,4 +15,4 @@ _dos1_snext:
 ___dos1_snext:
 
     ld c,_SNEXT
-    jp BDOS
+    jp msxlib_doscall

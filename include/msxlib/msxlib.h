@@ -3,18 +3,6 @@
 
 #include <stdint.h>
 
-#ifdef __MSXDOS_MSXDOS1
-#ifndef __MSXDOS__
-#define __MSXDOS__  1
-#endif
-#endif
-
-#ifdef __MSXDOS_MSXDOS2
-#ifndef __MSXDOS__
-#define __MSXDOS__  2
-#endif
-#endif
-
 #ifndef BOOL
 #define BOOL    char
 #endif
@@ -69,5 +57,7 @@ int __LIB__ pre_printf_sdcc(const char *fmt, ...) __z88dk_sdccdecl;
 #else
 #define pre_printf(...)     pre_printf_sdcc(__VA_ARGS__)
 #endif
+
+uint16_t __LIB__ msx_get_reg_sp(void) __smallc;
 
 #endif

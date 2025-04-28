@@ -5,13 +5,8 @@
 #include <msxlib/msxlib.h>
 #include <msxlib/msxdos.h>
 
-long heap;
-
 int main()
-{
-    mallinit();
-    sbrk((void*)0x8000, 8 * 1024); 
-    
+{    
     uint8_t sec;
     uint16_t sec_size, cluster, unused_cluster;
     uint8_t *dpb_pointer, *fat_pointer;

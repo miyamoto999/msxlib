@@ -6,7 +6,10 @@
 #include <msxlib/msxdos.h>
 #include <msxlib/bfile.h>
 
+/*
 long heap;
+*/
+
 
 #define TEST_FILE   "test.bin"
 #define RECORD_SIZE 128
@@ -16,8 +19,10 @@ void fcb_set(MSX_FCB *fcb, uint16_t ext_num, uint8_t cur_rec);
 
 int main()
 {
+/*
     mallinit();
     sbrk((void*)0x8000, 8 * 1024);
+*/
     
     dos_scode(1);
 

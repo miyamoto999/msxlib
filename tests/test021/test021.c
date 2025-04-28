@@ -11,7 +11,9 @@
 #define TEST_FILE   "test.bin"
 static char buf[BUF_SIZE];
 
+/*
 long heap;
+*/
 
 int main()
 {
@@ -20,8 +22,10 @@ int main()
     int size;
     int8_t ret;
 
+/*
     mallinit();
     sbrk((void*)0x8000, 8 * 1024); 
+*/
 
     dos_scode(1);
 

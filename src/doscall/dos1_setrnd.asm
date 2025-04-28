@@ -5,6 +5,7 @@
     PUBLIC dos1_setrnd
     PUBLIC _dos1_setrnd
     PUBLIC ___dos1_setrnd
+    EXTERN msxlib_doscall
 
 
 ; /* ランダムレコードの設定[FCB] */
@@ -20,4 +21,4 @@ ___dos1_setrnd:
     ld d,(hl)
 
     ld c,_SETRND
-    jp BDOS
+    jp msxlib_doscall

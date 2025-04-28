@@ -5,6 +5,7 @@
     PUBLIC dos1_rdseq
     PUBLIC _dos1_rdseq
     PUBLIC ___dos1_rdseq
+    EXTERN msxlib_doscall
 
 
 ; /* シーケンシャル読み込み(FCB) */
@@ -21,4 +22,4 @@ ___dos1_rdseq:
     ld d,(hl)
 
     ld c,_RDSEQ
-    jp BDOS
+    jp msxlib_doscall

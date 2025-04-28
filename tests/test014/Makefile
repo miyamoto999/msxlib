@@ -1,33 +1,36 @@
+include ../inc/Makefile1.inc
+
 TARGET=test014.com
-LD=z88dk-z80asm
-AS=z88dk-z80asm
-CC=zcc
-OBJS=test014.o
-CFLAGS_INC=-I../../include -D__MSXDOS__=2
-# CFLAGS=+msx -subtype=msxdos2
-CFLAGS=+msx -subtype=msxdos2 -compiler=sdcc
-ASCONFIGS=$(CFLAGS_INC)
+C_SRCS=$(wildcard *.c)
+ASM_SRCS=$(wildcard *.asm)
 
-all:$(TARGET)
+SDCC1_DIR=./sdcc1
+TARGET_SDCC1=$(SDCC1_DIR)/$(TARGET)
+OBJS_SDCC1=$(patsubst %.c, $(SDCC1_DIR)/%.o, $(C_SRCS)) $(patsubst %.asm, $(DOS1_DIR)/%.o, $(ASM_SRCS))
+CFLAGS_INC_SDCC1=-I../../include -I../common -D__MSXDOS__=1
+CFLAGS_SDCC1=+msx -subtype=msxdos -compiler=sdcc -create-app -m -pragma-include:../../pragma/msxdos1.def
 
-$(TARGET):$(OBJS) ../../libs/bios.lib ../../libs/doscall.lib ../../libs/msxlib.lib
-	$(CC) $(CFLAGS) -create-app -m -o $(TARGET) $(OBJS) -L../../libs -lbios -ldoscall -lmsxlib
+all:$(TARGET_DOS1) $(TARGET_SDCC1)
 
-.SUFFIXES: .asm .o
-.asm.o:
-	$(AS) $(ASCONFIGS) $<
+$(TARGET_DOS1):$(DOS1_DIR) $(OBJS_DOS1) ../../libs/bios.lib ../../libs/doscall.lib ../../libs/msxlib.lib
+	$(CC) $(CFLAGS_DOS1) $(CFLAGS_INC_DOS1) -create-app -m -o $(TARGET_DOS1) $(OBJS_DOS1) -L../../libs -lbios -ldoscall -lmsxlib
 
-.SUFFIXES: .c .o
-.c.o:
-	$(CC) $(CFLAGS) $(CFLAGS_INC) -O -vn -c $<
-#	$(CC) $(CFLAGS) $(CFLAGS_INC) -O -vn -S $<
+$(TARGET_SDCC1):$(SDCC1_DIR) $(OBJS_SDCC1) ../../libs/bios.lib ../../libs/doscall.lib ../../libs/msxlib.lib
+	$(CC) $(CFLAGS_SDCC1) $(CFLAGS_INC_SDCC1) -create-app -m -o $(TARGET_SDCC1) $(OBJS_SDCC1) -L../../libs -lbios -ldoscall -lmsxlib
+
+$(SDCC1_DIR):
+	mkdir -p $(SDCC1_DIR)
+
+$(SDCC1_DIR)/%.o:%.c
+	$(CC) $(CFLAGS_SDCC1) $(CFLAGS_INC_SDCC1) -vn -o $@ -c $<
 
 clean:
-	rm -f $(OBJS) $(TARGET) *.c.asm *.map *.img *.msx
+	rm -rf *.c.asm *.map *.img $(DOS1_DIR) $(DOS2_DIR) $(DISK1_DIR) $(DISK2_DIR) $(SDCC1_DIR)
 
 depend:
-	gcc $(CFLAGS_INC) -E -MM -w *.c > depends
+	gcc $(CFLAGS_INC_DOS1) -E -MM -w *.c > depends
 
 tests:
 
+include ../inc/Makefile2.inc
 -include depends

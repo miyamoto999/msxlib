@@ -5,6 +5,7 @@
     PUBLIC dos1_setdta
     PUBLIC _dos1_setdta
     PUBLIC ___dos1_setdta
+    EXTERN msxlib_doscall
 
 
 ; /* ディスク転送アドレスのセット */
@@ -21,4 +22,4 @@ ___dos1_setdta:
     ld d,(hl)
 
     ld c, _SETDTA
-    jp BDOS
+    jp msxlib_doscall

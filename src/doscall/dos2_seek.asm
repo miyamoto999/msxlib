@@ -4,6 +4,7 @@
     PUBLIC dos2_seek
     PUBLIC _dos2_seek
     PUBLIC ___dos2_seek
+    EXTERN msxlib_doscall
 
 
 ; /* ファイルハンドルポインタの移動 */
@@ -45,7 +46,7 @@ ___dos2_seek:
     pop hl
 
     ld c,_SEEK
-    call BDOS
+    call msxlib_doscall
 
     ; posにセット
     ld b,h

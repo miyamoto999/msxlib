@@ -9,13 +9,16 @@
 
 #define BUF_SIZE    200
 char buf[BUF_SIZE + 1];
+/*
 long heap;
+*/
 
 int main(int argc, char *argv[])
 {
+/*
     mallinit();
     sbrk((void*)0x8000,16 * 1024);
-
+*/
     RBUF *rbuf; 
 
     net_init();

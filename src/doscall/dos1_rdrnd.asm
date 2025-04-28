@@ -5,6 +5,7 @@
     PUBLIC dos1_rdrnd
     PUBLIC _dos1_rdrnd
     PUBLIC ___dos1_rdrnd
+    EXTERN msxlib_doscall
 
 ; /* ランダム読み出し(FCB) */
 ; uint8_t dos1_rdrnd(void *fcb) __smallc;
@@ -19,4 +20,4 @@ ___dos1_rdrnd:
     ld d,(hl)
 
     ld c,_RDRND
-    jp BDOS
+    jp msxlib_doscall

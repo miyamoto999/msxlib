@@ -5,6 +5,7 @@
     PUBLIC dos1_verify
     PUBLIC _dos1_verify
     PUBLIC ___dos1_verify
+    EXTERN msxlib_doscall
 
 
 ; /* ベリファイフラグのセット・リセット */
@@ -18,4 +19,4 @@ ___dos1_verify:
     ld e,(hl)
 
     ld c,_VERIFY
-    jp BDOS
+    jp msxlib_doscall

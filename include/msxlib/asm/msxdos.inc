@@ -1,5 +1,9 @@
-BDOS:       equ     0x0005      ; BDOSコールのアドレス
-BDOS_DSK:   equ     0xf37d      ; BDISコール(DISK BASIC時)のアドレス
+ExTERN __bdos
+
+BDOS:       equ     __bdos
+
+;BDOS:       equ     0x0005      ; BDOSコールのアドレス
+;BDOS_DSK:   equ     0xf37d      ; BDISコール(DISK BASIC時)のアドレス
 WBOOT:	    equ 	0x0000      ; WBOOTのアドレス
 DMA:	    equ     0x0080      ; デフォルトのDMAアドレス
 DTA:	    equ     DMA         ; デフォルトのDMAアドレス

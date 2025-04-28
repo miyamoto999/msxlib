@@ -5,6 +5,7 @@
     PUBLIC dos1_const
     PUBLIC _dos1_const
     PUBLIC ___dos1_const
+    EXTERN msxlib_doscall
 
 
 ; /* コンソールステータス */
@@ -13,4 +14,4 @@ dos1_const:
 _dos1_const:
 ___dos1_const:
     ld c,_CONST
-    jp BDOS
+    jp msxlib_doscall

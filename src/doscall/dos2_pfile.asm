@@ -5,6 +5,7 @@
     PUBLIC dos2_pfile
     PUBLIC _dos2_pfile
     PUBLIC ___dos2_pfile
+    EXTERN msxlib_doscall
 
 
 ; /* ファイル名の解析 */
@@ -28,7 +29,7 @@ ___dos2_pfile:
     ex hl,de
 
     ld c,_PFILE
-    call BDOS
+    call msxlib_doscall
 
     ld hl,2
     add hl,sp

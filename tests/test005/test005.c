@@ -165,6 +165,8 @@ void test12(void)
 
 int main(void)
 {
+    dos_scode(1);
+
     test1();
     test2();
     test3();
@@ -178,6 +180,8 @@ int main(void)
     test11();
     test12();
 
+    dos_scode(0);
+    
     return 0;
 }
 

@@ -5,6 +5,7 @@
     PUBLIC dos1_fren
     PUBLIC _dos1_fren
     PUBLIC ___dos1_fren
+    EXTERN msxlib_doscall
 
 
 ; /* ファイル名の変更(FCB) */
@@ -20,4 +21,4 @@ ___dos1_fren:
     ld d,(hl)
 
     ld c,_FREN
-    jp BDOS
+    jp msxlib_doscall

@@ -5,6 +5,7 @@
     PUBLIC dos2_ffirst
     PUBLIC _dos2_ffirst
     PUBLIC ___dos2_ffirst
+    EXTERN msxlib_doscall
 
 
 ; /* 最初のエントリの検索 */
@@ -53,7 +54,7 @@ ___dos2_ffirst:
     ld b,a
 
     ld c,_FFIRST
-    call BDOS
+    call msxlib_doscall
     pop ix
 
     ld l,a

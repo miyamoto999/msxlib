@@ -10,7 +10,9 @@
 
 static char buf[BUF_SIZE];
 
+/*
 long heap;
+*/
 
 static void make_testfile1(void)
 {
@@ -66,14 +68,23 @@ static int test2(void)
 
 int main(void)
 {
+/*
     mallinit();
     sbrk((void*)0x8000, 8 * 1024); 
-
+*/
+    MSX_FCB fcb;
     uint16_t addr = *((uint16_t *)0x0006);
+
+    dos_scode(1);
 
     make_testfile1();
     test1();
     test2();
+
+    dos_scode(0);
+
+    msx_fcb_init(&fcb, TEST_FILENAME);
+    dos1_fdel(&fcb);
 
     return 0;
 }

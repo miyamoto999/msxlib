@@ -5,6 +5,7 @@
     PUBLIC dos1_conout
     PUBLIC _dos1_conout
     PUBLIC ___dos1_conout
+    EXTERN msxlib_doscall
 
 
 ; /* コンソールに1文字出力する */
@@ -18,4 +19,4 @@ ___dos1_conout:
     ld e,(hl)
     
     ld c,_CONOUT
-    jp BDOS
+    jp msxlib_doscall

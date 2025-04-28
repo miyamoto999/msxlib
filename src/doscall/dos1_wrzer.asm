@@ -5,6 +5,7 @@
     PUBLIC dos1_wrzer
     PUBLIC _dos1_wrzer
     PUBLIC ___dos1_wrzer
+    EXTERN msxlib_doscall
 
 ; /* ゼロフィルを行うランダム書き込み(FCB) */
 ; uint8_t __LIB__ dos1_wrzer(MSX_FCB *fcb) __smallc;
@@ -19,4 +20,4 @@ ___dos1_wrzer:
     ld d,(hl)
 
     ld c,_WRZER
-    jp BDOS
+    jp msxlib_doscall

@@ -5,6 +5,7 @@
     PUBLIC dos1_lstout
     PUBLIC _dos1_lstout
     PUBLIC ___dos1_lstout
+    EXTERN msxlib_doscall
 
 ; /* プリンタ出力 */
 ; void __LIB__ dos1_lstout(char ch) __smallc;
@@ -17,4 +18,4 @@ ___dos1_lstout:
     ld e,(hl)
     
     ld c,_LSTOUT
-    jp BDOS
+    jp msxlib_doscall

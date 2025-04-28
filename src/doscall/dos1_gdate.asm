@@ -5,6 +5,7 @@
     PUBLIC dos1_gdate
     PUBLIC _dos1_gdate
     PUBLIC ___dos1_gdate
+    EXTERN msxlib_doscall
 
 ; /* 日付の取得 */
 ; void __LIB__ dos1_gdate(uint16_t *year, uint8_t *month, uint8_t *mday, uint8_t *wday);
@@ -18,7 +19,7 @@ dos1_gdate:
 _dos1_gdate:
 ___dos1_gdate:
     ld c,_GDATE
-    call BDOS
+    call msxlib_doscall
 
     push hl
 

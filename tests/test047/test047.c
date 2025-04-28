@@ -6,27 +6,27 @@
 #include <string.h>
 #include <float.h>
 
-int testXXX(char *strval, double checkval);
+int test047(char *strval, double checkval);
 
 int main() 
 {
-    testXXX("0.1", 0.1);
-    testXXX("1", 1);
-    testXXX("100", 100);
-    testXXX("1e13", 10000000000000);
-    testXXX("0", 0);
+    test047("0.1", 0.1);
+    test047("1", 1);
+    test047("100", 100);
+    test047("1e13", 10000000000000);
+    test047("0", 0);
 
     // ↓たぶん変換誤差で失敗する
-    // testXXX("1e-13", 1e-13);
-    // testXXX("-1e-13", -1e-13);
+    // test047("1e-13", 1e-13);
+    // test047("-1e-13", -1e-13);
     //
     // doubleはたぶん1.0e-38〜9.995e37までの範囲なので扱えないはず
-    // testXXX("0.99999999999999e63", 0.99999999999999e63);
-    testXXX("12345.67890123456", 12345.678901235);
+    // test047("0.99999999999999e63", 0.99999999999999e63);
+    test047("12345.67890123456", 12345.678901235);
     return 0;
 }
 
-int testXXX(char *strval, double checkval)
+int test047(char *strval, double checkval)
 {
     char bcdf[BCDF_DOUBLE_SIZE];
     double dret;

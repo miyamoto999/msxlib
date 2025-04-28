@@ -8,7 +8,7 @@ OBJS=msxmain_dos_snsmat.o msxmain_dos_kilbuf.o msxmain_dos_chgmod.o \
 	msxsub_dct_chgmdp.o msxsub_dos_chgmdp.o msxsub_dos_cls.o msxsub_dct_cls.o \
 	msxmain_dos_grpprt.o msxmain_dct_grpprt.o \
 	msxsub_dos_redclk.o msxsub_dct_redclk.o msxsub_dos_knjprt.o msxsub_dct_knjprt.o msxsub_dos_setplt.o msxsub_dct_setplt.o \
-	msxmain_dct_chput.o msxmain_dos_chput.o
+	msxmain_dct_chput.o msxmain_dos_chput.o msxmain_dct_chget.o msxmain_dos_chget.o
 CFLAGS_INC=-I../../include
 CFLAGS=+msx $(CFLAGS_INC) -O
 ASCONFIGS=$(CFLAGS_INC)
@@ -62,5 +62,7 @@ msxsub_dos_setplt.o: msxsub_dos_setplt.asm ../../include/msxlib/asm/msxbios.inc
 msxsub_dct_setplt.o: msxsub_dct_setplt.asm ../../include/msxlib/asm/msxbios.inc
 msxmain_dos_chput.o: msxmain_dos_chput.asm ../../include/msxlib/asm/msxbios.inc ../../include/msxlib/asm/msxwork.inc
 msxmain_dct_chput.o: msxmain_dct_chput.asm ../../include/msxlib/asm/msxbios.inc
+msxmain_dos_chget.o: msxmain_dos_chget.asm ../../include/msxlib/asm/msxbios.inc ../../include/msxlib/asm/msxwork.inc
+msxmain_dct_chget.o: msxmain_dct_chget.asm ../../include/msxlib/asm/msxbios.inc
 
 -include depends

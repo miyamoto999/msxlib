@@ -5,6 +5,7 @@
     PUBLIC dos1_fclose
     PUBLIC _dos1_fclose
     PUBLIC ___dos1_fclose
+    EXTERN msxlib_doscall
 
 
 ; /* ファイルのクローズ */
@@ -20,4 +21,4 @@ ___dos1_fclose:
     ld d,(hl)
 
     ld c,_FCLOSE
-    jp BDOS
+    jp msxlib_doscall

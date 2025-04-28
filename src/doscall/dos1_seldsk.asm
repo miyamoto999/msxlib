@@ -5,6 +5,7 @@
     PUBLIC dos1_seldsk
     PUBLIC _dos1_seldsk
     PUBLIC ___dos1_seldsk
+    EXTERN msxlib_doscall
 
 
 ; /* ディスクの選択 */
@@ -18,4 +19,4 @@ ___dos1_seldsk:
     ld e,(hl)
 
     ld c,_SELDSK
-    jp BDOS
+    jp msxlib_doscall

@@ -5,6 +5,7 @@
     PUBLIC dos1_rdabs
     PUBLIC _dos1_rdabs
     PUBLIC ___dos1_rdabs
+    EXTERN msxlib_doscall
 
 ; /* アブソリュートなセクタ読み込み */
 ; uint8_t __LIB__ dos1_rdabs(uint8_t drv, uint16_t sec, uint8_t num);
@@ -32,6 +33,6 @@ ___dos1_rdabs:
     ld h,a
 
     ld c,_RDABS
-    call BDOS
+    call msxlib_doscall
     ld l,a
     ret

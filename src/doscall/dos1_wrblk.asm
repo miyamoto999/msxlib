@@ -5,6 +5,7 @@
     PUBLIC dos1_wrblk
     PUBLIC _dos1_wrblk
     PUBLIC ___dos1_wrblk
+    EXTERN msxlib_doscall
 
 
 ; /* ランダムブロック書き込み */
@@ -30,7 +31,7 @@ ___dos1_wrblk:
     ld l,c
 
     ld c,_WRBLK
-    call BDOS
+    call msxlib_doscall
 
     ld l,a
 

@@ -5,6 +5,7 @@
     PUBLIC dos1_login
     PUBLIC _dos1_login
     PUBLIC ___dos1_login
+    EXTERN msxlib_doscall
 
 
 ; /* ログインベクタの取得 */
@@ -13,4 +14,4 @@ dos1_login:
 _dos1_login:
 ___dos1_login:
     ld c,_LOGIN
-    jp BDOS
+    jp msxlib_doscall

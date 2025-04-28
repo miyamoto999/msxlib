@@ -5,6 +5,7 @@
     PUBLIC dos1_sdate
     PUBLIC _dos1_sdate
     PUBLIC ___dos1_sdate
+    EXTERN msxlib_doscall
 
 
 ; /* 日付の設定 */
@@ -31,7 +32,7 @@ ___dos1_sdate:
     ld l,c
 
     ld c, _SDATE
-    call BDOS
+    call msxlib_doscall
 
     ld l,a
     ret

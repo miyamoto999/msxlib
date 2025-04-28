@@ -5,6 +5,7 @@
     PUBLIC dos1_stime
     PUBLIC _dos1_stime
     PUBLIC ___dos1_stime
+    EXTERN msxlib_doscall
 
 
 ; /* 時間の設定 */
@@ -34,7 +35,7 @@ ___dos1_stime:
     ld l,c
 
     ld c, _STIME
-    call BDOS
+    call msxlib_doscall
 
     ld l,a
     ret

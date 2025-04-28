@@ -8,7 +8,9 @@
 #include <string.h>
 #include <assert.h>
 
+/*
 long heap;
+*/
 
 #define BUF_SIZE    1024
 #define FILENAME    "g.bin"
@@ -105,8 +107,10 @@ int main(void)
 {
     uint16_t test1_jiffy, test2_jiffy;
 
+/*
     mallinit();
     sbrk((void*)0x8000, 8 * 1024); 
+*/
 
     msxvdp_init();
     msxvdp_set_screen(7);

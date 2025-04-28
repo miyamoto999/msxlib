@@ -5,6 +5,7 @@
     PUBLIC dos1_fsize
     PUBLIC _dos1_fsize
     PUBLIC ___dos1_fsize
+    EXTERN msxlib_doscall
 
 ; /* ファイルサイズの取得(FCB) */
 ; uint8_t __LIB__ dos1_fsize(MSX_FCB *fcb) __smallc;
@@ -19,4 +20,4 @@ ___dos1_fsize:
     ld d,(hl)
 
     ld c,_FSIZE
-    jp BDOS
+    jp msxlib_doscall

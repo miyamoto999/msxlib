@@ -6,6 +6,7 @@
     PUBLIC dos2_open
     PUBLIC _dos2_open
     PUBLIC ___dos2_open
+    EXTERN msxlib_doscall
 
 
 ; /* ファイルハンドルのオープン */
@@ -30,7 +31,7 @@ ___dos2_open:
     ld d,(hl)
 
     ld c,_OPEN
-    call BDOS
+    call msxlib_doscall
 
     ld hl,2
     add hl,sp

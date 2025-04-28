@@ -13,8 +13,8 @@ OBJS_DOS1=dos1_fmake.o dos1_setdta.o dos1_wrblk.o dos1_fclose.o \
 	dos1_wrabs.o
 OBJS_DOS2=dos2_create.o dos2_write.o dos2_open.o dos2_close.o \
 	dos2_defab.o dos2_dosver.o dos2_defer.o dos2_parse.o dos2_pfile.o \
-	dos2_read.o dos2_seek.o dos2_ffirst.o dos2_fnext.o
-OBJS=$(EMU_EXP_OBJS) $(OBJS_DOS1) $(OBJS_DOS2)
+	dos2_read.o dos2_seek.o dos2_ffirst.o dos2_fnext.o dos2_ioctl.o
+OBJS=$(EMU_EXP_OBJS) $(OBJS_DOS1) $(OBJS_DOS2) msxlib_doscall.o
 CFLAGS_INC=-I../../include
 CFLAGS=+msx $(CFLAGS_INC) -O
 ASCONFIGS=$(CFLAGS_INC)

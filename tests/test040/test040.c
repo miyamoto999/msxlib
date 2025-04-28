@@ -6,7 +6,9 @@
 #include <msxlib/msxlib.h>
 #include <msxlib/msxdos.h>
 
+/*
 long heap;
+*/
 
 char buf[128];
 
@@ -20,8 +22,10 @@ int main(int argc, char *argv[])
 {
     char filename[FCB_NAME_SIZE + FCB_EXT_SIZE + 1];
 
+/*
     mallinit();
     sbrk((void*)0x8000, 8 * 1024);
+*/
 
     if(argc != 2) {
         print_usage();

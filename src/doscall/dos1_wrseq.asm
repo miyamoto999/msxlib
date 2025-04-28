@@ -5,6 +5,7 @@
     PUBLIC dos1_wrseq
     PUBLIC _dos1_wrseq
     PUBLIC ___dos1_wrseq
+    EXTERN msxlib_doscall
 
 ; /* シーケンシャルな書き込み(FCB) */
 ; uint8_t __LIB__ dos1_wrseq(MSX_FCB *fcb) __smallc;
@@ -19,4 +20,4 @@ ___dos1_wrseq:
     ld d,(hl)
 
     ld c,_WRSEQ
-    jp BDOS
+    jp msxlib_doscall

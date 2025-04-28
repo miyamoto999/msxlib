@@ -5,6 +5,7 @@
     PUBLIC dos1_gtime
     PUBLIC _dos1_gtime
     PUBLIC ___dos1_gtime
+    EXTERN msxlib_doscall
 
 ; /* 時間の取得 */
 ; void __LIB__ dos1_gtime(uint8_t *hour, uint8_t *min, uint8_t *sec);
@@ -16,7 +17,7 @@ dos1_gtime:
 _dos1_gtime:
 ___dos1_gtime:
     ld c,_GTIME
-    call BDOS
+    call msxlib_doscall
 
     ld b,h
     ld c,l

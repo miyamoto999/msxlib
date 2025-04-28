@@ -5,6 +5,7 @@
     PUBLIC dos2_parse
     PUBLIC _dos2_parse
     PUBLIC ___dos2_parse
+    EXTERN msxlib_doscall
 
 
 ; /* パス名の解析 */
@@ -24,7 +25,7 @@ ___dos2_parse:
     ld d,(hl)
 
     ld c,_PARSE
-    call BDOS
+    call msxlib_doscall
 
     or a
     jr nz,ERR_RET

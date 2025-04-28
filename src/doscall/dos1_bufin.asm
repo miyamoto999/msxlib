@@ -5,6 +5,7 @@
     PUBLIC dos1_bufin
     PUBLIC _dos1_bufin
     PUBLIC ___dos1_bufin
+    EXTERN msxlib_doscall
 
 ; /* バッファ行入力 */
 ; void __LIB__ dos1_bufin(char *buf) __smallc;
@@ -19,4 +20,4 @@ ___dos1_bufin:
     ld d,(hl)
     
     ld c,_BUFIN
-    jp BDOS
+    jp msxlib_doscall

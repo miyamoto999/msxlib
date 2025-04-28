@@ -1,0 +1,4 @@
+#pragma redirect MSXDOS=__bdos
+#pragma redirect open=open_dos2
+#pragma redirect _open=_open_dos2
+#pragma redirect ___open=___open_dos2

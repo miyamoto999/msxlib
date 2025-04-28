@@ -5,6 +5,7 @@
     PUBLIC dos1_auxout
     PUBLIC _dos1_auxout
     PUBLIC ___dos1_auxout
+    EXTERN msxlib_doscall
 
 ; /* 補助出力 */
 ; void __LIB__ dos1_auxout(char ch) __smallc;
@@ -17,4 +18,4 @@ ___dos1_auxout:
     ld e,(hl)
     
     ld c,_AUXOUT
-    jp BDOS
+    jp msxlib_doscall

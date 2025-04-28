@@ -5,6 +5,7 @@
     PUBLIC dos1_dirio
     PUBLIC _dos1_dirio
     PUBLIC ___dos1_dirio
+    EXTERN msxlib_doscall
 
 
 ; /* 直接コンソールI/O */
@@ -18,4 +19,4 @@ ___dos1_dirio:
     ld e,(hl)
 
     ld c,_DIRIO
-    jp BDOS
+    jp msxlib_doscall

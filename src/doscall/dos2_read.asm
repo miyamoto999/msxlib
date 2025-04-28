@@ -5,6 +5,7 @@
     PUBLIC dos2_read
     PUBLIC _dos2_read
     PUBLIC ___dos2_read
+    EXTERN msxlib_doscall
 
 ; /* ファイルハンドルからの読み出し */
 ; uint8_t __LIB__ dos2_read(uint8_t handle, void *buf, uint16_t count, uint16_t *bytes) __smallc;
@@ -40,7 +41,7 @@ ___dos2_read:
     ex hl,de
 
     ld c,_READ
-    call BDOS
+    call msxlib_doscall
 
     ex hl,de
 

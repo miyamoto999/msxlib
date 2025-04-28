@@ -6,7 +6,9 @@
 #include <msxlib/msxdos.h>
 #include <msxlib/bfile.h>
 
+/*
 long heap;
+*/
 
 #define BUF_SIZE    128
 char buf[BUF_SIZE], buf2[BUF_SIZE];
@@ -17,9 +19,11 @@ static void test1(void);
 
 int main()
 {
+    /* 
     mallinit();
     sbrk((void*)0x8000, 8 * 1024);
-    
+    */
+
     dos_scode(1);
 
     test1();

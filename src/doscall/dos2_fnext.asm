@@ -5,6 +5,7 @@
     PUBLIC dos2_fnext
     PUBLIC _dos2_fnext
     PUBLIC ___dos2_fnext
+    EXTERN msxlib_doscall
 
 
 ; /* 次のエントリの検索 */
@@ -25,7 +26,7 @@ ___dos2_fnext:
     pop ix
 
     ld c,_FNEXT
-    call BDOS
+    call msxlib_doscall
     pop ix
 
     ld l,a

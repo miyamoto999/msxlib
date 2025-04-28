@@ -4,7 +4,9 @@
 #include <msxlib/msxlib.h>
 #include <msxlib/msxdos.h>
 
+/*
 long heap;
+*/
 
 #define TEST_FILE       "test.txt"
 
@@ -39,18 +41,16 @@ int test1(void)
 
 int main(void)
 {
+/*
     mallinit();
     sbrk((void*)0x8000,16 * 1024); 
-
+*/
     srand((unsigned int)time(NULL));
 
-#ifndef __CPM__
     dos_scode(1);
-#endif
     test1();
 
-#ifndef __CPM__
     dos_scode(0);
-#endif
+
     return 0;
 }

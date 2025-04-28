@@ -5,6 +5,7 @@
     PUBLIC dos2_defab
     PUBLIC _dos2_defab
     PUBLIC ___dos2_defab
+    EXTERN msxlib_doscall
 
 
 ; /* アボート終了ルーチンの定義 */
@@ -30,7 +31,7 @@ ___dos2_defab:
     ld de,abort_routine
 cancel:
     ld c,_DEFAB
-    jp BDOS
+    jp msxlib_doscall
 ;;
 
 abort_routine:

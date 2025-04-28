@@ -4,8 +4,6 @@
 #include <assert.h>
 #include <msxlib/iot.h>
 
-long heap;
-
 int test1(void)
 {
     printf("iot_node_write err test:");
@@ -35,9 +33,6 @@ int test3(void)
 
 int main(void)
 {
-    mallinit();
-    sbrk((void*)0x8000,16 * 1024); 
-
     test1();
     test2();
     test3();

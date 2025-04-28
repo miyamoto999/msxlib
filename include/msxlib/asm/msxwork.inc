@@ -13,6 +13,13 @@ MSXWORK_BAKCLR      equ     0xf3ea
 ; 周辺色
 MSXWORK_BDRCLR      equ     0xf3eb
 
+; マシン語領域
+MSXWORK_HIMEM       equ     0xfc4a
+; ファイルコントロールブロック
+MSXWORK_MEMSIZ      equ     0xf672
+; 文字列領域
+MSXWORK_STKTOP      equ     0xf674
+
 ; NMIのフック
 MSXWORK_H_NMI       equ     0xfdd6
 
@@ -83,6 +90,8 @@ MSXWORK_GRPACX      equ     0xfcb7
 MSXWORK_GRPACY      equ     0xfcb9
 ; GRPHED グラフィック文字を出すときのフラグ 
 MSXWORK_GRPHED      equ     0xfca6
+; CSRSW カーソルの表示/非表示
+MSXWORK_CSRSW       equ     0xfca9
 ; SCRMOD スクリーンモード番号
 MSXWORK_SCRMOD      equ     0xfcaf
 ; OLDSCR スクリーンモードの保存場所

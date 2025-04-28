@@ -5,6 +5,7 @@
     PUBLIC dos1_fdel
     PUBLIC _dos1_fdel
     PUBLIC ___dos1_fdel
+    EXTERN msxlib_doscall
 
 
 ; /* ファイルの削除(FCB) */
@@ -20,4 +21,4 @@ ___dos1_fdel:
     ld d,(hl)
 
     ld c,_FDEL
-    jp BDOS
+    jp msxlib_doscall

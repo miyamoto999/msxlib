@@ -5,6 +5,7 @@
     PUBLIC dos2_dosver
     PUBLIC _dos2_dosver
     PUBLIC ___dos2_dosver
+    EXTERN msxlib_doscall
 
 
 ; /* MSX-DOSのバーション番号の取得 */
@@ -13,7 +14,7 @@ dos2_dosver:
 _dos2_dosver:
 ___dos2_dosver:
     ld c,_DOSVER
-    call BDOS
+    call msxlib_doscall
 
     ld hl,2
     add hl,sp

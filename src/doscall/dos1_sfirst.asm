@@ -5,6 +5,7 @@
     PUBLIC dos1_sfirst
     PUBLIC _dos1_sfirst
     PUBLIC ___dos1_sfirst
+    EXTERN msxlib_doscall
 
 ; /* 最初のエントリの検索(FCB) */
 ; uint8_t __LIB__ dos1_sfirst(void *fcb) __smallc;
@@ -21,4 +22,4 @@ ___dos1_sfirst:
     ld d,(hl)
 
     ld c,_SFIRST
-    jp BDOS
+    jp msxlib_doscall
