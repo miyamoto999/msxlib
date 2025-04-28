@@ -1,0 +1,1 @@
+fcomp.o: fcomp.c fcomp.h

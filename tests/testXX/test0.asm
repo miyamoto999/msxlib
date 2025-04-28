@@ -1,0 +1,5 @@
+    SECTION rodata_user
+    EXTERN _MSXLIB_BDOS
+
+_MSXLIB_BDOS:
+    dw __MSXLIB_BDOS
