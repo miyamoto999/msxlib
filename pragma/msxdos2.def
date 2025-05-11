@@ -1,2 +1,8 @@
 #pragma redirect fputc_cons = fputc_cons_dos
 #pragma redirect fgetc_cons = fgetc_cons_dos
+#pragma redirect open=open_dos2
+#pragma redirect _open=_open_dos2
+#pragma redirect ___open=___open_dos2
+#pragma redirect creat=creat_dos2
+#pragma redirect _creat=_creat_dos2
+#pragma redirect ___creat=___creat_dos2

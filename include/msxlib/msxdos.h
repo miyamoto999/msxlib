@@ -134,6 +134,12 @@ uint8_t __LIB__ dos2_ioctl(uint8_t handle, uint8_t sub_code, uint16_t *prm_ret) 
 /* 自作Z80エミュレータ用に拡張した終了コードを設定するファンクションコール */
 void __LIB__ dos_scode(uint8_t exit_code) __smallc;
 
+/* DOSカーネルのメジャーバージョンを取得 */
+uint8_t __LIB__ dos_getkerver(void) __smallc;
+
+/* ファイルの日付および時刻の設定または取得 */
+uint8_t __LIB__ dos2_ftime(char *filename, uint8_t set_flag, uint16_t *time, uint16_t *date) __smallc;
+
 /* ファイルオープンモード */
 #define FILE_MODE_READ_ONLY      0x01
 #define FILE_MODE_WRITE_ONLY     0x02

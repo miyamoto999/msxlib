@@ -10,7 +10,7 @@ Z88DKのインストールされたUNIX系のOS上で
 ./build.sh
 ~~~
 
-を実行すると完了し、./libsディレクトリにasmroutine.lib、bios.lib、doscall.lib、dskcall.lib、iot.lib、msxlib.lib、slot.lib、vdp.libが生成されます。
+を実行すると完了し、./libsディレクトリにasmroutine.lib、bios.lib、iot.lib、msxlib.lib、slot.lib、vdp.libが生成されます。
 
 
 ## ソースツリーの簡単な説明
@@ -60,6 +60,12 @@ Z88DKのインストールされたUNIX系のOS上で
 - [iot関係](doc/iot.md)
 
 更新履歴
+- 2025/5/11
+    - MSX-DOS1用の差し替え用のcreat_dos1()、open_dos1()、close_dos1()、read_dos1()、write_dos1()、lseek_dos1()、stat_dos1()を追加
+    - MSX-DOS1用のcreat_dos1()など追加に際してz88dkのmsx_crt0.asmなどの変更が必要だったのでmsxlibのmake時にコピーしてパッチをあてるようにした。つまり、creat()などを差し替える場合それを使う必要がある。
+    - 実行中のDOSカーネルのメジャーバージョンを取得する関数を追加
+    - MSX-DOS2の_FTIME(ファイルのタイムスタンプ取得、変更)ファンクションコールを呼び出す関数を追加
+    - doscall.libをmsxlib.libに統合
 - 2025/4/28
     - ソースコードの整理
     - DOS2のリダイレクトが動作するようにfgetc_cons、fputc_consを変更した(pragma-redirectで関数を差し替える必要がある)

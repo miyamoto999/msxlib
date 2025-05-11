@@ -18,11 +18,11 @@ CFLAGS_DISK2+=-pragma-define:CRT_STACK_SIZE=128
 
 all:$(TARGET_DOS1) $(TARGET_DISK1) $(TARGET2)
 
-$(TARGET_DOS1):$(DOS1_DIR) $(OBJS_DOS1) ../../libs/msxlib.lib ../../libs/doscall.lib
-	$(CC) $(CFLAGS_DOS1) $(CFLAGS_INC_DOS1) -create-app -m -o $(TARGET_DOS1) $(OBJS_DOS1) $(LDCONFIG) -lmsxlib -ldoscall
+$(TARGET_DOS1):$(DOS1_DIR) $(OBJS_DOS1) ../../libs/msxlib.lib
+	$(CC) $(CFLAGS_DOS1) $(CFLAGS_INC_DOS1) -create-app -m -o $(TARGET_DOS1) $(OBJS_DOS1) $(LDCONFIG) -lmsxlib
 
-$(TARGET_DISK1):$(DISK1_DIR) $(OBJS_DISK1) ../../libs/msxlib.lib ../../libs/doscall.lib
-	$(CC) $(CFLAGS_DISK1) $(CFLAGS_INC_DISK1) -create-app -m -o $(TARGET_DISK1) $(OBJS_DISK1) $(LDCONFIG) -lmsxlib -ldoscall
+$(TARGET_DISK1):$(DISK1_DIR) $(OBJS_DISK1) ../../libs/msxlib.lib
+	$(CC) $(CFLAGS_DISK1) $(CFLAGS_INC_DISK1) -create-app -m -o $(TARGET_DISK1) $(OBJS_DISK1) $(LDCONFIG) -lmsxlib
 
 $(TARGET2):$(OBJS2) ../../libs/msxlib.lib
 	$(CC) $(CFLAGS_DOS1) --no-crt -create-app -m -o $(TARGET2) $(ASCONFIGS) $(OBJS2) -L../../libs -lmsxlib

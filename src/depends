@@ -1,3 +1,7 @@
+dostime2time.o: dostime2time.c ../include/msxlib/msxlib.h \
+  ../include/msxlib/time.h
+dostime2tm.o: dostime2tm.c ../include/msxlib/msxlib.h \
+  ../include/msxlib/time.h
 msx_fcb_init_filename.o: msx_fcb_init_filename.c \
   ../include/msxlib/msxlib.h ../include/msxlib/fcb.h
 msx_fcb_init_ren.o: msx_fcb_init_ren.c ../include/msxlib/msxlib.h \
@@ -85,3 +89,31 @@ net/bcdf2str.o: bcdf/bcdf2str.c ../include/msxlib/msxlib.h \
   ../include/msxlib/bcdf.h
 net/str2bcdf.o: bcdf/str2bcdf.c ../include/msxlib/msxlib.h \
   ../include/msxlib/bcdf.h
+net/close_dos1.o: fcntl/msxdos1/close_dos1.c ../include/msxlib/msxlib.h \
+  ../include/msxlib/fcntl.h ../include/msxlib/msxdos.h \
+  ../include/msxlib/fcb.h ../include/msxlib/fib.h
+net/creat_dos1.o: fcntl/msxdos1/creat_dos1.c ../include/msxlib/msxlib.h \
+  ../include/msxlib/fcntl.h ../include/msxlib/msxdos.h \
+  ../include/msxlib/fcb.h ../include/msxlib/fib.h
+net/fdgetpos_dos1.o: fcntl/msxdos1/fdgetpos_dos1.c ../include/msxlib/msxlib.h \
+  ../include/msxlib/fcntl.h ../include/msxlib/msxdos.h \
+  ../include/msxlib/fcb.h ../include/msxlib/fib.h
+net/fdtell_dos1.o: fcntl/msxdos1/fdtell_dos1.c ../include/msxlib/msxlib.h \
+  ../include/msxlib/fcntl.h ../include/msxlib/msxdos.h \
+  ../include/msxlib/fcb.h ../include/msxlib/fib.h
+net/lseek_dos1.o: fcntl/msxdos1/lseek_dos1.c ../include/msxlib/msxlib.h \
+  ../include/msxlib/msxdos.h ../include/msxlib/fcb.h \
+  ../include/msxlib/fib.h ../include/msxlib/fcntl.h
+net/open_dos1.o: fcntl/msxdos1/open_dos1.c ../include/msxlib/msxlib.h \
+  ../include/msxlib/fcntl.h ../include/msxlib/msxdos.h \
+  ../include/msxlib/fcb.h ../include/msxlib/fib.h
+net/read_dos1.o: fcntl/msxdos1/read_dos1.c ../include/msxlib/msxlib.h \
+  ../include/msxlib/fcntl.h ../include/msxlib/msxdos.h \
+  ../include/msxlib/fcb.h ../include/msxlib/fib.h
+net/stat_dos1.o: fcntl/msxdos1/stat_dos1.c ../include/msxlib/msxlib.h \
+  ../include/msxlib/msxdos.h ../include/msxlib/fcb.h \
+  ../include/msxlib/fib.h ../include/msxlib/fcntl.h \
+  ../include/msxlib/time.h
+net/write_dos1.o: fcntl/msxdos1/write_dos1.c ../include/msxlib/msxlib.h \
+  ../include/msxlib/fcntl.h ../include/msxlib/msxdos.h \
+  ../include/msxlib/fcb.h ../include/msxlib/fib.h

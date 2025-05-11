@@ -1,2 +1,38 @@
 #pragma redirect fputc_cons = fputc_cons_dos
 #pragma redirect fgetc_cons = fgetc_cons_dos
+
+#pragma redirect creat = creat_dos1
+#pragma redirect _creat = _creat_dos1
+#pragma redirect ___creat = ___creat_dos1
+
+#pragma redirect open = open_dos1
+#pragma redirect _open = _open_dos1
+#pragma redirect ___open = ___open_dos1
+
+#pragma redirect write = write_dos1
+#pragma redirect _write = _write_dos1
+#pragma redirect ___write = ___write_dos1
+
+#pragma redirect read = read_dos1
+#pragma redirect _read = _read_dos1
+#pragma redirect ___read = ___read_dos1
+
+#pragma redirect close = close_dos1
+#pragma redirect _close = _close_dos1
+#pragma redirect ___close = ___close_dos1
+
+#pragma redirect lseek = lseek_dos1
+#pragma redirect _lseek = _lseek_dos1
+#pragma redirect ___lseek = ___lseek_dos1
+
+#pragma redirect fdgetpos = fdgetpos_dos1
+#pragma redirect _fdgetpos = _fdgetpos_dos1
+#pragma redirect ___fdgetpos = ___fdgetpos_dos1
+
+#pragma redirect fdtell = fdtell_dos1
+#pragma redirect _fdtell = _fdtell_dos1
+#pragma redirect ___fdtell = ___fdtell_dos1
+
+#pragma redirect stat = stat_dos1
+#pragma redirect _stat = _stat_dos1
+#pragma redirect ___stat = ___stat_dos1

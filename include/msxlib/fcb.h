@@ -1,6 +1,7 @@
 #ifndef __MSXLIB_FCB_H__
 #define __MSXLIB_FCB_H__
 
+#include <msxlib/msxlib.h>
 #include <stdint.h>
 
 #define FCB_NAME_SIZE   8
@@ -15,8 +16,8 @@ typedef struct msx_fcb1 {
     char        dmy1;
     uint16_t    record_size;    /* レコードサイズ */
     long        file_size;      /* ファイルサイズ */
-    uint8_t     date[2];        /* 日付 */
-    uint8_t     time[2];        /* 時刻 */
+    uint16_t    date;        /* 日付 */
+    uint16_t    time;        /* 時刻 */
     uint8_t     dev_id;         /* デバイスID */
     uint8_t     dir_loc;        /* ディレクトリロケーション */
     uint16_t    start_cluster;  /* 先頭クラスタ */
