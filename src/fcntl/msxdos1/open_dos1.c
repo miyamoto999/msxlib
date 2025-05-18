@@ -22,10 +22,9 @@ int __LIB__ open_dos1(const char *filename, int flags, int mode) __smallc {
         dos1_fdel(&_msx_fcbs[fd].fcb);
         msx_fcb_init(&_msx_fcbs[fd].fcb, filename);
     }
-    if(flags & O_CREAT) {
+    err = dos1_fopen(&_msx_fcbs[fd].fcb);
+    if(err != 0 && (flags & O_CREAT)) {
         err = dos1_fmake(&_msx_fcbs[fd].fcb);
-    } else {
-        err = dos1_fopen(&_msx_fcbs[fd].fcb);
     }
     if(err) {
         _msx_fcbs[fd].use = 0;

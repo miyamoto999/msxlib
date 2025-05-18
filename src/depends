@@ -15,6 +15,11 @@ pre_printf_sdcc.o: pre_printf_sdcc.c ../include/msxlib/msxlib.h \
 pre_printf.o: pre_printf.c ../include/msxlib/msxlib.h \
   ../include/msxlib/msxdos.h ../include/msxlib/fcb.h \
   ../include/msxlib/fib.h
+msx_dct_inpkey.o: msx_dct_inpkey.asm ../include/msxlib/asm/msxbios.inc
+msx_dos_inpkey.o: msx_dos_inpkey.asm ../include/msxlib/asm/msxbios.inc ../include/msxlib/asm/msxwork.inc
+msx_get_reg_sp.o: msx_get_reg_sp.asm 
+msx_knj.o: msx_knj.asm ../include/msxlib/asm/msxwork.inc
+strlen.o: strlen.asm 
 bfile/bfile_close_dos1.o: bfile/bfile_close_dos1.c ../include/msxlib/bfile.h \
   ../include/msxlib/msxlib.h ../include/msxlib/msxdos.h \
   ../include/msxlib/fcb.h ../include/msxlib/fib.h
@@ -61,59 +66,151 @@ bfile/bfile_write_dos2.o: bfile/bfile_write_dos2.c ../include/msxlib/bfile.h \
   ../include/msxlib/msxlib.h ../include/msxlib/msxdos.h \
   ../include/msxlib/fcb.h ../include/msxlib/fib.h
 rbuf/rbuf.o: rbuf/rbuf.c ../include/msxlib/msxlib.h ../include/msxlib/rbuf.h
-net/net_connect.o: net/net_connect.c ../include/msxlib/net.h \
-  ../include/msxlib/msxlib.h ../include/msxlib/rbuf.h \
-  ../include/msxlib/iot.h ../include/msxlib/msxbios.h \
-  ../include/msxlib/msxbiosaddr.h ../include/msxlib/iotaddr.h \
-  ../include/msxlib/bcdf.h ../include/msxlib/msxdos.h \
-  ../include/msxlib/fcb.h ../include/msxlib/fib.h
-net/net_init.o: net/net_init.c ../include/msxlib/msxlib.h \
-  ../include/msxlib/iot.h ../include/msxlib/msxbios.h \
-  ../include/msxlib/msxbiosaddr.h ../include/msxlib/rbuf.h \
-  ../include/msxlib/iotaddr.h ../include/msxlib/bcdf.h \
-  ../include/msxlib/net.h ../include/msxlib/msxdos.h \
-  ../include/msxlib/fcb.h ../include/msxlib/fib.h
-net/net_readline.o: net/net_readline.c ../include/msxlib/msxlib.h \
-  ../include/msxlib/net.h ../include/msxlib/rbuf.h \
-  ../include/msxlib/iot.h ../include/msxlib/msxbios.h \
-  ../include/msxlib/msxbiosaddr.h ../include/msxlib/iotaddr.h \
+rbuf/cif_rbuf_add_data.o: rbuf/cif_rbuf_add_data.asm 
+rbuf/cif_rbuf_get_data.o: rbuf/cif_rbuf_get_data.asm 
+rbuf/cif_rbuf_get_size.o: rbuf/cif_rbuf_get_size.asm 
+rbuf/cif_rbuf_read.o: rbuf/cif_rbuf_read.asm 
+rbuf/rbuf_add_data.o: rbuf/rbuf_add_data.asm ../include/msxlib/asm/rbuf.inc
+rbuf/rbuf_get_data.o: rbuf/rbuf_get_data.asm ../include/msxlib/asm/rbuf.inc
+rbuf/rbuf_get_size.o: rbuf/rbuf_get_size.asm ../include/msxlib/asm/rbuf.inc
+rbuf/rbuf_read.o: rbuf/rbuf_read.asm ../include/msxlib/asm/rbuf.inc
+bcdf/bcdf2dbl.o: bcdf/bcdf2dbl.c ../include/msxlib/msxlib.h \
   ../include/msxlib/bcdf.h
-net/net_setup.o: net/net_setup.c ../include/msxlib/msxlib.h \
-  ../include/msxlib/iot.h ../include/msxlib/msxbios.h \
-  ../include/msxlib/msxbiosaddr.h ../include/msxlib/rbuf.h \
-  ../include/msxlib/iotaddr.h ../include/msxlib/bcdf.h \
-  ../include/msxlib/net.h
-net/bcdf2dbl.o: bcdf/bcdf2dbl.c ../include/msxlib/msxlib.h \
+bcdf/bcdf2str.o: bcdf/bcdf2str.c ../include/msxlib/msxlib.h \
   ../include/msxlib/bcdf.h
-net/bcdf2str.o: bcdf/bcdf2str.c ../include/msxlib/msxlib.h \
+bcdf/str2bcdf.o: bcdf/str2bcdf.c ../include/msxlib/msxlib.h \
   ../include/msxlib/bcdf.h
-net/str2bcdf.o: bcdf/str2bcdf.c ../include/msxlib/msxlib.h \
-  ../include/msxlib/bcdf.h
-net/close_dos1.o: fcntl/msxdos1/close_dos1.c ../include/msxlib/msxlib.h \
+fcntl/msxdos1/close_dos1.o: fcntl/msxdos1/close_dos1.c ../include/msxlib/msxlib.h \
   ../include/msxlib/fcntl.h ../include/msxlib/msxdos.h \
   ../include/msxlib/fcb.h ../include/msxlib/fib.h
-net/creat_dos1.o: fcntl/msxdos1/creat_dos1.c ../include/msxlib/msxlib.h \
+fcntl/msxdos1/creat_dos1.o: fcntl/msxdos1/creat_dos1.c ../include/msxlib/msxlib.h \
   ../include/msxlib/fcntl.h ../include/msxlib/msxdos.h \
   ../include/msxlib/fcb.h ../include/msxlib/fib.h
-net/fdgetpos_dos1.o: fcntl/msxdos1/fdgetpos_dos1.c ../include/msxlib/msxlib.h \
+fcntl/msxdos1/fdgetpos_dos1.o: fcntl/msxdos1/fdgetpos_dos1.c ../include/msxlib/msxlib.h \
   ../include/msxlib/fcntl.h ../include/msxlib/msxdos.h \
   ../include/msxlib/fcb.h ../include/msxlib/fib.h
-net/fdtell_dos1.o: fcntl/msxdos1/fdtell_dos1.c ../include/msxlib/msxlib.h \
+fcntl/msxdos1/fdtell_dos1.o: fcntl/msxdos1/fdtell_dos1.c ../include/msxlib/msxlib.h \
   ../include/msxlib/fcntl.h ../include/msxlib/msxdos.h \
   ../include/msxlib/fcb.h ../include/msxlib/fib.h
-net/lseek_dos1.o: fcntl/msxdos1/lseek_dos1.c ../include/msxlib/msxlib.h \
+fcntl/msxdos1/fsync_dos1.o: fcntl/msxdos1/fsync_dos1.c ../include/msxlib/msxlib.h \
+  ../include/msxlib/fcntl.h ../include/msxlib/msxdos.h \
+  ../include/msxlib/fcb.h ../include/msxlib/fib.h
+fcntl/msxdos1/lseek_dos1.o: fcntl/msxdos1/lseek_dos1.c ../include/msxlib/msxlib.h \
   ../include/msxlib/msxdos.h ../include/msxlib/fcb.h \
   ../include/msxlib/fib.h ../include/msxlib/fcntl.h
-net/open_dos1.o: fcntl/msxdos1/open_dos1.c ../include/msxlib/msxlib.h \
+fcntl/msxdos1/open_dos1.o: fcntl/msxdos1/open_dos1.c ../include/msxlib/msxlib.h \
   ../include/msxlib/fcntl.h ../include/msxlib/msxdos.h \
   ../include/msxlib/fcb.h ../include/msxlib/fib.h
-net/read_dos1.o: fcntl/msxdos1/read_dos1.c ../include/msxlib/msxlib.h \
+fcntl/msxdos1/read_dos1.o: fcntl/msxdos1/read_dos1.c ../include/msxlib/msxlib.h \
   ../include/msxlib/fcntl.h ../include/msxlib/msxdos.h \
   ../include/msxlib/fcb.h ../include/msxlib/fib.h
-net/stat_dos1.o: fcntl/msxdos1/stat_dos1.c ../include/msxlib/msxlib.h \
+fcntl/msxdos1/stat_dos1.o: fcntl/msxdos1/stat_dos1.c ../include/msxlib/msxlib.h \
   ../include/msxlib/msxdos.h ../include/msxlib/fcb.h \
   ../include/msxlib/fib.h ../include/msxlib/fcntl.h \
   ../include/msxlib/time.h
-net/write_dos1.o: fcntl/msxdos1/write_dos1.c ../include/msxlib/msxlib.h \
+fcntl/msxdos1/write_dos1.o: fcntl/msxdos1/write_dos1.c ../include/msxlib/msxlib.h \
   ../include/msxlib/fcntl.h ../include/msxlib/msxdos.h \
   ../include/msxlib/fcb.h ../include/msxlib/fib.h
+fcntl/msxdos2/creat_dos2.o: fcntl/msxdos2/creat_dos2.asm 
+fcntl/msxdos2/open_dos2.o: fcntl/msxdos2/open_dos2.asm 
+bios/dos_extrom.o: bios/dos_extrom.asm ../include/msxlib/asm/msxwork.inc ../include/msxlib/asm/msxbios.inc
+bios/msxmain_dct_chgclr.o: bios/msxmain_dct_chgclr.asm ../include/msxlib/asm/msxwork.inc ../include/msxlib/asm/msxbios.inc
+bios/msxmain_dct_chget.o: bios/msxmain_dct_chget.asm ../include/msxlib/asm/msxbios.inc
+bios/msxmain_dct_chgmod.o: bios/msxmain_dct_chgmod.asm ../include/msxlib/asm/msxbios.inc
+bios/msxmain_dct_chput.o: bios/msxmain_dct_chput.asm ../include/msxlib/asm/msxbios.inc
+bios/msxmain_dct_grpprt.o: bios/msxmain_dct_grpprt.asm ../include/msxlib/asm/msxbios.inc
+bios/msxmain_dct_gtpad.o: bios/msxmain_dct_gtpad.asm ../include/msxlib/asm/msxbios.inc
+bios/msxmain_dct_kilbuf.o: bios/msxmain_dct_kilbuf.asm ../include/msxlib/asm/msxbios.inc
+bios/msxmain_dct_snsmat.o: bios/msxmain_dct_snsmat.asm ../include/msxlib/asm/msxbios.inc
+bios/msxmain_dos_chgclr.o: bios/msxmain_dos_chgclr.asm ../include/msxlib/asm/msxwork.inc ../include/msxlib/asm/msxbios.inc
+bios/msxmain_dos_chget.o: bios/msxmain_dos_chget.asm ../include/msxlib/asm/msxwork.inc ../include/msxlib/asm/msxbios.inc
+bios/msxmain_dos_chgmod.o: bios/msxmain_dos_chgmod.asm ../include/msxlib/asm/msxwork.inc ../include/msxlib/asm/msxbios.inc
+bios/msxmain_dos_chput.o: bios/msxmain_dos_chput.asm ../include/msxlib/asm/msxwork.inc ../include/msxlib/asm/msxbios.inc
+bios/msxmain_dos_grpprt.o: bios/msxmain_dos_grpprt.asm ../include/msxlib/asm/msxwork.inc ../include/msxlib/asm/msxbios.inc
+bios/msxmain_dos_gtpad.o: bios/msxmain_dos_gtpad.asm ../include/msxlib/asm/msxwork.inc ../include/msxlib/asm/msxbios.inc
+bios/msxmain_dos_kilbuf.o: bios/msxmain_dos_kilbuf.asm ../include/msxlib/asm/msxbios.inc
+bios/msxmain_dos_snsmat.o: bios/msxmain_dos_snsmat.asm ../include/msxlib/asm/msxwork.inc ../include/msxlib/asm/msxbios.inc
+bios/msxsub_dct_chgmdp.o: bios/msxsub_dct_chgmdp.asm ../include/msxlib/asm/msxbios.inc
+bios/msxsub_dct_cls.o: bios/msxsub_dct_cls.asm ../include/msxlib/asm/msxbios.inc
+bios/msxsub_dct_iniplt.o: bios/msxsub_dct_iniplt.asm ../include/msxlib/asm/msxbios.inc
+bios/msxsub_dct_knjprt.o: bios/msxsub_dct_knjprt.asm ../include/msxlib/asm/msxbios.inc
+bios/msxsub_dct_redclk.o: bios/msxsub_dct_redclk.asm ../include/msxlib/asm/msxbios.inc
+bios/msxsub_dct_setplt.o: bios/msxsub_dct_setplt.asm ../include/msxlib/asm/msxbios.inc
+bios/msxsub_dos_chgmdp.o: bios/msxsub_dos_chgmdp.asm ../include/msxlib/asm/msxbios.inc
+bios/msxsub_dos_cls.o: bios/msxsub_dos_cls.asm ../include/msxlib/asm/msxbios.inc
+bios/msxsub_dos_iniplt.o: bios/msxsub_dos_iniplt.asm ../include/msxlib/asm/msxbios.inc
+bios/msxsub_dos_knjprt.o: bios/msxsub_dos_knjprt.asm ../include/msxlib/asm/msxbios.inc
+bios/msxsub_dos_redclk.o: bios/msxsub_dos_redclk.asm ../include/msxlib/asm/msxbios.inc
+bios/msxsub_dos_setplt.o: bios/msxsub_dos_setplt.asm ../include/msxlib/asm/msxbios.inc
+doscall/dos1_remove.o: doscall/dos1_remove.c ../include/msxlib/msxlib.h \
+  ../include/msxlib/msxdos.h ../include/msxlib/fcb.h \
+  ../include/msxlib/fib.h
+doscall/dos1_rename.o: doscall/dos1_rename.c ../include/msxlib/msxlib.h \
+  ../include/msxlib/msxdos.h ../include/msxlib/fcb.h \
+  ../include/msxlib/fib.h
+doscall/dos_getkerver.o: doscall/dos_getkerver.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos_scode.o: doscall/dos_scode.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos1_alloc.o: doscall/dos1_alloc.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos1_auxin.o: doscall/dos1_auxin.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos1_auxout.o: doscall/dos1_auxout.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos1_bufin.o: doscall/dos1_bufin.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos1_conout.o: doscall/dos1_conout.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos1_const.o: doscall/dos1_const.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos1_cpmver.o: doscall/dos1_cpmver.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos1_curdrv.o: doscall/dos1_curdrv.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos1_dirin.o: doscall/dos1_dirin.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos1_dirio.o: doscall/dos1_dirio.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos1_dskrst.o: doscall/dos1_dskrst.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos1_fclose.o: doscall/dos1_fclose.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos1_fdel.o: doscall/dos1_fdel.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos1_fmake.o: doscall/dos1_fmake.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos1_fopen.o: doscall/dos1_fopen.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos1_fren.o: doscall/dos1_fren.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos1_fsize.o: doscall/dos1_fsize.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos1_gdate.o: doscall/dos1_gdate.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos1_gtime.o: doscall/dos1_gtime.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos1_innoe.o: doscall/dos1_innoe.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos1_login.o: doscall/dos1_login.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos1_lstout.o: doscall/dos1_lstout.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos1_rdabs.o: doscall/dos1_rdabs.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos1_rdblk.o: doscall/dos1_rdblk.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos1_rdrnd.o: doscall/dos1_rdrnd.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos1_rdseq.o: doscall/dos1_rdseq.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos1_sdate.o: doscall/dos1_sdate.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos1_seldsk.o: doscall/dos1_seldsk.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos1_setdta.o: doscall/dos1_setdta.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos1_setrnd.o: doscall/dos1_setrnd.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos1_sfirst.o: doscall/dos1_sfirst.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos1_snext.o: doscall/dos1_snext.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos1_stime.o: doscall/dos1_stime.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos1_term0.o: doscall/dos1_term0.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos1_verify.o: doscall/dos1_verify.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos1_wrabs.o: doscall/dos1_wrabs.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos1_wrblk.o: doscall/dos1_wrblk.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos1_wrrnd.o: doscall/dos1_wrrnd.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos1_wrseq.o: doscall/dos1_wrseq.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos1_wrzer.o: doscall/dos1_wrzer.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos2_close.o: doscall/dos2_close.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos2_create.o: doscall/dos2_create.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos2_defab.o: doscall/dos2_defab.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos2_defer.o: doscall/dos2_defer.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos2_dosver.o: doscall/dos2_dosver.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos2_ffirst.o: doscall/dos2_ffirst.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos2_fnext.o: doscall/dos2_fnext.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos2_ftime.o: doscall/dos2_ftime.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos2_ioctl.o: doscall/dos2_ioctl.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos2_open.o: doscall/dos2_open.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos2_parse.o: doscall/dos2_parse.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos2_pfile.o: doscall/dos2_pfile.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos2_read.o: doscall/dos2_read.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos2_seek.o: doscall/dos2_seek.asm ../include/msxlib/asm/msxdos.inc
+doscall/dos2_write.o: doscall/dos2_write.asm ../include/msxlib/asm/msxdos.inc
+doscall/msxlib_doscall.o: doscall/msxlib_doscall.asm 
+asmroutine/disphex.o: asmroutine/disphex.asm ../include/msxlib/asm/msxdos.inc
+asmroutine/dump.o: asmroutine/dump.asm 
+asmroutine/dump2.o: asmroutine/dump2.asm 
+asmroutine/out_crlf.o: asmroutine/out_crlf.asm ../include/msxlib/asm/msxdos.inc
+asmroutine/out_spc.o: asmroutine/out_spc.asm ../include/msxlib/asm/msxdos.inc
+slot/msxslot_rdslt.o: slot/msxslot_rdslt.asm ../include/msxlib/asm/msxbios.inc
+stdio/fgetc_cons_dos.o: stdio/fgetc_cons_dos.asm ../include/msxlib/asm/msxdos.inc ../include/msxlib/asm/msxwork.inc
+stdio/fputc_cons_dos.o: stdio/fputc_cons_dos.asm ../include/msxlib/asm/msxdos.inc

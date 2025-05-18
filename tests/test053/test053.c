@@ -12,10 +12,10 @@
 const char *str = "Hello, world!\n";
 #define BUF_SIZE 128
 char buf[BUF_SIZE];
+static MSX_FCB fcb;
 
 int test1(void) {
     int fd;
-    MSX_FCB fcb;
     int len = strlen(str);
 
     printf("test053:creat & write test:");
@@ -23,7 +23,10 @@ int test1(void) {
     assert(fd != -1);
     int size = write(fd, str, len);
     assert(size == len);
+    assert(fsync(fd) == 0);
     close(fd);
+
+    assert(fsync(fd) == -1);
 
     msx_fcb_init(&fcb, TEST_FILE);
     dos1_fopen(&fcb);
@@ -41,7 +44,6 @@ int test1(void) {
 
 int test2(void) {
     int fd;
-    MSX_FCB fcb;
     int len = strlen(str);
 
     printf("test053:open(create) & write test:");
@@ -68,7 +70,6 @@ int test2(void) {
 
 int test3(void) {
     int fd;
-    MSX_FCB fcb;
     int len = strlen(str);
 
     printf("test053:read test:");
@@ -82,6 +83,7 @@ int test3(void) {
     fd = open(TEST_FILE,  O_RDONLY, 0);
     assert(fd != -1);
     size = read(fd, buf, BUF_SIZE);
+    assert(fsync(fd) == -1);
     assert(size == len);
     assert(memcmp(buf, str, len) == 0);
     close(fd);
@@ -97,7 +99,6 @@ int test3(void) {
 int test4(void) {
     int fd;
     int len = strlen(str);
-    MSX_FCB fcb;
     int size;
     long pos;
 
@@ -140,7 +141,6 @@ int test4(void) {
 int test5(void) {
     int fd;
     int len = strlen(str);
-    MSX_FCB fcb;
     int size;
     long pos;
 
@@ -179,7 +179,6 @@ int test5(void) {
 int test6(void) {
     int fd;
     int len = strlen(str);
-    MSX_FCB fcb;
     int size;
     long pos;
 
@@ -237,7 +236,6 @@ int test6(void) {
 int test7(void)
 {
     int fd;
-    MSX_FCB fcb;
     int len = strlen(str);
     int size;
     long pos;
@@ -283,7 +281,6 @@ int test7(void)
 int test8(void)
 {
     int fd;
-    MSX_FCB fcb;
     int len = strlen(str);
     int size;
     long pos;
@@ -335,7 +332,6 @@ int test8(void)
 int test9(void)
 {
     int fd;
-    MSX_FCB fcb;
 
     printf("test053:open test:");
 
@@ -359,7 +355,6 @@ int test10(void)
     uint8_t hour, min, sec, prev_sec = 100;
     int fd;
     struct stat buf;
-    MSX_FCB fcb;
 
     printf("Wait...");
     while(prev_sec > 50) {

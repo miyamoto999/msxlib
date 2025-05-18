@@ -15,16 +15,20 @@ $(DISK2_DIR):
 	$(AS) $(ASCONFIGS_DOS1) $<
 
 $(DOS1_DIR)/%.o:%.c
-	$(CC) $(CFLAGS_DOS1) $(CFLAGS_INC_DOS1) -vn -o $@ -c $<
+	$(CC) +msx -subtype=msxdos $(CFLAGS_INC_DOS1) -vn -o $@ -c $<
+#	$(CC) $(CFLAGS_DOS1) $(CFLAGS_INC_DOS1) -vn -o $@ -c $<
 
 $(DOS2_DIR)/%.o:%.c
-	$(CC) $(CFLAGS_DOS2) $(CFLAGS_INC_DOS2) -vn -o $@ -c $<
+	$(CC) +msx -subtype=msxdos2 $(CFLAGS_INC_DOS2) -vn -o $@ -c $<
+#	$(CC) $(CFLAGS_DOS2) $(CFLAGS_INC_DOS2) -vn -o $@ -c $<
 
 $(DISK1_DIR)/%.o:%.c
-	$(CC) $(CFLAGS_DISK1) $(CFLAGS_INC_DISK1) -vn -o $@ -c $<
+	$(CC) +msx -subtype=diskio --msxdos1 $(CFLAGS_INC_DISK1) -vn -o $@ -c $<
+#	$(CC) $(CFLAGS_DISK1) $(CFLAGS_INC_DISK1) -vn -o $@ -c $<
 
 $(DISK2_DIR)/%.o:%.c
-	$(CC) $(CFLAGS_DISK2) $(CFLAGS_INC_DISK2) -vn -o $@ -c $<
+	$(CC) +msx -subtype=diskio --msxdos2 $(CFLAGS_INC_DISK2) -vn -o $@ -c $<
+#	$(CC) $(CFLAGS_DISK2) $(CFLAGS_INC_DISK2) -vn -o $@ -c $<
 
 $(DOS1_DIR)/%.o:%.asm
 	$(AS) $(ASCONFIGS_DOS1) -o=$@ $<

@@ -7,11 +7,12 @@
 
 #define TEST_FILE "test.bin"
 
+MSX_FCB fcb;
+
 int main(void)
 {
     int fd;
     struct tm tm;
-    MSX_FCB fcb;
     uint8_t ret;
 
     dos_scode(1);

@@ -35,3 +35,7 @@
 #pragma redirect stat = stat_dos1
 #pragma redirect _stat = _stat_dos1
 #pragma redirect ___stat = ___stat_dos1
+
+#pragma redirect fsync = fsync_dos1
+#pragma redirect _fsync = _fsync_dos1
+#pragma redirect ___fsync = ___fsync_dos1

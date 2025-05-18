@@ -31,6 +31,6 @@ long __LIB__ lseek_dos1(int fd, long pos, int whence) __smallc;
 long __LIB__ fdtell_dos1(int fd) __smallc;
 int __LIB__ fdgetpos_dos1(int fd, fpos_t *pos) __smallc;
 int __LIB__ stat_dos1(char *filename, struct stat *buf) __smallc;
-
+int __LIB__ fsync_dos1(int fd) __smallc;
 
 #endif

@@ -6,11 +6,11 @@ ASM_SRCS=$(wildcard *.asm)
 
 all:$(TARGET_DOS2) $(TARGET_DISK2)
 
-$(TARGET_DOS2):$(DOS2_DIR) $(OBJS_DOS2) ../../libs/msxlib.lib ../../libs/bios.lib ../../libs/vdp.lib ../../libs/slot.lib
-	$(CC) $(CFLAGS_DOS2) $(CFLAGS_INC_DOS2) -create-app -m -o $(TARGET_DOS2) $(OBJS_DOS2) -L../../libs -lmsxlib -lbios -lvdp -lslot
+$(TARGET_DOS2):$(DOS2_DIR) $(OBJS_DOS2) ../../libs/msxlib.lib ../../libs/vdp.lib
+	$(CC) $(CFLAGS_DOS2) $(CFLAGS_INC_DOS2) -create-app -m -o $(TARGET_DOS2) $(OBJS_DOS2) -L../../libs -lmsxlib -lvdp
 
-$(TARGET_DISK2):$(DISK2_DIR) $(OBJS_DISK2) ../../libs/msxlib.lib ../../libs/bios.lib ../../libs/vdp.lib
-	$(CC) $(CFLAGS_DISK2) $(CLFAGS_INC_DISK2) -create-app -m -o $(TARGET_DISK2) $(OBJS_DISK2) -L../../libs -lmsxlib -lbios -lvdp
+$(TARGET_DISK2):$(DISK2_DIR) $(OBJS_DISK2) ../../libs/msxlib.lib ../../libs/vdp.lib
+	$(CC) $(CFLAGS_DISK2) $(CLFAGS_INC_DISK2) -create-app -m -o $(TARGET_DISK2) $(OBJS_DISK2) -L../../libs -lmsxlib -lvdp
 
 clean:
 	rm -rf *.c.asm *.map *.img $(DOS1_DIR) $(DOS2_DIR) $(DISK1_DIR) $(DISK2_DIR)

@@ -51,3 +51,20 @@ msxvdp.o: msxvdp.c ../../include/msxlib/msxlib.h \
   ../../include/msxlib/msxbiosaddr.h ../../include/msxlib/msxwork.h \
   ../../include/msxlib/msxworkaddr.h
 msxvdp2.o: msxvdp2.c
+cif_msxvdp_cmd_hmmc1.o: cif_msxvdp_cmd_hmmc1.asm 
+cif_msxvdp_cmd_hmmc2.o: cif_msxvdp_cmd_hmmc2.asm 
+cif_msxvdp_peek.o: cif_msxvdp_peek.asm 
+cif_msxvdp_poke.o: cif_msxvdp_poke.asm 
+cif_msxvdp_read.o: cif_msxvdp_read.asm 
+cif_msxvdp_write.o: cif_msxvdp_write.asm 
+msxvdp_cmd_hmmc1.o: msxvdp_cmd_hmmc1.asm ../../include/msxlib/asm/vdp.inc ../../include/msxlib/asm/msxwork.inc
+msxvdp_cmd_hmmc2.o: msxvdp_cmd_hmmc2.asm ../../include/msxlib/asm/vdp.inc ../../include/msxlib/asm/msxwork.inc
+msxvdp_get_status.o: msxvdp_get_status.asm ../../include/msxlib/asm/vdp.inc
+msxvdp_peek.o: msxvdp_peek.asm 
+msxvdp_poke.o: msxvdp_poke.asm 
+msxvdp_read.o: msxvdp_read.asm 
+msxvdp_set_palette2.o: msxvdp_set_palette2.asm ../../include/msxlib/asm/vdp.inc ../../include/msxlib/asm/msxwork.inc
+msxvdp_set_reg_indirect.o: msxvdp_set_reg_indirect.asm ../../include/msxlib/asm/vdp.inc ../../include/msxlib/asm/msxwork.inc
+msxvdp_set_reg.o: msxvdp_set_reg.asm ../../include/msxlib/asm/msxbios.inc ../../include/msxlib/asm/vdp.inc ../../include/msxlib/asm/msxwork.inc
+msxvdp_set_vram_addr.o: msxvdp_set_vram_addr.asm ../../include/msxlib/asm/vdp.inc ../../include/msxlib/asm/msxwork.inc
+msxvdp_write.o: msxvdp_write.asm 

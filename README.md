@@ -10,7 +10,7 @@ Z88DKのインストールされたUNIX系のOS上で
 ./build.sh
 ~~~
 
-を実行すると完了し、./libsディレクトリにasmroutine.lib、bios.lib、iot.lib、msxlib.lib、slot.lib、vdp.libが生成されます。
+を実行すると完了し、./libsディレクトリにiot.lib、msxlib.lib、vdp.libが生成されます。
 
 
 ## ソースツリーの簡単な説明
@@ -43,9 +43,6 @@ Z88DKのインストールされたUNIX系のOS上で
 |   |   |-- dos1_*.asm              DOS1のファンクションコールを呼び出す関数
 |   |   |-- dos2_*.asm              DOS2のファンクションコールを呼び出す関数          
 |   |   `-- dos_scode.asm           自作のZ80エミュレータの終了コードを設定するファンクションコールを呼び出す関数
-|   |-- dskcall
-|   |   |-- dsk1_*.asm              DOS1のファンクションコールをBASIC上のマシン語から呼び出す関数
-|   |   `-- dsk2_*.asm              DOS2のファンクションコールをBASIC上のマシン語から呼び出す関数
 |   |-- iot                         MSX0のIOT関係の関数
 |   |-- net                         MSX0のネットワーク(TCP)通信を行う関数
 |   |-- rbuf                        リングバッファ
@@ -60,8 +57,15 @@ Z88DKのインストールされたUNIX系のOS上で
 - [iot関係](doc/iot.md)
 
 更新履歴
+- 2025/5/18
+    - MSX-DOS1用差し替え関数fsync_dos1()を追加
+    - asmroutine.lib、bios.lib、slot.libをmsxlib.libに統合
+    - MSX0 Stack用のネットワーク関係の関数をiot.libに移動
+    - O_CREATを指定してopen_dos1()を呼び出したときの動作に問題があったので改修
+    - fopen系ファイルアクセスのテストプログラムを追加
+    - 他、いろいろ
 - 2025/5/11
-    - MSX-DOS1用の差し替え用のcreat_dos1()、open_dos1()、close_dos1()、read_dos1()、write_dos1()、lseek_dos1()、stat_dos1()を追加
+    - MSX-DOS1用差し替え関数のcreat_dos1()、open_dos1()、close_dos1()、read_dos1()、write_dos1()、lseek_dos1()、stat_dos1()を追加
     - MSX-DOS1用のcreat_dos1()など追加に際してz88dkのmsx_crt0.asmなどの変更が必要だったのでmsxlibのmake時にコピーしてパッチをあてるようにした。つまり、creat()などを差し替える場合それを使う必要がある。
     - 実行中のDOSカーネルのメジャーバージョンを取得する関数を追加
     - MSX-DOS2の_FTIME(ファイルのタイムスタンプ取得、変更)ファンクションコールを呼び出す関数を追加

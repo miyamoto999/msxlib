@@ -12,11 +12,11 @@ CFLAGS_SDCC1=+msx -subtype=msxdos -compiler=sdcc -create-app -crt0=../../crt0/ms
 
 all:$(TARGET_DOS1) $(TARGET_SDCC1)
 
-$(TARGET_DOS1):$(DOS1_DIR) $(OBJS_DOS1) ../../libs/bios.lib ../../libs/msxlib.lib
-	$(CC) $(CFLAGS_DOS1) $(CFLAGS_INC_DOS1) -create-app -m -o $(TARGET_DOS1) $(OBJS_DOS1) -L../../libs -lbios -lmsxlib
+$(TARGET_DOS1):$(DOS1_DIR) $(OBJS_DOS1) ../../libs/msxlib.lib
+	$(CC) $(CFLAGS_DOS1) $(CFLAGS_INC_DOS1) -create-app -m -o $(TARGET_DOS1) $(OBJS_DOS1) -L../../libs -lmsxlib
 
-$(TARGET_SDCC1):$(SDCC1_DIR) $(OBJS_SDCC1) ../../libs/bios.lib ../../libs/msxlib.lib
-	$(CC) $(CFLAGS_SDCC1) $(CFLAGS_INC_SDCC1) -create-app -m -o $(TARGET_SDCC1) $(OBJS_SDCC1) -L../../libs -lbios -lmsxlib
+$(TARGET_SDCC1):$(SDCC1_DIR) $(OBJS_SDCC1) ../../libs/msxlib.lib
+	$(CC) $(CFLAGS_SDCC1) $(CFLAGS_INC_SDCC1) -create-app -m -o $(TARGET_SDCC1) $(OBJS_SDCC1) -L../../libs -lmsxlib
 
 $(SDCC1_DIR):
 	mkdir -p $(SDCC1_DIR)

@@ -11,8 +11,8 @@ ASCONFIGS=$(CFLAGS_INC)
 
 all:$(TARGET)
 
-$(TARGET):$(OBJS) ../../libs/asmroutine.lib ../../libs/msxlib.lib
-	$(CC) $(CFLAGS) --no-crt -create-app -m -o $(TARGET) $(OBJS) -L../../libs -lmsxlib -lasmroutine
+$(TARGET):$(OBJS) ../../libs/msxlib.lib
+	$(CC) $(CFLAGS) --no-crt -create-app -m -o $(TARGET) $(OBJS) -L../../libs -lmsxlib
 #	$(AS) -b -L../../libs -lasmroutine -o$(TARGET) $(OBJS)
 #	$(CC) $(CFLAGS) -create-app -m -o $(TARGET) $(OBJS) -L../../libs -lmsxlib -ldoscall
 

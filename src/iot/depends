@@ -14,3 +14,38 @@ iot.o: iot.c ../../include/msxlib/msxlib.h ../../include/msxlib/iot.h \
   ../../include/msxlib/msxbios.h ../../include/msxlib/msxbiosaddr.h \
   ../../include/msxlib/rbuf.h ../../include/msxlib/iotaddr.h \
   ../../include/msxlib/bcdf.h
+net_connect.o: net_connect.c ../../include/msxlib/net.h \
+  ../../include/msxlib/msxlib.h ../../include/msxlib/rbuf.h \
+  ../../include/msxlib/iot.h ../../include/msxlib/msxbios.h \
+  ../../include/msxlib/msxbiosaddr.h ../../include/msxlib/iotaddr.h \
+  ../../include/msxlib/bcdf.h ../../include/msxlib/msxdos.h \
+  ../../include/msxlib/fcb.h ../../include/msxlib/fib.h
+net_init.o: net_init.c ../../include/msxlib/msxlib.h \
+  ../../include/msxlib/iot.h ../../include/msxlib/msxbios.h \
+  ../../include/msxlib/msxbiosaddr.h ../../include/msxlib/rbuf.h \
+  ../../include/msxlib/iotaddr.h ../../include/msxlib/bcdf.h \
+  ../../include/msxlib/net.h ../../include/msxlib/msxdos.h \
+  ../../include/msxlib/fcb.h ../../include/msxlib/fib.h
+net_readline.o: net_readline.c ../../include/msxlib/msxlib.h \
+  ../../include/msxlib/net.h ../../include/msxlib/rbuf.h \
+  ../../include/msxlib/iot.h ../../include/msxlib/msxbios.h \
+  ../../include/msxlib/msxbiosaddr.h ../../include/msxlib/iotaddr.h \
+  ../../include/msxlib/bcdf.h
+net_setup.o: net_setup.c ../../include/msxlib/msxlib.h \
+  ../../include/msxlib/iot.h ../../include/msxlib/msxbios.h \
+  ../../include/msxlib/msxbiosaddr.h ../../include/msxlib/rbuf.h \
+  ../../include/msxlib/iotaddr.h ../../include/msxlib/bcdf.h \
+  ../../include/msxlib/net.h
+cif_iot_geti.o: cif_iot_geti.asm 
+cif_iot_gets.o: cif_iot_gets.asm 
+cif_iot_node_write.o: cif_iot_node_write.asm 
+cif_iot_puti.o: cif_iot_puti.asm 
+cif_iot_puts.o: cif_iot_puts.asm 
+cif_iot_read.o: cif_iot_read.asm 
+iot_geti.o: iot_geti.asm ../../include/msxlib/asm/iot.inc
+iot_gets.o: iot_gets.asm ../../include/msxlib/asm/iot.inc
+iot_node_write.o: iot_node_write.asm ../../include/msxlib/asm/iot.inc
+iot_puti.o: iot_puti.asm ../../include/msxlib/asm/iot.inc
+iot_puts.o: iot_puts.asm ../../include/msxlib/asm/iot.inc
+iot_read.o: iot_read.asm ../../include/msxlib/asm/iot.inc
+iot_write.o: iot_write.asm ../../include/msxlib/asm/iot.inc
